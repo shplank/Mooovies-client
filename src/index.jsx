@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { MainView } from './components/main-view/main-view';
+
 import './index.scss';
 
 /* main component */
@@ -8,9 +10,7 @@ import './index.scss';
 class MoooviesApplication extends React.Component {
   render() {
     return (
-      <div className="mooovies">
-        <div>Good morning</div>
-      </div>
+      <MainView />
     );
   }
 }
