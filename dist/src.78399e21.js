@@ -29566,7 +29566,319 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/film-card/film-card.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FilmCard = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var FilmCard = /*#__PURE__*/function (_React$Component) {
+  _inherits(FilmCard, _React$Component);
+
+  var _super = _createSuper(FilmCard);
+
+  function FilmCard() {
+    _classCallCheck(this, FilmCard);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FilmCard, [{
+    key: "render",
+    value: function render() {
+      var filmInfo = this.props.filmInfo;
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-card"
+      }, filmInfo.Title);
+    }
+  }]);
+
+  return FilmCard;
+}(_react.default.Component);
+
+exports.FilmCard = FilmCard;
+},{"react":"../node_modules/react/index.js"}],"components/film-view/film-view.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FilmView = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var FilmView = /*#__PURE__*/function (_React$Component) {
+  _inherits(FilmView, _React$Component);
+
+  var _super = _createSuper(FilmView);
+
+  function FilmView() {
+    _classCallCheck(this, FilmView);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(FilmView, [{
+    key: "render",
+    value: function render() {
+      var filmInfo = this.props.filmInfo;
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-view"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-image"
+      }, /*#__PURE__*/_react.default.createElement("img", {
+        src: filmInfo.ImagePath
+      })), /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-title"
+      }, /*#__PURE__*/_react.default.createElement("span", {
+        className: "label"
+      }, "Title: "), /*#__PURE__*/_react.default.createElement("span", {
+        className: "value"
+      }, filmInfo.Title)), /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-blurb"
+      }, /*#__PURE__*/_react.default.createElement("span", {
+        className: "label"
+      }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
+        className: "value"
+      }, filmInfo.Description)));
+    }
+  }]);
+
+  return FilmView;
+}(_react.default.Component);
+
+exports.FilmView = FilmView;
+},{"react":"../node_modules/react/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MainView = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _filmCard = require("../film-card/film-card");
+
+var _filmView = require("../film-view/film-view");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var MainView = /*#__PURE__*/function (_React$Component) {
+  _inherits(MainView, _React$Component);
+
+  var _super = _createSuper(MainView);
+
+  function MainView() {
+    var _this;
+
+    _classCallCheck(this, MainView);
+
+    _this = _super.call(this);
+    _this.state = {
+      films: [{
+        "Genre": ["60c270de97a33ec06abe217f"],
+        "Director": ["60c2786097a33ec06abe2186"],
+        "_id": "60ba5f274241cd6da42cd2fc",
+        "Title": "Lost in Translation",
+        "ReleaseYear": "2003",
+        "Description": "A faded movie star and a neglected young woman form an unlikely bond after crossing paths in Tokyo.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/4/4c/Lost_in_Translation_poster.jpg",
+        "Featured": true
+      }, {
+        "Genre": ["60c2711997a33ec06abe2181"],
+        "Director": ["60c2783197a33ec06abe2184"],
+        "_id": "60ba4e014241cd6da42cd2fa",
+        "Title": "Get Out",
+        "ReleaseYear": "2017",
+        "Description": "A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/a/a3/Get_Out_poster.png",
+        "Featured": true
+      }, {
+        "Genre": ["60c2710197a33ec06abe2180"],
+        "Director": ["60c2787b97a33ec06abe2187"],
+        "_id": "60ba62264241cd6da42cd2fd",
+        "Title": "Raising Arizona",
+        "ReleaseYear": "1987",
+        "Description": "When a childless couple of an ex-con and an ex-cop decide to help themselves to one of another family's quintuplets, their lives become more complicated than they anticipated.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/3/31/Raising-Arizona-Poster.jpg",
+        "Featured": false
+      }, {
+        "Genre": ["60c2712e97a33ec06abe2182"],
+        "Director": ["60c2784497a33ec06abe2185"],
+        "_id": "60ba5d904241cd6da42cd2fb",
+        "Title": "Pulp Fiction",
+        "ReleaseYear": "1994",
+        "Description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg",
+        "Featured": false
+      }, {
+        "Genre": ["60c2710197a33ec06abe2180"],
+        "Director": ["60c2789797a33ec06abe2188"],
+        "_id": "60ba65a24241cd6da42cd2ff",
+        "Title": "Lady Bird",
+        "ReleaseYear": "2017",
+        "Description": "A nurse works tirelessly to keep her family afloat after her husband loses his job. She also maintains a turbulent bond with a teenage daughter who is just like her: loving, strong-willed and deeply opinionated.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/6/61/Lady_Bird_poster.jpeg",
+        "Featured": false
+      }, {
+        "Genre": ["60c2712e97a33ec06abe2182"],
+        "Director": ["60c2787b97a33ec06abe2187"],
+        "_id": "60ba62514241cd6da42cd2fe",
+        "Title": "Fargo",
+        "ReleaseYear": "1996",
+        "Description": "Jerry Lundegaard's inept crime falls apart due to his and his henchmen's bungling and the persistent police work of the quite pregnant Marge Gunderson.",
+        "ImagePath": "https://static.wikia.nocookie.net/fargo/images/d/d7/Fargo_movieposter.jpg/revision/latest?cb=20140226224031",
+        "Featured": true
+      }, {
+        "Genre": ["60c2714597a33ec06abe2183"],
+        "Director": ["60c278bc97a33ec06abe218a"],
+        "_id": "60ba72d54241cd6da42cd301",
+        "Title": "Life of Pi",
+        "ReleaseYear": "2012",
+        "Description": "A young man who survives a disaster at sea is hurtled into an epic journey of adventure and discovery. While cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/5/57/Life_of_Pi_2012_Poster.jpg",
+        "Featured": true
+      }, {
+        "Genre": ["60c270de97a33ec06abe217f"],
+        "Director": ["60c278a997a33ec06abe2189"],
+        "_id": "60ba68414241cd6da42cd300",
+        "Title": "The Favourite",
+        "ReleaseYear": "2018",
+        "Description": "In early 18th-century England, the status quo at the court is upset when a new servant arrives and endears herself to a frail Queen Anne.",
+        "ImagePath": "https://cdn.shopify.com/s/files/1/1416/8662/products/Favourite_2018_styleD_original_film-art_1200x.jpg?v=1614794959",
+        "Featured": false
+      }, {
+        "Genre": ["60c270c697a33ec06abe217e"],
+        "Director": ["60c278ce97a33ec06abe218b"],
+        "_id": "60ba72f34241cd6da42cd302",
+        "Title": "Mulholland Dr.",
+        "ReleaseYear": "2001",
+        "Description": "After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture beyond dreams and reality.",
+        "ImagePath": "https://upload.wikimedia.org/wikipedia/en/0/0f/Mulholland.png",
+        "Featured": false
+      }, {
+        "Genre": ["60c2710197a33ec06abe2180"],
+        "Director": ["60c278e297a33ec06abe218c"],
+        "_id": "60ba4de04241cd6da42cd2f9",
+        "Title": "Parasite",
+        "ReleaseYear": "2019",
+        "Description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+        "ImagePath": "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
+        "Featured": true
+      }],
+      selectedFilm: null
+    };
+    return _this;
+  }
+
+  _createClass(MainView, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          films = _this$state.films,
+          selectedFilm = _this$state.selectedFilm;
+      if (selectedFilm) return /*#__PURE__*/_react.default.createElement(_filmView.FilmView, {
+        filmInfo: selectedFilm
+      });
+      if (films.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
+        className: "main-view"
+      }, "No movies for you!");
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "main-view"
+      }, films.map(function (film) {
+        return /*#__PURE__*/_react.default.createElement(_filmCard.FilmCard, {
+          key: film._id,
+          filmInfo: film,
+          onClick: function onClick() {
+            _this2.state.selectedFilm = filmInfo;
+          }
+        });
+      }));
+    }
+  }]);
+
+  return MainView;
+}(_react.default.Component);
+
+exports.MainView = MainView;
+},{"react":"../node_modules/react/index.js","../film-card/film-card":"components/film-card/film-card.jsx","../film-view/film-view":"components/film-view/film-view.jsx"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -29645,6 +29957,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
+var _mainView = require("./components/main-view/main-view");
+
 require("./index.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29686,9 +30000,7 @@ var MoooviesApplication = /*#__PURE__*/function (_React$Component) {
   _createClass(MoooviesApplication, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react.default.createElement("div", {
-        className: "mooovies"
-      }, /*#__PURE__*/_react.default.createElement("div", null, "Good morning"));
+      return /*#__PURE__*/_react.default.createElement(_mainView.MainView, null);
     }
   }]);
 
@@ -29698,7 +30010,7 @@ var MoooviesApplication = /*#__PURE__*/function (_React$Component) {
 var container = document.getElementsByClassName('app-container')[0];
 
 _reactDom.default.render(_react.default.createElement(MoooviesApplication), container);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./index.scss":"index.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/main-view/main-view":"components/main-view/main-view.jsx","./index.scss":"index.scss"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29726,7 +30038,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57369" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55656" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
