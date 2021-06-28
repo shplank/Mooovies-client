@@ -163,14 +163,12 @@ export class MainView extends React.Component {
   render() {
     const { films, selectedFilm } = this.state;
 
-    if (selectedFilm) return <FilmView film={selectedFilm} />;
-
     if (films.length === 0) return <div className="main-view">No movies for you!</div>;
 
     return (
       <div className="main-view">
         {selectedFilm
-          ? <filmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
+          ? <FilmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
           : films.map(film => <FilmCard key={film._id} film={film} onFilmClick={(film) => { this.setSelectedFilm(film) }} />)}
       </div>
     );

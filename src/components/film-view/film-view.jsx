@@ -13,6 +13,10 @@ export class FilmView extends React.Component {
           <span className="label">Title: </span>
           <span className="value">{film.Title}</span>
         </div>
+        <div className="film-year">
+          <span className="label">Release Year: </span>
+          <span className="value">{film.ReleaseYear}</span>
+        </div>
         <div className="film-blurb">
           <span className="label">Description: </span>
           <span className="value">{film.Description}</span>

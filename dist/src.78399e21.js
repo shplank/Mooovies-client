@@ -29694,6 +29694,12 @@ var FilmView = /*#__PURE__*/function (_React$Component) {
       }, "Title: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
       }, film.Title)), /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-year"
+      }, /*#__PURE__*/_react.default.createElement("span", {
+        className: "label"
+      }, "Release Year: "), /*#__PURE__*/_react.default.createElement("span", {
+        className: "value"
+      }, film.ReleaseYear)), /*#__PURE__*/_react.default.createElement("div", {
         className: "film-blurb"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
@@ -29872,15 +29878,12 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           films = _this$state.films,
           selectedFilm = _this$state.selectedFilm;
-      if (selectedFilm) return /*#__PURE__*/_react.default.createElement(_filmView.FilmView, {
-        film: selectedFilm
-      });
       if (films.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       }, "No movies for you!");
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
-      }, selectedFilm ? /*#__PURE__*/_react.default.createElement("filmView", {
+      }, selectedFilm ? /*#__PURE__*/_react.default.createElement(_filmView.FilmView, {
         film: selectedFilm,
         onBackClick: function onBackClick(newSelectedFilm) {
           _this2.setSelectedFilm(newSelectedFilm);
