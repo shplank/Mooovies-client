@@ -29614,10 +29614,15 @@ var FilmCard = /*#__PURE__*/function (_React$Component) {
   _createClass(FilmCard, [{
     key: "render",
     value: function render() {
-      var filmInfo = this.props.filmInfo;
+      var _this$props = this.props,
+          film = _this$props.film,
+          onFilmClick = _this$props.onFilmClick;
       return /*#__PURE__*/_react.default.createElement("div", {
-        className: "film-card"
-      }, filmInfo.Title);
+        className: "film-card",
+        onClick: function onClick() {
+          onFilmClick(film);
+        }
+      }, film.Title);
     }
   }]);
 
@@ -29673,26 +29678,32 @@ var FilmView = /*#__PURE__*/function (_React$Component) {
   _createClass(FilmView, [{
     key: "render",
     value: function render() {
-      var filmInfo = this.props.filmInfo;
+      var _this$props = this.props,
+          film = _this$props.film,
+          onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "film-view"
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "film-image"
       }, /*#__PURE__*/_react.default.createElement("img", {
-        src: filmInfo.ImagePath
+        src: film.ImagePath
       })), /*#__PURE__*/_react.default.createElement("div", {
         className: "film-title"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Title: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, filmInfo.Title)), /*#__PURE__*/_react.default.createElement("div", {
+      }, film.Title)), /*#__PURE__*/_react.default.createElement("div", {
         className: "film-blurb"
       }, /*#__PURE__*/_react.default.createElement("span", {
         className: "label"
       }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, filmInfo.Description)));
+      }, film.Description)), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: function onClick() {
+          onBackClick(null);
+        }
+      }, "Back"));
     }
   }]);
 
@@ -29847,6 +29858,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MainView, [{
+    key: "setSelectedFilm",
+    value: function setSelectedFilm(newSelectedFilm) {
+      this.setState({
+        selectedFilm: newSelectedFilm
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -29855,19 +29873,24 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           films = _this$state.films,
           selectedFilm = _this$state.selectedFilm;
       if (selectedFilm) return /*#__PURE__*/_react.default.createElement(_filmView.FilmView, {
-        filmInfo: selectedFilm
+        film: selectedFilm
       });
       if (films.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       }, "No movies for you!");
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
-      }, films.map(function (film) {
+      }, selectedFilm ? /*#__PURE__*/_react.default.createElement("filmView", {
+        film: selectedFilm,
+        onBackClick: function onBackClick(newSelectedFilm) {
+          _this2.setSelectedFilm(newSelectedFilm);
+        }
+      }) : films.map(function (film) {
         return /*#__PURE__*/_react.default.createElement(_filmCard.FilmCard, {
           key: film._id,
-          filmInfo: film,
-          onClick: function onClick() {
-            _this2.state.selectedFilm = filmInfo;
+          film: film,
+          onFilmClick: function onFilmClick(film) {
+            _this2.setSelectedFilm(film);
           }
         });
       }));

@@ -9,7 +9,6 @@ export class MainView extends React.Component {
     super();
     this.state = {
       films: [
-
         {
           "Genre": [
             "60c270de97a33ec06abe217f"
@@ -150,22 +149,29 @@ export class MainView extends React.Component {
           "ImagePath": "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
           "Featured": true
         }
-
       ],
       selectedFilm: null
     }
   }
 
+  setSelectedFilm(newSelectedFilm) {
+    this.setState({
+      selectedFilm: newSelectedFilm
+    });
+  }
+
   render() {
     const { films, selectedFilm } = this.state;
 
-    if (selectedFilm) return <FilmView filmInfo={selectedFilm} />;
+    if (selectedFilm) return <FilmView film={selectedFilm} />;
 
     if (films.length === 0) return <div className="main-view">No movies for you!</div>;
 
     return (
       <div className="main-view">
-        {films.map(film => <FilmCard key={film._id} filmInfo={film} onClick={() => { this.state.selectedFilm = filmInfo; }} />)}
+        {selectedFilm
+          ? <filmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
+          : films.map(film => <FilmCard key={film._id} film={film} onFilmClick={(film) => { this.setSelectedFilm(film) }} />)}
       </div>
     );
   }

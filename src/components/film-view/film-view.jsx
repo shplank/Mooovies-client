@@ -2,20 +2,22 @@ import React from 'react';
 
 export class FilmView extends React.Component {
   render() {
-    const { filmInfo } = this.props;
+    const { film, onBackClick } = this.props;
+
     return (
       <div className="film-view">
         <div className="film-image">
-          <img src={filmInfo.ImagePath} />
+          <img src={film.ImagePath} />
         </div>
         <div className="film-title">
           <span className="label">Title: </span>
-          <span className="value">{filmInfo.Title}</span>
+          <span className="value">{film.Title}</span>
         </div>
         <div className="film-blurb">
           <span className="label">Description: </span>
-          <span className="value">{filmInfo.Description}</span>
+          <span className="value">{film.Description}</span>
         </div>
+        <button onClick={() => { onBackClick(null); }}>Back</button>
       </div>
     );
   }
