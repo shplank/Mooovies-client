@@ -1,6 +1,7 @@
 import React from 'react';
 
 export class FilmView extends React.Component {
+
   render() {
     const { film, onBackClick } = this.props;
 
