@@ -31403,7 +31403,7 @@ function LoginView(props) {
       password = _useState4[0],
       setPassword = _useState4[1];
 
-  var handleSubmit = function handleSubmit() {
+  var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
@@ -32455,10 +32455,10 @@ var FilmCard = /*#__PURE__*/function (_React$Component) {
           film = _this$props.film,
           onFilmClick = _this$props.onFilmClick;
       return /*#__PURE__*/_react.default.createElement("div", {
+        className: "film-card",
         onClick: function onClick() {
-          return onFilmClick(film);
-        },
-        className: "film-card"
+          onFilmClick(film);
+        }
       }, film.Title);
     }
   }]);
