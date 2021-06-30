@@ -32677,8 +32677,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         return /*#__PURE__*/_react.default.createElement(_filmCard.FilmCard, {
           key: film._id,
           film: film,
-          onFilmClick: function onFilmClick(film) {
-            _this3.setSelectedFilm(film);
+          onFilmClick: function onFilmClick(newSelectedFilm) {
+            _this3.setSelectedFilm(newSelectedFilm);
           }
         });
       }));
@@ -32849,7 +32849,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64831" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50837" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

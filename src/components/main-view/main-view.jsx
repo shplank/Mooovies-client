@@ -14,7 +14,7 @@ export class MainView extends React.Component {
       films: [],
       selectedFilm: null,
       user: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -52,7 +52,10 @@ export class MainView extends React.Component {
       <div className="main-view">
         {selectedFilm
           ? <FilmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
-          : films.map(film => <FilmCard key={film._id} film={film} onFilmClick={(film) => { this.setSelectedFilm(film) }} />)}
+          : films.map(film => (
+            <FilmCard key={film._id} film={film} onFilmClick={(newSelectedFilm) => { this.setSelectedFilm(newSelectedFilm) }} />
+          ))
+        }
       </div>
     );
   }
