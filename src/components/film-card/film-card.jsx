@@ -5,7 +5,12 @@ export class FilmCard extends React.Component {
   render() {
     const { film, onFilmClick } = this.props;
     return (
-      <div className="film-card" onClick={() => { onFilmClick(film); }} >{film.Title}</div>
+      <div onClick={() => onFilmClick(film)} className="film-card">
+        <div className="film-image">
+          <img src={film.ImagePath} />
+        </div>
+        <div>{film.Title}</div>
+      </div>
     );
   }
 }

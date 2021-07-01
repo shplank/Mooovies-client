@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import { LoginView } from '../login-view/login-view';
 
+import { RegistrationView } from '../registration-view/registration-view';
+
 import { FilmCard } from '../film-card/film-card';
 
 import { FilmView } from '../film-view/film-view';
@@ -41,8 +43,14 @@ export class MainView extends React.Component {
     });
   }
 
+  onRegister(register) {
+    this.setState({
+      register,
+    });
+  }
+
   render() {
-    const { films, selectedFilm } = this.state;
+    const { films, user, selectedFilm } = this.state;
 
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 
