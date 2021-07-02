@@ -33571,25 +33571,25 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (films.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       });
-      return /*#__PURE__*/_react.default.createElement("div", {
-        className: "main-view"
-      }, selectedFilm ? /*#__PURE__*/_react.default.createElement(_Row.default, {
-        className: "justify-content-md-center"
-      }, /*#__PURE__*/_react.default.createElement(_Col.default, {
+      return /*#__PURE__*/_react.default.createElement(_Row.default, {
+        className: "main-view justify-content-md-center"
+      }, selectedFilm ? /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
       }, /*#__PURE__*/_react.default.createElement(_filmView.FilmView, {
         film: selectedFilm,
         onBackClick: function onBackClick(newSelectedFilm) {
           _this3.setSelectedFilm(newSelectedFilm);
         }
-      }))) : films.map(function (film) {
-        return /*#__PURE__*/_react.default.createElement(_filmCard.FilmCard, {
+      })) : films.map(function (film) {
+        return /*#__PURE__*/_react.default.createElement(_Col.default, {
+          md: 3
+        }, /*#__PURE__*/_react.default.createElement(_filmCard.FilmCard, {
           key: film._id,
           film: film,
           onFilmClick: function onFilmClick(newSelectedFilm) {
             _this3.setSelectedFilm(newSelectedFilm);
           }
-        });
+        }));
       }));
     }
   }]);

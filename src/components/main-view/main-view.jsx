@@ -59,20 +59,20 @@ export class MainView extends React.Component {
     if (films.length === 0) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
+      <Row className="main-view justify-content-md-center">
         {selectedFilm
           ? (
-            <Row className="justify-content-md-center">
-              <Col md={8}>
-                <FilmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
-              </Col>
-            </Row>
+            <Col md={8}>
+              <FilmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
+            </Col>
           )
           : films.map(film => (
-            <FilmCard key={film._id} film={film} onFilmClick={(newSelectedFilm) => { this.setSelectedFilm(newSelectedFilm) }} />
+              <Col md={3}>
+                <FilmCard key={film._id} film={film} onFilmClick={(newSelectedFilm) => { this.setSelectedFilm(newSelectedFilm) }} />
+              </Col>
           ))
         }
-      </div>
+      </Row>
     );
   }
 }
