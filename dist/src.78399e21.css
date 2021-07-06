@@ -1,5 +1,23 @@
+.LoginForm {
+  margin: auto;
+  max-width: 610px;
+  align-content: center;
+}
+
+.Button {
+  background-color: #ffbebe;
+  color: #000;
+  border-color: #000;
+}
+body {
+  font-family: "Commissioner", sans-serif;
+}
 .mooovies {
   color: steelblue;
+}
+
+body {
+  font-family: "Commissioner", sans-serif;
 }
 
 /*# sourceMappingURL=/src.78399e21.css.map */
