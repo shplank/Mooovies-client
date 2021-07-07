@@ -1,8 +1,9 @@
 .LoginForm {
   margin: auto;
-  max-width: 580px;
-  align-content: center;
-  justify-content: right;
+  min-width: 300px;
+  font-family: "Commissioner", sans-serif;
+  justify-content: center;
+  font-weight: 700;
 }
 
 .Button {
@@ -12,8 +13,8 @@
 }
 
 .Button:hover,
-Button:focus,
-Button:active {
+.Button:focus,
+.Button:active {
   background-color: #ffcece;
   color: #222;
   border-color: #000;

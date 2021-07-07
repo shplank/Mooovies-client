@@ -1,8 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap");
 
-.film-card {
+.card-image {
+  max-height: 375px;
+}
+
+.card-title {
   font-family: "Commissioner", sans-serif;
-  margin-top: 18px;
   font-weight: 700;
 }
 

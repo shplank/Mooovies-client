@@ -1,0 +1,21 @@
+.RegistrationForm {
+  margin: auto;
+  min-width: 300px;
+  font-family: "Commissioner", sans-serif;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.Button {
+  background-color: #ffbebe;
+  color: #000;
+  border-color: #000;
+}
+
+.Button:hover,
+.Button:focus,
+.Button:active {
+  background-color: #ffcece;
+  color: #222;
+  border-color: #000;
+}

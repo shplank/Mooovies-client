@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Media from 'react-bootstrap/Media'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import logo from './welcome-logo.png';
@@ -20,28 +21,26 @@ export function LoginView(props) {
   };
 
   return (
-    <div className="LoginForm">
-    <Media>
-        <img width={290} src={logo} alt="Mooovies logo" />
-    <Media.Body className="pl-5">
-      <p className="mt-3">Please log into your account:</p>
-      <Form>
+    <Row className="LoginForm justify-content-md-center">
+      <Col md="auto">
+        <img width={300} src={logo} alt="Mooovies logo" />
+        <p>Please log into your account:</p>
+        <Form>
         <Form.Label>
           Username:
-          <input type="text" value={Username} onChange={e => setUsername(e.target.value)} />
+          <input className="ml-1" type="text" value={Username} onChange={e => setUsername(e.target.value)} />
         </Form.Label>
         <br></br>
         <Form.Label>
           Password:
-          <input type="password" value={Password} onChange={e => setPassword(e.target.value)} />
+          <input className="ml-1" type="password" value={Password} onChange={e => setPassword(e.target.value)} />
         </Form.Label>
         <br></br>
         <Button className="Button mt-2" type="submit" onClick={handleSubmit}>Submit</Button>
-      </Form>
-      <p className="mt-3">Or create an account here.</p>
-    </Media.Body>
-    </Media>
-    </div>
+        </Form>
+        <p className="mt-3">Or create an account here.</p>
+      </Col>
+    </Row>
   );
 }
 

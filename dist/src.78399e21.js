@@ -35860,50 +35860,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/react-bootstrap/esm/Media.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
-
-var _classnames = _interopRequireDefault(require("classnames"));
-
-var _react = _interopRequireDefault(require("react"));
-
-var _createWithBsPrefix = _interopRequireDefault(require("./createWithBsPrefix"));
-
-var _ThemeProvider = require("./ThemeProvider");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _excluded = ["bsPrefix", "className", "as"];
-var MediaBody = (0, _createWithBsPrefix.default)('media-body');
-
-var Media = /*#__PURE__*/_react.default.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      className = _ref.className,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, _excluded);
-  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'media');
-  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
-    ref: ref,
-    className: (0, _classnames.default)(className, prefix)
-  }));
-});
-
-Media.displayName = 'Media';
-Media.Body = MediaBody;
-var _default = Media;
-exports.default = _default;
-},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./createWithBsPrefix":"../node_modules/react-bootstrap/esm/createWithBsPrefix.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
+},{"_css_loader":"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/react-bootstrap/esm/Feedback.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36887,7 +36844,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Media = _interopRequireDefault(require("react-bootstrap/Media"));
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
@@ -36936,23 +36895,23 @@ function LoginView(props) {
     props.onLoggedIn(Username);
   };
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "LoginForm"
-  }, /*#__PURE__*/_react.default.createElement(_Media.default, null, /*#__PURE__*/_react.default.createElement("img", {
-    width: 290,
+  return /*#__PURE__*/_react.default.createElement(_Row.default, {
+    className: "LoginForm justify-content-md-center"
+  }, /*#__PURE__*/_react.default.createElement(_Col.default, {
+    md: "auto"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    width: 300,
     src: _welcomeLogo.default,
     alt: "Mooovies logo"
-  }), /*#__PURE__*/_react.default.createElement(_Media.default.Body, {
-    className: "pl-5"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "mt-3"
-  }, "Please log into your account:"), /*#__PURE__*/_react.default.createElement(_Form.default, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
+  }), /*#__PURE__*/_react.default.createElement("p", null, "Please log into your account:"), /*#__PURE__*/_react.default.createElement(_Form.default, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
+    className: "ml-1",
     type: "text",
     value: Username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Password:", /*#__PURE__*/_react.default.createElement("input", {
+    className: "ml-1",
     type: "password",
     value: Password,
     onChange: function onChange(e) {
@@ -36964,7 +36923,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Submit")), /*#__PURE__*/_react.default.createElement("p", {
     className: "mt-3"
-  }, "Or create an account here."))));
+  }, "Or create an account here.")));
 }
 
 LoginView.propTypes = {
@@ -36973,7 +36932,7 @@ LoginView.propTypes = {
     Password: _propTypes.default.string.isRequired
   })
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Media":"../node_modules/react-bootstrap/esm/Media.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./welcome-logo.png":"components/login-view/welcome-logo.png","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/welcome-logo.png":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./welcome-logo.png":"components/login-view/welcome-logo.png","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/welcome-logo.png":[function(require,module,exports) {
 module.exports = "/welcome-logo.7c215dfa.png";
 },{}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
 "use strict";
@@ -36987,7 +36946,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Media = _interopRequireDefault(require("react-bootstrap/Media"));
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
+var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
@@ -37040,14 +37001,15 @@ function RegistrationView(props) {
     props.onLoggedIn(Username);
   };
 
-  return /*#__PURE__*/_react.default.createElement(_Media.default, null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement(_Row.default, {
+    className: "RegistrationForm justify-content-md-center"
+  }, /*#__PURE__*/_react.default.createElement(_Col.default, {
+    md: "auto"
+  }, /*#__PURE__*/_react.default.createElement("img", {
     width: 300,
-    className: "ml-5",
     src: _welcomeLogo.default,
     alt: "Mooovies logo"
-  }), /*#__PURE__*/_react.default.createElement(_Media.default.Body, {
-    className: "pl-5"
-  }, /*#__PURE__*/_react.default.createElement("p", {
+  }), /*#__PURE__*/_react.default.createElement("p", {
     className: "mt-5"
   }, "Create an account here:"), /*#__PURE__*/_react.default.createElement(_Form.default, null, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -37078,7 +37040,16 @@ function RegistrationView(props) {
     onClick: handleSubmit
   }, "Submit"))));
 }
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Media":"../node_modules/react-bootstrap/esm/Media.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./welcome-logo.png":"components/registration-view/welcome-logo.png"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+
+RegistrationView.propTypes = {
+  user: _propTypes.default.shape({
+    Username: _propTypes.default.string.isRequired,
+    Password: _propTypes.default.string.isRequired,
+    Email: _propTypes.default.string.isRequired,
+    Birthdate: _propTypes.default.string.isRequired
+  })
+};
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./welcome-logo.png":"components/registration-view/welcome-logo.png"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37312,11 +37283,12 @@ var FilmCard = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/_react.default.createElement(_Card.default, {
         className: "mt-5"
       }, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
+        className: "card-image",
         variant: "top",
         src: film.ImagePath
-      }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, {
-        className: "film-card"
-      }, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, film.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, film.ReleaseYear), /*#__PURE__*/_react.default.createElement(_Button.default, {
+      }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, {
+        className: "card-title"
+      }, film.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, film.ReleaseYear), /*#__PURE__*/_react.default.createElement(_Button.default, {
         className: "open-button",
         onClick: function onClick() {
           return onFilmClick(film);
@@ -37338,7 +37310,50 @@ FilmCard.propTypes = {
   }).isRequired,
   onFilmClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./film-card.scss":"components/film-card/film-card.scss"}],"components/film-view/film-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./film-card.scss":"components/film-card/film-card.scss"}],"../node_modules/react-bootstrap/esm/Media.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _createWithBsPrefix = _interopRequireDefault(require("./createWithBsPrefix"));
+
+var _ThemeProvider = require("./ThemeProvider");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _excluded = ["bsPrefix", "className", "as"];
+var MediaBody = (0, _createWithBsPrefix.default)('media-body');
+
+var Media = /*#__PURE__*/_react.default.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, _excluded);
+  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'media');
+  return /*#__PURE__*/_react.default.createElement(Component, (0, _extends2.default)({}, props, {
+    ref: ref,
+    className: (0, _classnames.default)(className, prefix)
+  }));
+});
+
+Media.displayName = 'Media';
+Media.Body = MediaBody;
+var _default = Media;
+exports.default = _default;
+},{"@babel/runtime/helpers/esm/extends":"../node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","classnames":"../node_modules/classnames/index.js","react":"../node_modules/react/index.js","./createWithBsPrefix":"../node_modules/react-bootstrap/esm/createWithBsPrefix.js","./ThemeProvider":"../node_modules/react-bootstrap/esm/ThemeProvider.js"}],"components/film-view/film-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37430,7 +37445,7 @@ var FilmView = /*#__PURE__*/function (_React$Component) {
       }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
       }, film.Description)), /*#__PURE__*/_react.default.createElement(_Button.default, {
-        className: "back-button mt-3",
+        className: "back-button mt-2",
         onClick: function onClick() {
           onBackClick(null);
         }
@@ -37570,7 +37585,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (films.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       });
-      return /*#__PURE__*/_react.default.createElement(_Container.default, null, /*#__PURE__*/_react.default.createElement(_Navbar.default, {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Navbar.default, {
         className: "navbar",
         bg: "white",
         expand: "md",
@@ -37592,21 +37607,18 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         href: "#profile"
       }, "Profile"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
         href: "#logout"
-      }, "Logout"))))), /*#__PURE__*/_react.default.createElement("div", {
-        className: "main-view"
-      }, selectedFilm ? /*#__PURE__*/_react.default.createElement(_Row.default, {
-        className: "justify-content-md-center"
-      }, /*#__PURE__*/_react.default.createElement(_Col.default, {
+      }, "Logout"))))), /*#__PURE__*/_react.default.createElement(_Row.default, {
+        className: "main-view justify-content-md-center"
+      }, selectedFilm ? /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
       }, /*#__PURE__*/_react.default.createElement(_filmView.FilmView, {
         film: selectedFilm,
         onBackClick: function onBackClick(newSelectedFilm) {
           _this3.setSelectedFilm(newSelectedFilm);
         }
-      }))) : /*#__PURE__*/_react.default.createElement(_Row.default, {
-        className: "justify-content-md-center"
-      }, films.map(function (film) {
+      })) : films.map(function (film) {
         return /*#__PURE__*/_react.default.createElement(_Col.default, {
+          sm: 5,
           md: 3
         }, /*#__PURE__*/_react.default.createElement(_filmCard.FilmCard, {
           key: film._id,
@@ -37615,7 +37627,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             _this3.setSelectedFilm(newSelectedFilm);
           }
         }));
-      }))));
+      })));
     }
   }]);
 
@@ -37718,7 +37730,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53095" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54176" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

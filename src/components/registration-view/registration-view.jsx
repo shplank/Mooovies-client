@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Media from 'react-bootstrap/Media'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import logo from './welcome-logo.png';
@@ -18,14 +19,9 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Media>
-        <img
-          width={300}
-          className="ml-5"
-          src={logo}
-          alt="Mooovies logo"
-        />
-    <Media.Body className="pl-5">
+    <Row className="RegistrationForm justify-content-md-center">
+      <Col md="auto">
+        <img width={300} src={logo} alt="Mooovies logo" />
       <p className="mt-5">Create an account here:</p>
         <Form>
           <Form.Label>
@@ -46,7 +42,16 @@ export function RegistrationView(props) {
           </Form.Label>
           <Button type="submit" onClick={handleSubmit}>Submit</Button>
         </Form>
-      </Media.Body>
-    </Media>
+      </Col>
+    </Row>
   );
 }
+
+RegistrationView.propTypes = {
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthdate: PropTypes.string.isRequired
+  }),
+};
