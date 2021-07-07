@@ -1,11 +1,20 @@
 .LoginForm {
   margin: auto;
-  max-width: 610px;
+  max-width: 580px;
   align-content: center;
+  justify-content: right;
 }
 
 .Button {
   background-color: #ffbebe;
   color: #000;
+  border-color: #000;
+}
+
+.Button:hover,
+Button:focus,
+Button:active {
+  background-color: #ffcece;
+  color: #222;
   border-color: #000;
 }

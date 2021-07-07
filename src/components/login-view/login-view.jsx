@@ -23,20 +23,20 @@ export function LoginView(props) {
     <div className="LoginForm">
     <Media>
         <img width={290} src={logo} alt="Mooovies logo" />
-    <Media.Body className="pl-4">
-      <p className="mt-5">If you have an account, please log in:</p>
-      <Form className="mt-2">
+    <Media.Body className="pl-5">
+      <p className="mt-3">Please log into your account:</p>
+      <Form>
         <Form.Label>
           Username:
-          <input className="ml-1" type="text" value={Username} onChange={e => setUsername(e.target.value)} />
+          <input type="text" value={Username} onChange={e => setUsername(e.target.value)} />
         </Form.Label>
         <br></br>
         <Form.Label>
           Password:
-          <input className="ml-2" type="password" value={Password} onChange={e => setPassword(e.target.value)} />
+          <input type="password" value={Password} onChange={e => setPassword(e.target.value)} />
         </Form.Label>
         <br></br>
-        <Button className="Button" type="submit" onClick={handleSubmit}>Submit</Button>
+        <Button className="Button mt-2" type="submit" onClick={handleSubmit}>Submit</Button>
       </Form>
       <p className="mt-3">Or create an account here.</p>
     </Media.Body>

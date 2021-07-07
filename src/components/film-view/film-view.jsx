@@ -2,13 +2,15 @@ import React from 'react';
 import Media from 'react-bootstrap/Media'
 import Button from 'react-bootstrap/Button';
 
+import './film-view.scss';
+
 export class FilmView extends React.Component {
 
   render() {
     const { film, onBackClick } = this.props;
 
     return (
-      <Media>
+      <Media className="mt-5">
         <img
           width={220}
           className="mr-3"
@@ -17,7 +19,7 @@ export class FilmView extends React.Component {
           alt="film poster"
         />
         
-      <Media.Body className="pl-3 my-auto">
+      <Media.Body className="film-info pl-3 my-auto">
         <h5 className="film-title">
           <span className="label">Title: </span>
           <span className="value">{film.Title}</span>
@@ -30,7 +32,7 @@ export class FilmView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{film.Description}</span>
         </div>
-        <Button className="mt-3" onClick={() => { onBackClick(null); }}>Back</Button>
+        <Button className="back-button mt-3" onClick={() => { onBackClick(null); }}>Back</Button>
         </Media.Body>
       </Media>
     );
