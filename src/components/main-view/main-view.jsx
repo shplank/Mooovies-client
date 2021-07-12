@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import logo from './MoooviesLogo.png';
+import logo from 'url:./MoooviesLogo.png';
 
 import './main-view.scss';
 
@@ -39,16 +39,36 @@ export class MainView extends React.Component {
       });
   }
 
+  getFilms(token) {
+    axios.get('https://moooviesapi.herokuapp.com/films', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   setSelectedFilm(film) {
     this.setState({
       selectedFilm: film
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
     });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getFilms(authData.token);
   }
 
   onRegister(register) {
