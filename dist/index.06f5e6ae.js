@@ -27118,7 +27118,7 @@ function LoginView(props) {
     const [Password, setPassword] = _react.useState('');
     const handleSubmit = (e)=>{
         e.preventDefault();
-        /* Send a request to the server for authentication */ _axiosDefault.default.post('YOUR_API_URL/login', {
+        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://moooviesapi.herokuapp.com/login', {
             Username: Username,
             Password: Password
         }).then((response)=>{
@@ -27179,7 +27179,7 @@ function LoginView(props) {
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "text",
         placeholder: "Enter username",
-        value: username,
+        value: Username,
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
@@ -27203,7 +27203,7 @@ function LoginView(props) {
     }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
         type: "password",
         placeholder: "Password",
-        value: password,
+        value: Password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
@@ -27245,7 +27245,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","url:./welcome-logo.png":"4UXbI","./login-view.scss":"2Jwjo","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","axios":"7rA65"}],"6A5ko":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","url:./welcome-logo.png":"4UXbI","./login-view.scss":"2Jwjo","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"6A5ko":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 exports.__esModule = true;
