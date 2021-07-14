@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -14,10 +15,18 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(Username, Password);
     /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(Username);
+    axios.post('YOUR_API_URL/login', {
+      Username: Username,
+      Password: Password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    .catch(e => {
+      console.log('no such user')
+    });
   };
 
   return (
@@ -26,18 +35,19 @@ export function LoginView(props) {
         <img width={300} src={logo} alt="Mooovies logo" />
         <p>Please log into your account:</p>
         <Form>
-        <Form.Label>
-          Username:
-          <input className="ml-1" type="text" value={Username} onChange={e => setUsername(e.target.value)} />
-        </Form.Label>
-        <br></br>
-        <Form.Label>
-          Password:
-          <input className="ml-1" type="password" value={Password} onChange={e => setPassword(e.target.value)} />
-        </Form.Label>
-        <br></br>
-        <Button className="Button mt-2" type="submit" onClick={handleSubmit}>Submit</Button>
-        </Form>
+          <Form.Group controlId="formUsername">
+            <Form.Label>Username:</Form.Label>
+            <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+          </Form.Group>
+
+          <Form.Group controlId="formPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+          </Form.Group>
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
+            Submit
+          </Button>
+      </Form>
         <p className="mt-3">Or create an account here.</p>
       </Col>
     </Row>
