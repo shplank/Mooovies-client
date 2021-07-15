@@ -69,6 +69,14 @@ export class MainView extends React.Component {
     this.getFilms(authData.token);
   }
 
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
   onRegister(register) {
     this.setState({
       register,
@@ -100,7 +108,7 @@ export class MainView extends React.Component {
             <Nav>
               <Nav.Link href="#films">Films</Nav.Link>
               <Nav.Link href="#profile">Profile</Nav.Link>
-              <Nav.Link href="#logout">Logout</Nav.Link>
+              <Nav.Link href="#logout" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
             </Nav>
             </Navbar.Collapse>
           </Container>
