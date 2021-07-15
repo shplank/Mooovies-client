@@ -22095,7 +22095,7 @@ class MainView extends _reactDefault.default.Component {
         }).then((response)=>{
             // Assign the result to the state
             this.setState({
-                movies: response.data
+                films: response.data
             });
         }).catch(function(error) {
             console.log(error);
@@ -27125,7 +27125,7 @@ function LoginView(props) {
             const data = response.data;
             props.onLoggedIn(data);
         }).catch((e1)=>{
-            console.log('no such user');
+            console.log('No such user');
         });
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
