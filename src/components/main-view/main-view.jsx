@@ -28,15 +28,13 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://moooviesapi.herokuapp.com/films')
-      .then(response => {
-        this.setState({
-          films: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getFilms(accessToken);
+    }
   }
 
   getFilms(token) {

@@ -22079,13 +22079,13 @@ class MainView extends _reactDefault.default.Component {
         };
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://moooviesapi.herokuapp.com/films').then((response)=>{
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
             this.setState({
-                films: response.data
+                user: localStorage.getItem('user')
             });
-        }).catch((error)=>{
-            console.log(error);
-        });
+            this.getFilms(accessToken);
+        }
     }
     getFilms(token) {
         _axiosDefault.default.get('https://moooviesapi.herokuapp.com/films', {
@@ -22127,7 +22127,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 83
+                lineNumber: 81
             },
             __self: this
         }));
@@ -22135,14 +22135,14 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 85
+                lineNumber: 83
             },
             __self: this
         }));
         return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 88
+                lineNumber: 86
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
@@ -22152,20 +22152,20 @@ class MainView extends _reactDefault.default.Component {
             fixed: "top",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 89
+                lineNumber: 87
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 90
+                lineNumber: 88
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
             href: "#home",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 91
+                lineNumber: 89
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -22175,62 +22175,62 @@ class MainView extends _reactDefault.default.Component {
             className: "d-inline-block align-top",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 92
+                lineNumber: 90
             },
             __self: this
         }), ' ', "Mooovies"), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
             "aria-controls": "responsive-navbar-nav",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 100
+                lineNumber: 98
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
             className: "justify-content-end",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 101
+                lineNumber: 99
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 102
+                lineNumber: 100
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "#films",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 103
+                lineNumber: 101
             },
             __self: this
         }, "Films"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "#profile",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 104
+                lineNumber: 102
             },
             __self: this
         }, "Profile"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: "#logout",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 105
+                lineNumber: 103
             },
             __self: this
         }, "Logout"))))), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 111
+                lineNumber: 109
             },
             __self: this
         }, selectedFilm ? /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
             md: 8,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 114
+                lineNumber: 112
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_filmView.FilmView, {
@@ -22240,7 +22240,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 115
+                lineNumber: 113
             },
             __self: this
         })) : films.map((film)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
@@ -22248,7 +22248,7 @@ class MainView extends _reactDefault.default.Component {
                 md: 3,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                    lineNumber: 119
+                    lineNumber: 117
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_filmCard.FilmCard, {
@@ -22259,7 +22259,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                    lineNumber: 120
+                    lineNumber: 118
                 },
                 __self: this
             }))
