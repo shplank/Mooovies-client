@@ -1,21 +1,20 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+
 import logo from 'url:./MoooviesLogo.png';
 
 import './main-view.scss';
 
 import { LoginView } from '../login-view/login-view';
-
 import { RegistrationView } from '../registration-view/registration-view';
-
 import { FilmCard } from '../film-card/film-card';
-
 import { FilmView } from '../film-view/film-view';
 
 export class MainView extends React.Component {
@@ -80,15 +79,6 @@ export class MainView extends React.Component {
   render() {
     const { films, user } = this.state;
 
-    if (!user) return
-      <Row>
-        <Col>
-          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-        </Col>
-      </Row> 
-
-    if (films.length === 0) return <div className="main-view" />;
-
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
@@ -112,6 +102,11 @@ export class MainView extends React.Component {
         </Navbar>
       
           <Route exact path="/" render={() => {
+            if (!user) return
+              <Col>
+                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+              </Col>
+            if (films.length === 0) return <div className="main-view" />;
             return films.map(m => (
               <Col sm={5} md={3} key={m._id}>
                 <FilmCard film={m} />
@@ -119,20 +114,39 @@ export class MainView extends React.Component {
             ))
           }} />
 
+          <Route path="/register" render={() => {
+            return <Col>
+              <RegistrationView />
+            </Col>
+          }} />
+
           <Route path="/films/:filmId" render={({ match, history }) => {
+            if (!user) return
+            <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+            if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
               <FilmView film={films.find(m => m._id === match.params.filmId)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
-          <Route path="/genres/:name" render={({ match }) => {
+          <Route path="/genres/:name" render={({ match, history }) => {
+            if (!user) return
+            <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
               <GenreView genre={films.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
-          <Route path="/directors/:name" render={({ match }) => {
+          <Route path="/directors/:name" render={({ match, history }) => {
+            if (!user) return
+            <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
               <DirectorView director={films.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
