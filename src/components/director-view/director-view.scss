@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap");
+
+.director-view {
+  font-family: "Commissioner", sans-serif;
+  margin-top: 18px;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.value {
+  font-weight: 400;
+}
+
+.back-button {
+  background-color: #ffbebe;
+  color: #000;
+  border-color: #000;
+}
+
+.back-button:hover,
+.back-button:focus,
+.back-button:active {
+  background-color: #ffcece;
+  color: #222;
+  border-color: #000;
+}

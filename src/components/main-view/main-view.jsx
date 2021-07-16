@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -16,10 +16,13 @@ import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { FilmCard } from '../film-card/film-card';
 import { FilmView } from '../film-view/film-view';
+import { GenreView } from '../genre-view/genre-view';
+import { DirectorView } from '../director-view/director-view';
 
 export class MainView extends React.Component {
   constructor() {
     super();
+    /// initial state set to null
     this.state = {
       films: [],
       user: null
@@ -50,6 +53,8 @@ export class MainView extends React.Component {
       console.log(error);
     });
   }
+
+/* On successful login, this updates the 'user' property in state */
 
   onLoggedIn(authData) {
     console.log(authData);
@@ -115,6 +120,7 @@ export class MainView extends React.Component {
           }} />
 
           <Route path="/register" render={() => {
+            if (user) return <Redirect to="/" />
             return <Col>
               <RegistrationView />
             </Col>
