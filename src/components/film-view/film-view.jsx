@@ -11,15 +11,8 @@ export class FilmView extends React.Component {
 
     return (
       <Media className="mt-5">
-        <img
-          width={220}
-          className="mr-3"
-          className="film-view"
-          src={film.ImagePath}
-          alt="film poster"
-        />
-        
-      <Media.Body className="film-info pl-3 my-auto">
+        <img className="film-view" className="mr-3" src={film.ImagePath} alt="film poster" width={220} />
+        <Media.Body className="film-info pl-3 my-auto">
         <h5 className="film-title">
           <span className="label">Title: </span>
           <span className="value">{film.Title}</span>
@@ -32,6 +25,13 @@ export class FilmView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{film.Description}</span>
         </div>
+        <Link to={`/directors/${film.Director.Name}`}>
+          <Button variant="link">Director</Button>
+        </Link>
+
+        <Link to={`/genres/${film.Genre.Name}`}>
+          <Button variant="link">Genre</Button>
+        </Link>
         <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
         </Media.Body>
       </Media>

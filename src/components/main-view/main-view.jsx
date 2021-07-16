@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import logo from './MoooviesLogo.png';
+import logo from 'url:./MoooviesLogo.png';
 
 import './main-view.scss';
 
@@ -22,32 +23,51 @@ export class MainView extends React.Component {
     super();
     this.state = {
       films: [],
-      selectedFilm: null,
       user: null
     };
   }
 
   componentDidMount() {
-    axios.get('https://moooviesapi.herokuapp.com/films')
-      .then(response => {
-        this.setState({
-          films: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getFilms(accessToken);
+    }
   }
 
-  setSelectedFilm(film) {
-    this.setState({
-      selectedFilm: film
+  getFilms(token) {
+    axios.get('https://moooviesapi.herokuapp.com/films', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        films: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   }
 
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
-      user
+      user: authData.user.Username
+    });
+  
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getFilms(authData.token);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
     });
   }
 
@@ -58,23 +78,26 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { films, user, selectedFilm } = this.state;
+    const { films, user } = this.state;
 
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return
+      <Row>
+        <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        </Col>
+      </Row> 
 
     if (films.length === 0) return <div className="main-view" />;
 
     return (
-      <div>
+      <Router>
+        <Row className="main-view justify-content-md-center">
+
         <Navbar className="navbar" bg="white" expand="md" fixed="top">
           <Container>
             <Navbar.Brand href="#home">
-              <img
-                alt="Mooovies logo"
-                src={logo}
-                width="45"
-                className="d-inline-block align-top"
-              />{' '}
+              <img src={logo} alt="Mooovies logo" width="45" className="d-inline-block align-top" />
+              {' '}
               Mooovies
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -82,27 +105,42 @@ export class MainView extends React.Component {
             <Nav>
               <Nav.Link href="#films">Films</Nav.Link>
               <Nav.Link href="#profile">Profile</Nav.Link>
-              <Nav.Link href="#logout">Logout</Nav.Link>
+              <Nav.Link href="#logout" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
             </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
       
-        <Row className="main-view justify-content-md-center">
-          {selectedFilm
-            ? (
-              <Col md={8}>
-                <FilmView film={selectedFilm} onBackClick={newSelectedFilm => { this.setSelectedFilm(newSelectedFilm); }} />
-              </Col>
-            ) 
-            : films.map(film => (
-              <Col sm={5} md={3}>
-                <FilmCard key={film._id} film={film} onFilmClick={(newSelectedFilm) => { this.setSelectedFilm(newSelectedFilm) }} />
+          <Route exact path="/" render={() => {
+            return films.map(m => (
+              <Col sm={5} md={3} key={m._id}>
+                <FilmCard film={m} />
               </Col>
             ))
-          }
+          }} />
+
+          <Route path="/films/:filmId" render={({ match, history }) => {
+            return <Col md={8}>
+              <FilmView film={films.find(m => m._id === match.params.filmId)} onBackClick={() => history.goBack()} />
+            </Col>
+          }} />
+
+          <Route path="/genres/:name" render={({ match }) => {
+            if (films.length === 0) return <div className="main-view" />;
+            return <Col md={8}>
+              <GenreView genre={films.find(m => m.Genre.Name === match.params.name).Genre} onBackClick={() => history.goBack()} />
+            </Col>
+          }} />
+
+          <Route path="/directors/:name" render={({ match }) => {
+            if (films.length === 0) return <div className="main-view" />;
+            return <Col md={8}>
+              <DirectorView director={films.find(m => m.Director.Name === match.params.name).Director} onBackClick={() => history.goBack()} />
+            </Col>
+          }} />
+
         </Row>
-      </div>
+      </Router>
     );
   }
 }
