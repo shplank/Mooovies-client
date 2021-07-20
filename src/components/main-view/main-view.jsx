@@ -105,6 +105,24 @@ export class MainView extends React.Component {
     return (
       <Router>
         <Row className="main-view justify-content-md-center">
+
+        <Navbar className="navbar" bg="white" expand="md" fixed="top">
+          <Container>
+            <Navbar.Brand href="#home">
+              <img src={logo} alt="Mooovies logo" width="45" className="d-inline-block align-top" />
+              {' '}
+              Mooovies
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse className="justify-content-end">
+            <Nav>
+              <Nav.Link href="#films">Films</Nav.Link>
+              <Nav.Link href="#profile">Profile</Nav.Link>
+              <Nav.Link href="#logout" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
+            </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
       
           <Route exact path="/" render={() => {
             if (!user) return <Col>
