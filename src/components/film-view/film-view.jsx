@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Media from 'react-bootstrap/Media'
 import Button from 'react-bootstrap/Button';
 
@@ -25,12 +26,11 @@ export class FilmView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{film.Description}</span>
         </div>
-        <Link to={`/directors/${film.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-
         <Link to={`/genres/${film.Genre.Name}`}>
           <Button variant="link">Genre</Button>
+        </Link>
+        <Link to={`/directors/${film.Director.Name}`}>
+          <Button variant="link">Director</Button>
         </Link>
         <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
         </Media.Body>
@@ -38,3 +38,22 @@ export class FilmView extends React.Component {
     );
   }
 }
+
+FilmView.propTypes = {
+  film: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ReleaseYear: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string
+    }),
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired
+};

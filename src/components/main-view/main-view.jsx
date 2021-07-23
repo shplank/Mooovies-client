@@ -136,7 +136,7 @@ export class MainView extends React.Component {
             ))
           }} />
 
-          <Route path="/register" render={() => {
+          <Route path="/users" render={() => {
             if (user) return <Redirect to="/" />
             return <Col>
               <RegistrationView />
