@@ -31119,8 +31119,7 @@ FilmCard.propTypes = {
         Title: _propTypesDefault.default.string.isRequired,
         ReleaseYear: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired
-    }).isRequired,
-    onFilmClick: _propTypesDefault.default.func.isRequired
+    }).isRequired
 };
 
   helpers.postlude(module);

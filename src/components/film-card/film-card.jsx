@@ -31,6 +31,5 @@ FilmCard.propTypes = {
     Title: PropTypes.string.isRequired,
     ReleaseYear: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
-  }).isRequired,
-  onFilmClick: PropTypes.func.isRequired
+  }).isRequired
 };
