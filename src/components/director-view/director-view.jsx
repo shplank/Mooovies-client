@@ -7,31 +7,25 @@ import './director-view.scss';
 export class DirectorView extends React.Component {
 
   render() {
-    const { film, onBackClick } = this.props;
+    const { director, onBackClick } = this.props;
 
     return (
-      <Media className="mt-5">
-        <img className="director-view" className="mr-3" src={film.ImagePath} alt="film poster" width={220} />
+      <Media className="director-view mt-5">
+        <img className="director-pic" className="mr-3" src={director.ImagePath} alt="director photo" width={220} />
         <Media.Body className="film-info pl-3 my-auto">
         <h5 className="film-title">
-          <span className="label">Title: </span>
-          <span className="value">{film.Title}</span>
+          <span className="label">Name: </span>
+          <span className="value">{director.Name}</span>
         </h5>
-        <div className="film-year">
-          <span className="label">Release Year: </span>
-          <span className="value">{film.ReleaseYear}</span>
+        <div className="director-birth">
+          <span className="label">Born: </span>
+          <span className="value">{director.Birth}</span>
         </div>
-        <div className="film-blurb">
-          <span className="label">Description: </span>
-          <span className="value">{film.Description}</span>
+        <div className="director-bio">
+          <span className="label">Bio: </span>
+          <span className="value">{director.Bio}</span>
         </div>
-        <Link to={`/directors/${film.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-
-        <Link to={`/genres/${film.Genre.Name}`}>
-          <Button variant="link">Genre</Button>
-        </Link>
+        
         <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
         </Media.Body>
       </Media>
