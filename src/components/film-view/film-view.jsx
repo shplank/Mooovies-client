@@ -16,25 +16,37 @@ export class FilmView extends React.Component {
       <Media className="mt-5">
         <img className="film-view" className="mr-3" src={film.ImagePath} alt="film poster" width={220} />
         <Media.Body className="film-info pl-3 my-auto">
-        <h5 className="film-title">
-          <span className="label">Title: </span>
-          <span className="value">{film.Title}</span>
-        </h5>
-        <div className="film-year">
-          <span className="label">Release Year: </span>
-          <span className="value">{film.ReleaseYear}</span>
-        </div>
-        <div className="film-blurb">
-          <span className="label">Description: </span>
-          <span className="value">{film.Description}</span>
-        </div>
-        <Link to={`/genres/${film.Genre.Name}`}>
-          <Button variant="link">Genre</Button>
-        </Link>
-        <Link to={`/directors/${film.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-        <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
+          <h5 className="film-title">
+            <span className="label">Title: </span>
+            <span className="value">{film.Title}</span>
+          </h5>
+          <div className="film-year">
+            <span className="label">Release Year: </span>
+            <span className="value">{film.ReleaseYear}</span>
+          </div>
+          <div className="film-blurb">
+            <span className="label">Description: </span>
+            <span className="value">{film.Description}</span>
+          </div>
+          <div>
+            <span className="label">Genre: </span>
+            <span className="value">
+              <Link to={`/genres/${film.Genre.Name}`}>
+                <Button variant="link">{film.Genre.Name}</Button>
+              </Link>
+            </span>
+          </div>
+          <div>
+            <span className="label">Director: </span>
+            <span className="value">
+              <Link to={`/directors/${film.Director.Name}`}>
+                <Button variant="link">{film.Director.Name}</Button>
+              </Link>
+            </span>
+          </div>
+          <div>
+            <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
+          </div>
         </Media.Body>
       </Media>
     );
