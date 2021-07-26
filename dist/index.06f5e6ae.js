@@ -22306,7 +22306,7 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
-                    genre: films.find((m)=>m.Genre.Name === match.params.genreId
+                    genre: genres.find((m)=>m.Genre.Name === match.params.genreId
                     ).Genre,
                     onBackClick: ()=>history.goBack()
                 })));
@@ -22329,7 +22329,7 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
-                    director: films.find((m)=>m.Director.Name === match.params.directorId
+                    director: directors.find((m)=>m.Director.Name === match.params.directorId
                     ).Director,
                     onBackClick: ()=>history.goBack()
                 })));
