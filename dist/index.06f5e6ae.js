@@ -22272,7 +22272,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
-            path: "/films/:Title",
+            path: "/films/:filmId",
             render: ({ match , history  })=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
@@ -22283,7 +22283,7 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_filmView.FilmView, {
-                    film: films.find((m)=>m.Title === match.params.Title
+                    film: films.find((m)=>m._id === match.params.filmId
                     ),
                     onBackClick: ()=>history.goBack()
                 })));

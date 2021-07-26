@@ -143,13 +143,13 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/films/:Title" render={({ match, history }) => {
+          <Route path="/films/:filmId" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <FilmView film={films.find(m => m.Title === match.params.Title)} onBackClick={() => history.goBack()} />
+              <FilmView film={films.find(m => m._id === match.params.filmId)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
