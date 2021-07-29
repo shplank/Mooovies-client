@@ -10,7 +10,7 @@ import './film-view.scss';
 export class FilmView extends React.Component {
 
   render() {
-    const { film, onBackClick } = this.props;
+    const { film, genre, director, onBackClick } = this.props;
 
     return (
       <Media className="mt-5">
@@ -31,16 +31,16 @@ export class FilmView extends React.Component {
           <div>
             <span className="label">Genre: </span>
             <span className="value">
-              <Link to={`/genres/${film.Genre._id}`}>
-                <Button variant="link">{film.Genre._id}</Button>
+              <Link to={`/genres/${Genre.Name}`}>
+                <Button variant="link">{film.Genre}</Button>
               </Link>
             </span>
           </div>
           <div>
             <span className="label">Director: </span>
             <span className="value">
-              <Link to={`/directors/${film.Director._id}`}>
-                <Button variant="link">{film.Director._id}</Button>
+              <Link to={`/directors/${Director.Name}`}>
+                <Button variant="link">{film.Director}</Button>
               </Link>
             </span>
           </div>
@@ -58,9 +58,7 @@ FilmView.propTypes = {
     ImagePath: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
-    ReleaseYear: PropTypes.string.isRequired,
-    Genre: PropTypes.string.isRequired,
-    Director: PropTypes.string.isRequired
+    ReleaseYear: PropTypes.string.isRequired
   }).isRequired,
   onBackClick: PropTypes.func.isRequired
 };

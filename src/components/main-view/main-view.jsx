@@ -38,6 +38,8 @@ export class MainView extends React.Component {
       });
       this.getFilms(accessToken);
       this.getUsers(accessToken);
+      this.getGenres(accessToken);
+      this.getDirectors(accessToken);
     }
   }
 
@@ -71,6 +73,36 @@ export class MainView extends React.Component {
     });
   }
 
+  getGenres(token) {
+    axios.get('https://moooviesapi.herokuapp.com/genres', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        genres: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  getDirectors(token) {
+    axios.get('https://moooviesapi.herokuapp.com/directors', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        directors: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
 /* On successful login, this updates the 'user' property in state */
 
   onLoggedIn(authData) {
@@ -83,6 +115,8 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getFilms(authData.token);
     this.getUsers(authData.token);
+    this.getGenres(authData.token);
+    this.getDirectors(authData.token);
   }
 
   onLoggedOut() {
@@ -100,7 +134,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { films, user } = this.state;
+    const { films, user, genres, directors } = this.state;
 
     return (
       <Router>
@@ -160,7 +194,7 @@ export class MainView extends React.Component {
             </Col>
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <GenreView genre={genres.find(m => m.Genre.Name === match.params.genreId).Genre} onBackClick={() => history.goBack()} />
+              <GenreView genre={genres.find(m => m._id === match.params.genreId)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
@@ -171,7 +205,7 @@ export class MainView extends React.Component {
             </Col>
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <DirectorView director={directors.find(m => m.Director.Name === match.params.directorId).Director} onBackClick={() => history.goBack()} />
+              <DirectorView director={directors.find(m => m._id === match.params.directorId)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
