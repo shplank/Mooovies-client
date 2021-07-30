@@ -31,16 +31,16 @@ export class FilmView extends React.Component {
           <div>
             <span className="label">Genre: </span>
             <span className="value">
-              <Link to={`/genres/${Genre.Name}`}>
-                <Button variant="link">{film.Genre}</Button>
+              <Link to={`/genres/${film.Genre.Name}`}>
+                <Button variant="link">{film.Genre.Name}</Button>
               </Link>
             </span>
           </div>
           <div>
             <span className="label">Director: </span>
             <span className="value">
-              <Link to={`/directors/${Director.Name}`}>
-                <Button variant="link">{film.Director}</Button>
+              <Link to={`/directors/${film.Director.Name}`}>
+                <Button variant="link">{film.Director.Name}</Button>
               </Link>
             </span>
           </div>

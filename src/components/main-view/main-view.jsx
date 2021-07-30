@@ -26,7 +26,9 @@ export class MainView extends React.Component {
     /// initial state set to null
     this.state = {
       films: [],
-      user: null
+      user: null,
+      genres: [],
+      directors: []
     };
   }
 
@@ -43,6 +45,8 @@ export class MainView extends React.Component {
     }
   }
 
+/* This loads all films from the API: */
+
   getFilms(token) {
     axios.get('https://moooviesapi.herokuapp.com/films', {
       headers: { Authorization: `Bearer ${token}`}
@@ -57,6 +61,8 @@ export class MainView extends React.Component {
       console.log(error);
     });
   }
+
+/* This loads all users from the API: */
 
   getUsers(token) {
     axios.get('https://moooviesapi.herokuapp.com/users', {
@@ -74,7 +80,7 @@ export class MainView extends React.Component {
   }
 
   getGenres(token) {
-    axios.get('https://moooviesapi.herokuapp.com/genres', {
+    axios.get('https://moooviesapi.herokuapp.com/genres/:Name', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
@@ -89,7 +95,7 @@ export class MainView extends React.Component {
   }
 
   getDirectors(token) {
-    axios.get('https://moooviesapi.herokuapp.com/directors', {
+    axios.get('https://moooviesapi.herokuapp.com/directors/:Name', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
@@ -177,35 +183,35 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/films/:filmId" render={({ match, history }) => {
+          <Route path="/films/:Title" render={({ match, history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <FilmView film={films.find(m => m._id === match.params.filmId)} onBackClick={() => history.goBack()} />
+              <FilmView film={films.find(m => m.Title === match.params.Title)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
-          <Route path="/genres/:genreId" render={({ match, history }) => {
+          <Route path="/genres/:Name" render={({ match, history }) => {
             if (!user) return
             <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            if (films.length === 0) return <div className="main-view" />;
+            if (genres.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <GenreView genre={genres.find(m => m._id === match.params.genreId)} onBackClick={() => history.goBack()} />
+              <GenreView genre={genres.find(m => m.Name === match.params.Name)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
-          <Route path="/directors/:directorId" render={({ match, history }) => {
+          <Route path="/directors/:Name" render={({ match, history }) => {
             if (!user) return
             <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            if (films.length === 0) return <div className="main-view" />;
+            if (directors.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <DirectorView director={directors.find(m => m._id === match.params.directorId)} onBackClick={() => history.goBack()} />
+              <DirectorView director={directors.find(m => m.Name === match.params.Name)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
