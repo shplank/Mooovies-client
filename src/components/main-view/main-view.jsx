@@ -203,25 +203,25 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/genres/:_id" render={({ match, history }) => {
+          <Route path="/genres/:Name" render={({ match, history }) => {
             if (!user) return
             <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (genres.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <GenreView genre={genres.find(m => m._id === match.params._id)} onBackClick={() => history.goBack()} />
+              <GenreView genre={genres.find(m => m.Name === match.params.Name)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 
-          <Route path="/directors/:_id" render={({ match, history }) => {
+          <Route path="/directors/:Name" render={({ match, history }) => {
             if (!user) return
             <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (directors.length === 0) return <div className="main-view" />;
             return <Col md={8}>
-              <DirectorView director={directors.find(m => m._id === match.params._id)} onBackClick={() => history.goBack()} />
+              <DirectorView director={directors.find(m => m.Name === match.params.Name)} onBackClick={() => history.goBack()} />
             </Col>
           }} />
 

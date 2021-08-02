@@ -22351,7 +22351,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
-            path: "/genres/:_id",
+            path: "/genres/:Name",
             render: ({ match , history  })=>{
                 if (!user) return;
                 /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
@@ -22363,7 +22363,7 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
-                    genre: genres.find((m)=>m._id === match.params._id
+                    genre: genres.find((m)=>m.Name === match.params.Name
                     ),
                     onBackClick: ()=>history.goBack()
                 })));
@@ -22374,7 +22374,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
-            path: "/directors/:_id",
+            path: "/directors/:Name",
             render: ({ match , history  })=>{
                 if (!user) return;
                 /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
@@ -22386,7 +22386,7 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
-                    director: directors.find((m)=>m._id === match.params._id
+                    director: directors.find((m)=>m.Name === match.params.Name
                     ),
                     onBackClick: ()=>history.goBack()
                 })));
@@ -31456,7 +31456,7 @@ class FilmView extends _reactDefault.default.Component {
                 lineNumber: 28
             },
             __self: this
-        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }, "Description:"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
@@ -31476,51 +31476,65 @@ class FilmView extends _reactDefault.default.Component {
                 lineNumber: 32
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: `/genres/${film.Genre}`,
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
                 lineNumber: 33
+            },
+            __self: this
+        }, "Genre:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/genres/${film.Genre.Name}`,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
+                lineNumber: 34
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "link",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 34
+                lineNumber: 35
             },
             __self: this
-        }, "Genre")))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, film.Genre.Name)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 38
+                lineNumber: 39
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 39
+                lineNumber: 40
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: `/directors/${film.Director}`,
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 40
+                lineNumber: 41
+            },
+            __self: this
+        }, "Director:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/directors/${film.Director.Name}`,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
+                lineNumber: 42
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "link",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 41
+                lineNumber: 43
             },
             __self: this
-        }, "Director")))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, film.Director.Name)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 45
+                lineNumber: 47
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -31530,7 +31544,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 46
+                lineNumber: 48
             },
             __self: this
         }, "Back")))));
