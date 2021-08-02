@@ -19,7 +19,7 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://moooviesapi.herokuapp.com/users', {
+    axios.post('https://moooviesapi.herokuapp.com/register', {
       Username: Username,
       Password: Password,
       Email: Email,
