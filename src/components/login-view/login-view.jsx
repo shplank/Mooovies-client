@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import { Link } from "react-router-dom";
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -50,7 +52,7 @@ export function LoginView(props) {
             Submit
           </Button>
       </Form>
-        <p className="mt-3">Or create an account here.</p>
+        <p className="mt-3">Or create an account <Link to={`/register`}>here</Link>.</p>
       </Col>
     </Row>
   );

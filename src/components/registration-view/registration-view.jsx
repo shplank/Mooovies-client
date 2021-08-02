@@ -40,7 +40,7 @@ export function RegistrationView(props) {
     <Row className="RegistrationForm justify-content-md-center">
       <Col md="auto">
         <img width={300} src={logo} alt="Mooovies logo" />
-        <p className="mt-5">Create an account here:</p>
+        <p className="mt-5">Create an account:</p>
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
