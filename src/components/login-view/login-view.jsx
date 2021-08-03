@@ -36,8 +36,8 @@ export function LoginView(props) {
   return (
     <Row className="LoginForm justify-content-md-center">
       <Col md="auto">
-        <img width={300} src={logo} alt="Mooovies logo" />
-        <p>Please log into your account:</p>
+        <img width={300} src={logo} className="mt-3" alt="Mooovies logo" />
+        <p className="mt-3">Please log into your account:</p>
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>

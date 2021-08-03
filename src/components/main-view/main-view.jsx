@@ -182,7 +182,10 @@ export class MainView extends React.Component {
           }} />
 
           <Route path="/users/:Username" render={() => {
-            if (!user) return <Redirect to="/" />
+            if (!user) return <Col>
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+            if (user)
             return <Col>
               <UpdateProfile onLoggedIn={user => this.onLoggedIn(user)}
                 films={films} user={user}

@@ -13,15 +13,15 @@
   font-weight: 400;
 }
 
-.back-button {
+Button {
   background-color: #ffbebe;
   color: #000;
   border-color: #000;
 }
 
-.back-button:hover,
-.back-button:focus,
-.back-button:active {
+Button:hover,
+Button:focus,
+Button:active {
   background-color: #ffcece;
   color: #222;
   border-color: #000;

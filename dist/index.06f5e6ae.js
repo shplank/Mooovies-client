@@ -22308,10 +22308,10 @@ class MainView extends _reactDefault.default.Component {
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             path: "/users/:Username",
             render: ()=>{
-                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
-                    to: "/"
-                }));
-                return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.UpdateProfile, {
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
+                    onLoggedIn: (user1)=>this.onLoggedIn(user1)
+                })));
+                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.UpdateProfile, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                     ,
                     films: films,
@@ -22347,7 +22347,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 193
+                lineNumber: 196
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22370,7 +22370,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 206
+                lineNumber: 209
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22393,7 +22393,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 217
+                lineNumber: 220
             },
             __self: this
         }))));
@@ -29657,6 +29657,7 @@ function LoginView(props) {
     }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
         width: 300,
         src: _welcomeLogoPngDefault.default,
+        className: "mt-3",
         alt: "Mooovies logo",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
@@ -29664,6 +29665,7 @@ function LoginView(props) {
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 40
@@ -30956,6 +30958,7 @@ function RegistrationView(props) {
     }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
         width: 300,
         src: _welcomeLogoPngDefault.default,
+        className: "mt-3",
         alt: "Mooovies logo",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
@@ -30963,7 +30966,7 @@ function RegistrationView(props) {
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
-        className: "mt-5",
+        className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 43
@@ -31456,7 +31459,7 @@ class FilmView extends _reactDefault.default.Component {
                 lineNumber: 28
             },
             __self: this
-        }, "Description:"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
@@ -31538,7 +31541,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-            className: "back-button mt-2",
+            className: "mt-2",
             onClick: ()=>{
                 onBackClick(null);
             },
