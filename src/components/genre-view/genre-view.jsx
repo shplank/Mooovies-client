@@ -7,13 +7,15 @@ import './genre-view.scss';
 export class GenreView extends React.Component {
 
   render() {
-    const { genre, onBackClick } = this.props;
+    const { film, onBackClick } = this.props;
 
     return (
-      <Jumbotron className="genre-view">
-        <h2 className="genre-name">{genre.Name}</h2>
-        <p>{genre.Description}</p>
+      <Jumbotron className="genre-view pb-1 mb-1">
+        <h2 className="genre-name">{film.Genre.Name}</h2>
+        <p>{film.Genre.Description}</p>
         <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
+        <hr/>
+        <h5>Films in this genre:</h5>
       </Jumbotron>
     );
   }

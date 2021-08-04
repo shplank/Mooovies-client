@@ -31,7 +31,7 @@ export class FilmView extends React.Component {
           <div>
             <span className="value">
             <span className="label">Genre:</span>
-              <Link to={`/genres/${film.Genre.Name}`}>
+              <Link to={`/Genre/${film.Genre._id}`}>
                 <Button variant="link">{film.Genre.Name}</Button>
               </Link>
             </span>
@@ -39,7 +39,7 @@ export class FilmView extends React.Component {
           <div>
             <span className="value">
               <span className="label">Director:</span>
-              <Link to={`/directors/${film.Director.Name}`}>
+              <Link to={`/Director/${film.Director._id}`}>
                 <Button variant="link">{film.Director.Name}</Button>
               </Link>
             </span>
