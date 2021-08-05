@@ -8,9 +8,8 @@ import { Link } from "react-router-dom";
 import './film-view.scss';
 
 export class FilmView extends React.Component {
-
   render() {
-    const { film, genre, director, onBackClick } = this.props;
+    const { film, onBackClick } = this.props;
 
     return (
       <Media className="mt-5">

@@ -1,10 +1,44 @@
 import React from 'react';
+import axios from 'axios';
+
 import Button from 'react-bootstrap/Button';
 import { Jumbotron } from 'react-bootstrap';
 
 import './genre-view.scss';
 
 export class GenreView extends React.Component {
+  constructor() {
+    super();
+    /// initial state set to null
+    this.state = {
+      films: [],
+    };
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getGenres(accessToken);
+    }
+  }
+
+  getGenres(token) {
+    axios.get('https://moooviesapi.herokuapp.com/Genre/:_id', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        films: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   render() {
     const { film, onBackClick } = this.props;
