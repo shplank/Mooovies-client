@@ -18,6 +18,7 @@ import { FilmCard } from '../film-card/film-card';
 import { FilmView } from '../film-view/film-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { UpdateProfile } from '../profile-view/profile-view';
 
 export class MainView extends React.Component {
@@ -145,7 +146,7 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/users/profile/:Username" render={() => {
+          <Route path="/users/:Username" render={() => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>

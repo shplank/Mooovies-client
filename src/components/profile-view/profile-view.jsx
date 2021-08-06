@@ -24,13 +24,13 @@ export class ProfileView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.getUser(accessToken);
+      this.getFaves(accessToken);
     }
   }
 
-  getUser(token) {
+  getFaves(token) {
     let username = localStorage.getItem('user');
-    axios.get(`https://moooviesapi.herokuapp.com/users/${username}`, {
+    axios.get(`https://moooviesapi.herokuapp.com/favorites/${username}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then((response) => {
@@ -42,6 +42,11 @@ export class ProfileView extends React.Component {
         Favorites: response.data.Favorites,
       });
     });
+  }
+
+  handleRemove(film) {
+    let username = localStorage.getItem('user');
+    axios.delete(`https://moooviesapi.herokuapp.com/favorites/${username}/films/${_id}`)
   }
 
   render() {

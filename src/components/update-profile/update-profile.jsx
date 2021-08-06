@@ -7,17 +7,46 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import './profile-view.scss';
+import './update-profile.scss';
 
-export function UpdateProfile(props) {
-  const [Username, setUsername] = useState('');
-  const [Password, setPassword] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Birthdate, setBirthdate] = useState('');
+export class UpdateProfile extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        username: null,
+        password: null,
+        email: null,
+        birthday: null,
+      }
+    }
+  
+    componentDidMount() {
+      let accessToken = localStorage.getItem('token');
+      if (accessToken !== null) {
+        this.getUser(accessToken);
+      }
+    }
+  
+    getUser(token) {
+      let username = localStorage.getItem('user');
+      axios.get(`https://moooviesapi.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}`}
+      })
+      .then((response) => {
+        this.setState({
+          Username: response.data.Username,
+          Password: response.data.Password,
+          Email: response.data.Email,
+          Birthdate: response.data.Birthdate,
+          Favorites: response.data.Favorites,
+        });
+      });
+    }
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
-    axios.put('https://moooviesapi.herokuapp.com/users/:Username', {
+    let username = localStorage.getItem('user');
+    axios.put(`https://moooviesapi.herokuapp.com/users/${username}`, {
       Username: Username,
       Password: Password,
       Email: Email,
@@ -33,6 +62,10 @@ export function UpdateProfile(props) {
       console.log('Error updating the profile')
     });
   };
+
+  handleDelete() {
+
+    }
 
   return (
     <Row className="ProfileForm justify-content-md-center">
