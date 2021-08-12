@@ -22061,6 +22061,8 @@ var _nav = require("react-bootstrap/Nav");
 var _navDefault = parcelHelpers.interopDefault(_nav);
 var _navbar = require("react-bootstrap/Navbar");
 var _navbarDefault = parcelHelpers.interopDefault(_navbar);
+var _spinner = require("react-bootstrap/Spinner");
+var _spinnerDefault = parcelHelpers.interopDefault(_spinner);
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _moooviesLogoPng = require("url:./MoooviesLogo.png");
@@ -22073,54 +22075,53 @@ var _filmView = require("../film-view/film-view");
 var _genreView = require("../genre-view/genre-view");
 var _directorView = require("../director-view/director-view");
 var _profileView = require("../profile-view/profile-view");
+var _updateProfile = require("../update-profile/update-profile");
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
-        /// initial state set to null
-        this.state = {
+        /* initial state settings for MainView */ this.state = {
             films: [],
             user: null
         };
     }
-    componentDidMount() {
-        let accessToken = localStorage.getItem('token');
+    /* This function triggers getFilms and getUsers when MainView is mounted */ componentDidMount() {
+        const accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
             this.setState({
                 user: localStorage.getItem('user')
             });
             this.getFilms(accessToken);
-            this.getUsers(accessToken);
+        //  this.getUsers(accessToken);
         }
     }
-    /* This loads all films from the API: */ getFilms(token) {
+    /* This function GETs all films from the films collection */ getFilms(token) {
         _axiosDefault.default.get('https://moooviesapi.herokuapp.com/films', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
-            // Assign the result to the state
-            this.setState({
+            /* Sets films state with array of films */ this.setState({
                 films: response.data
             });
         }).catch(function(error) {
             console.log(error);
         });
     }
-    getUsers(token) {
-        _axiosDefault.default.get('https://moooviesapi.herokuapp.com/users', {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            // Assign the result to the state
-            this.setState({
-                users: response.data
-            });
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
-    /* On successful login, this updates the 'user' property in state */ onLoggedIn(authData) {
+    /* getUsers(token) {
+    axios.get('https://moooviesapi.herokuapp.com/users', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      /* Sets users state with array of users */ /*    this.setState({
+        users: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+/* On successful login, this updates the 'user' property in state */ onLoggedIn(authData) {
         console.log(authData);
         this.setState({
             user: authData.user.Username
@@ -22128,12 +22129,11 @@ class MainView extends _reactDefault.default.Component {
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.Username);
         this.getFilms(authData.token);
-        this.getUsers(authData.token);
     }
-    onLoggedOut() {
+    /* This funtion clears user data from local storage */ onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        this.setState({
+        /* Sets user to null */ this.setState({
             user: null
         });
     }
@@ -22147,14 +22147,14 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 109
+                lineNumber: 114
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 110
+                lineNumber: 115
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default, {
@@ -22164,20 +22164,20 @@ class MainView extends _reactDefault.default.Component {
             fixed: "top",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 112
+                lineNumber: 117
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_containerDefault.default, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 113
+                lineNumber: 118
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Brand, {
-            href: "#home",
+            href: `/`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 114
+                lineNumber: 119
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -22187,41 +22187,41 @@ class MainView extends _reactDefault.default.Component {
             className: "d-inline-block align-top",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 115
+                lineNumber: 120
             },
             __self: this
         }), ' ', "Mooovies"), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Toggle, {
             "aria-controls": "responsive-navbar-nav",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 119
+                lineNumber: 124
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_navbarDefault.default.Collapse, {
             className: "justify-content-end",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 120
+                lineNumber: 125
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 121
+                lineNumber: 126
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: `/`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 122
+                lineNumber: 127
             },
             __self: this
         }, "Films"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
             href: `/users/${user}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 123
+                lineNumber: 128
             },
             __self: this
         }, "Profile"), /*#__PURE__*/ _reactDefault.default.createElement(_navDefault.default.Link, {
@@ -22231,7 +22231,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 124
+                lineNumber: 129
             },
             __self: this
         }, "Logout"))))), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22241,8 +22241,10 @@ class MainView extends _reactDefault.default.Component {
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
-                if (films.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                    className: "main-view"
+                if (films.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement(_spinnerDefault.default, {
+                    animation: "border",
+                    role: "status",
+                    className: "mt-5"
                 }));
                 return films.map((m)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                         sm: 5,
@@ -22256,7 +22258,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 130
+                lineNumber: 135
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22269,26 +22271,32 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 142
+                lineNumber: 148
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
             path: "/users/:Username",
-            render: ()=>{
+            render: ({ history  })=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
-                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
-                    onLoggedIn: (user1)=>this.onLoggedIn(user1)
-                    ,
-                    film: films,
+                if (films.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement(_spinnerDefault.default, {
+                    animation: "border",
+                    role: "status",
+                    className: "mt-5"
+                }));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
                     user: user,
+                    films: films,
                     onBackClick: ()=>history.goBack()
                 })));
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 149
+                lineNumber: 155
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22297,7 +22305,7 @@ class MainView extends _reactDefault.default.Component {
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
-                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.UpdateProfile, {
+                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateProfile, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                     ,
                     film: films,
@@ -22307,7 +22315,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 161
+                lineNumber: 166
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22329,7 +22337,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 173
+                lineNumber: 178
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22345,7 +22353,7 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
-                    film: films.find((m)=>m.Genre._id === match.params._id
+                    genre: films.find((m)=>m.Genre._id === match.params._id
                     ),
                     onBackClick: ()=>history.goBack()
                 })), /*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, null, /*#__PURE__*/ _reactDefault.default.createElement(_filmCard.FilmCard, {
@@ -22355,7 +22363,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 184
+                lineNumber: 189
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22381,7 +22389,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 201
+                lineNumber: 206
             },
             __self: this
         }))));
@@ -22393,7 +22401,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Nav":"3T3v1","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Container":"3Mt3t","url:./MoooviesLogo.png":"5xgWQ","./main-view.scss":"44wWT","../login-view/login-view":"1abGd","../registration-view/registration-view":"lPHpt","../film-card/film-card":"64Nmj","../film-view/film-view":"1lsJK","../genre-view/genre-view":"6gZcP","../director-view/director-view":"5NJCT","../profile-view/profile-view":"3Kj1B","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"7rA65":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Nav":"3T3v1","react-bootstrap/Navbar":"3qLFd","react-bootstrap/Spinner":"4fhZt","react-bootstrap/Container":"3Mt3t","url:./MoooviesLogo.png":"5xgWQ","./main-view.scss":"44wWT","../login-view/login-view":"1abGd","../registration-view/registration-view":"lPHpt","../film-card/film-card":"64Nmj","../film-view/film-view":"1lsJK","../genre-view/genre-view":"6gZcP","../director-view/director-view":"5NJCT","../profile-view/profile-view":"3Kj1B","../update-profile/update-profile":"ULZkK","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"7rA65":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"4qfhW"}],"4qfhW":[function(require,module,exports) {
@@ -29551,7 +29559,41 @@ var _default = NavbarToggle;
 exports.default = _default;
 module.exports = exports["default"];
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","@restart/hooks/useEventCallback":"3v8B9","./ThemeProvider":"4rz1S","./NavbarContext":"1Ts0D"}],"5xgWQ":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","@restart/hooks/useEventCallback":"3v8B9","./ThemeProvider":"4rz1S","./NavbarContext":"1Ts0D"}],"4fhZt":[function(require,module,exports) {
+"use strict";
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+exports.__esModule = true;
+exports.default = void 0;
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
+var _classnames = _interopRequireDefault(require("classnames"));
+var _react = _interopRequireDefault(require("react"));
+var _ThemeProvider = require("./ThemeProvider");
+var _excluded = [
+    "bsPrefix",
+    "variant",
+    "animation",
+    "size",
+    "children",
+    "as",
+    "className"
+];
+var Spinner = /*#__PURE__*/ _react.default.forwardRef(function(_ref, ref) {
+    var bsPrefix = _ref.bsPrefix, variant = _ref.variant, animation = _ref.animation, size = _ref.size, children = _ref.children, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, className = _ref.className, props = _objectWithoutPropertiesLoose2.default(_ref, _excluded);
+    bsPrefix = _ThemeProvider.useBootstrapPrefix(bsPrefix, 'spinner');
+    var bsSpinnerPrefix = bsPrefix + "-" + animation;
+    return(/*#__PURE__*/ _react.default.createElement(Component, _extends2.default({
+        ref: ref
+    }, props, {
+        className: _classnames.default(className, bsSpinnerPrefix, size && bsSpinnerPrefix + "-" + size, variant && "text-" + variant)
+    }), children));
+});
+Spinner.displayName = 'Spinner';
+var _default = Spinner;
+exports.default = _default;
+module.exports = exports["default"];
+
+},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"5xgWQ":[function(require,module,exports) {
 module.exports = require('./bundle-url').getBundleURL() + "MoooviesLogo.20db6305.png";
 
 },{"./bundle-url":"1AFol"}],"1AFol":[function(require,module,exports) {
@@ -31364,13 +31406,27 @@ var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _reactRouterDom = require("react-router-dom");
 var _filmViewScss = require("./film-view.scss");
 class FilmView extends _reactDefault.default.Component {
+    addFavorite() {
+        const token = localStorage.getItem('token');
+        const Username = localStorage.getItem('user');
+        axios.post(`https://moooviesapi.herokuapp.com/users/${Username}/movies/${this.props.film._id}`, {
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            alert(`Added to Favorites`);
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
     render() {
         const { film , onBackClick  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_mediaDefault.default, {
             className: "mt-5",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 15
+                lineNumber: 30
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -31381,151 +31437,167 @@ class FilmView extends _reactDefault.default.Component {
             width: 220,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 16
+                lineNumber: 31
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_mediaDefault.default.Body, {
             className: "film-info pl-3 my-auto",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 17
+                lineNumber: 32
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
             className: "film-title",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 18
+                lineNumber: 33
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 19
+                lineNumber: 34
             },
             __self: this
         }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 20
+                lineNumber: 35
             },
             __self: this
         }, film.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "film-year",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 22
+                lineNumber: 37
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 23
+                lineNumber: 38
             },
             __self: this
         }, "Release Year: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 24
+                lineNumber: 39
             },
             __self: this
         }, film.ReleaseYear)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "film-blurb",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 26
+                lineNumber: 41
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 27
+                lineNumber: 42
             },
             __self: this
         }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 28
+                lineNumber: 43
             },
             __self: this
         }, film.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 30
+                lineNumber: 45
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 31
+                lineNumber: 46
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 32
+                lineNumber: 47
             },
             __self: this
         }, "Genre:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/Genre/${film.Genre._id}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 33
+                lineNumber: 48
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "link",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 34
+                lineNumber: 49
             },
             __self: this
         }, film.Genre.Name)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 38
+                lineNumber: 53
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 39
+                lineNumber: 54
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 40
+                lineNumber: 55
             },
             __self: this
         }, "Director:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/Director/${film.Director._id}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 41
+                lineNumber: 56
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             variant: "link",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 42
+                lineNumber: 57
             },
             __self: this
         }, film.Director.Name)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 46
+                lineNumber: 61
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            className: "fav-button",
+            value: film._id,
+            onClick: (e)=>this.addFavorite(e, film)
+            ,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
+                lineNumber: 62
+            },
+            __self: this
+        }, "Add to Favorites")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
+                lineNumber: 64
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
@@ -31535,7 +31607,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 47
+                lineNumber: 65
             },
             __self: this
         }, "Back")))));
@@ -31612,7 +31684,8 @@ class GenreView extends _reactDefault.default.Component {
         super();
         /// initial state set to null
         this.state = {
-            films: []
+            film: [],
+            genre: null
         };
     }
     componentDidMount() {
@@ -31625,61 +31698,62 @@ class GenreView extends _reactDefault.default.Component {
         }
     }
     getGenres(token) {
-        _axiosDefault.default.get('https://moooviesapi.herokuapp.com/Genre/:_id', {
+        const genre = this.props;
+        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/Genre/${genre}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
             // Assign the result to the state
             this.setState({
-                films: response.data
+                film: response.data
             });
         }).catch(function(error) {
             console.log(error);
         });
     }
     render() {
-        const { film , onBackClick  } = this.props;
+        const { genre , onBackClick  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Jumbotron, {
             className: "genre-view pb-1 mb-1",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 47
+                lineNumber: 49
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("h2", {
             className: "genre-name",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 48
+                lineNumber: 50
             },
             __self: this
-        }, film.Genre.Name), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        }, genre.Genre.Name), /*#__PURE__*/ _reactDefault.default.createElement("p", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 49
+                lineNumber: 51
             },
             __self: this
-        }, film.Genre.Description), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, genre.Genre.Description), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
             className: "back-button mt-2",
             onClick: ()=>{
                 onBackClick(null);
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 50
+                lineNumber: 52
             },
             __self: this
         }, "Back"), /*#__PURE__*/ _reactDefault.default.createElement("hr", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 51
+                lineNumber: 53
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement("h5", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
-                lineNumber: 52
+                lineNumber: 54
             },
             __self: this
         }, "Films in this genre:")));
@@ -38939,40 +39013,6 @@ var _default = ResponsiveEmbed;
 exports.default = _default;
 module.exports = exports["default"];
 
-},{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"4fhZt":[function(require,module,exports) {
-"use strict";
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-exports.__esModule = true;
-exports.default = void 0;
-var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
-var _classnames = _interopRequireDefault(require("classnames"));
-var _react = _interopRequireDefault(require("react"));
-var _ThemeProvider = require("./ThemeProvider");
-var _excluded = [
-    "bsPrefix",
-    "variant",
-    "animation",
-    "size",
-    "children",
-    "as",
-    "className"
-];
-var Spinner = /*#__PURE__*/ _react.default.forwardRef(function(_ref, ref) {
-    var bsPrefix = _ref.bsPrefix, variant = _ref.variant, animation = _ref.animation, size = _ref.size, children = _ref.children, _ref$as = _ref.as, Component = _ref$as === void 0 ? 'div' : _ref$as, className = _ref.className, props = _objectWithoutPropertiesLoose2.default(_ref, _excluded);
-    bsPrefix = _ThemeProvider.useBootstrapPrefix(bsPrefix, 'spinner');
-    var bsSpinnerPrefix = bsPrefix + "-" + animation;
-    return(/*#__PURE__*/ _react.default.createElement(Component, _extends2.default({
-        ref: ref
-    }, props, {
-        className: _classnames.default(className, bsSpinnerPrefix, size && bsSpinnerPrefix + "-" + size, variant && "text-" + variant)
-    }), children));
-});
-Spinner.displayName = 'Spinner';
-var _default = Spinner;
-exports.default = _default;
-module.exports = exports["default"];
-
 },{"@babel/runtime/helpers/interopRequireDefault":"4ttVj","@babel/runtime/helpers/extends":"3krLJ","@babel/runtime/helpers/objectWithoutPropertiesLoose":"3Yx9V","classnames":"5aJRc","react":"3b2NM","./ThemeProvider":"4rz1S"}],"qFVWq":[function(require,module,exports) {
 "use strict";
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -40032,25 +40072,307 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactBootstrap = require("react-bootstrap");
+var _profileViewScss = require("./profile-view.scss");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _reactRouterDom = require("react-router-dom");
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
-var _col = require("react-bootstrap/Col");
-var _colDefault = parcelHelpers.interopDefault(_col);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _profileViewScss = require("./profile-view.scss");
 class ProfileView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            username: null,
-            password: null,
-            email: null,
-            birthday: null,
+            Username: null,
+            Password: null,
+            Email: null,
+            Birthdate: null,
             Favorites: []
+        };
+    }
+    componentDidMount() {
+        const accessToken = localStorage.getItem('token');
+        if (accessToken !== null) this.getUser(accessToken);
+    }
+    getUser(token) {
+        const Username = localStorage.getItem('user');
+        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            console.log(response);
+            this.setState({
+                Username: response.data.Username,
+                Password: response.data.Password,
+                Email: response.data.Email,
+                Birthdate: response.data.Birthdate,
+                Favorites: response.data.Favorites
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    handleRemove(film) {
+        const accessToken = localStorage.getItem('token');
+        const Username = localStorage.getItem('user');
+        _axiosDefault.default.delete(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            console.log(response);
+            alert(film.Title + " removed from your favorites");
+            window.open('/users/${Username}', '_self');
+        });
+    }
+    render() {
+        const { films , onBackClick  } = this.props;
+        const { Favorites  } = this.state;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 68
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+            className: "ProfileView justify-content-md-center mt-5",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 69
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 70
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "user-name",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 71
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 72
+            },
+            __self: this
+        }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 73
+            },
+            __self: this
+        }, `${this.props.user}`)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "user-email",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 75
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 76
+            },
+            __self: this
+        }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 77
+            },
+            __self: this
+        }, `${this.state.Email}`)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "user-birthdate",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 79
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 80
+            },
+            __self: this
+        }, "Birthdate: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 81
+            },
+            __self: this
+        }, `${this.state.Birthdate}`)), /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+            className: "mt-3",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 83
+            },
+            __self: this
+        }, "Your favorites:")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+            md: "auto",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 85
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            className: "mt-2",
+            href: `/users/update/${this.props.user}`,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 86
+            },
+            __self: this
+        }, "Edit Profile"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 87
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            className: "mt-2",
+            onClick: ()=>{
+                onBackClick(null);
+            },
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 88
+            },
+            __self: this
+        }, "Back"))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 91
+            },
+            __self: this
+        }, Favorites.length === 0 && /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "text-center m-auto",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 93
+            },
+            __self: this
+        }, "None yet!"), films.map((film)=>{
+            if (film._id === Favorites.find((m)=>m._id === films._id
+            )) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                md: 4,
+                key: film._id,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 98
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+                className: "mt-3",
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 99
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
+                className: "card-image",
+                variant: "top",
+                src: film.ImagePath,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 100
+                },
+                __self: this
+            }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 101
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+                className: "card-title",
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 102
+                },
+                __self: this
+            }, film.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 103
+                },
+                __self: this
+            }, film.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(Link, {
+                to: `/films/${film.Title}`,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 104
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                variant: "link",
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                    lineNumber: 105
+                },
+                __self: this
+            }, "Open"))))));
+        }))));
+    }
+}
+ProfileView.propTypes = {
+    Username: _propTypesDefault.default.shape({
+        Favorites: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
+            _id: _propTypesDefault.default.string.isRequired,
+            Title: _propTypesDefault.default.string.isRequired
+        })),
+        Username: _propTypesDefault.default.string.isRequired,
+        Email: _propTypesDefault.default.string.isRequired,
+        Birthdate: _propTypesDefault.default.string
+    })
+};
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","./profile-view.scss":"1TxVV","axios":"7rA65","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"1TxVV":[function() {},{}],"ULZkK":[function(require,module,exports) {
+var helpers = require("../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UpdateProfile", ()=>UpdateProfile
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _updateProfileScss = require("./update-profile.scss");
+class UpdateProfile extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+            Username: null,
+            Password: null,
+            Email: null,
+            Birthdate: null
         };
     }
     componentDidMount() {
@@ -40058,8 +40380,8 @@ class ProfileView extends _reactDefault.default.Component {
         if (accessToken !== null) this.getUser(accessToken);
     }
     getUser(token) {
-        let username = localStorage.getItem('user');
-        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${username}`, {
+        let Username = localStorage.getItem('user');
+        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40068,63 +40390,195 @@ class ProfileView extends _reactDefault.default.Component {
                 Username: response.data.Username,
                 Password: response.data.Password,
                 Email: response.data.Email,
-                Birthdate: response.data.Birthdate,
-                Favorites: response.data.Favorites
+                Birthdate: response.data.Birthdate
             });
         });
     }
+    handleUpdate() {
+        this.setState;
+        e.preventDefault();
+        let Username = localStorage.getItem('user');
+        _axiosDefault.default.put(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+            Username: Username,
+            Password: Password,
+            Email: Email,
+            Birthdate: Birthdate
+        }).then((response)=>{
+            const data = response.data;
+            console.log(data);
+            window.open('/', '_self'); // so the page will open in the current tab
+            alert("Update successful!");
+        }).catch((e)=>{
+            console.log('Error updating the profile');
+        });
+    }
+    handleDelete() {
+        const token = localStorage.getItem('token');
+        let Username = localStorage.getItem('user');
+        _axiosDefault.default.delete(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(()=>{
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            alert('Your account has been deleted.');
+            window.open(`/`, '_self');
+        }).catch((e)=>{
+            console.log(e);
+        });
+    }
     render() {
-        const { film , user  } = this.props;
+        const { Username  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
-            className: "ProfileView justify-content-md-center",
+            className: "ProfileForm justify-content-md-center",
             __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 50
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 87
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
             md: "auto",
             __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 51
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 88
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("p", {
             className: "mt-5",
             __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 52
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 89
             },
             __self: this
-        }, `${this.props.user}`, "'s Favorites:"), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+        }, "Your profile information:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
             __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 53
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 90
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-            to: `/`,
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formUsername",
             __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 54
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 91
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-            variant: "link",
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
             __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 55
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 92
             },
             __self: this
-        }, "Update"))))));
+        }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+            type: "text",
+            placeholder: "Username",
+            value: Username,
+            onChange: (e)=>setUsername(e.target.value)
+            ,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 93
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formPassword",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 96
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 97
+            },
+            __self: this
+        }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+            type: "password",
+            placeholder: "Password",
+            value: Password,
+            onChange: (e)=>setPassword(e.target.value)
+            ,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 98
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formEmail",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 101
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 102
+            },
+            __self: this
+        }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+            type: "email",
+            placeholder: "Email",
+            value: Email,
+            onChange: (e)=>setEmail(e.target.value)
+            ,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 103
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+            controlId: "formBirthdate",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 106
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 107
+            },
+            __self: this
+        }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+            type: "date",
+            placeholder: "00-00-0000",
+            value: Birthdate,
+            onChange: (e)=>setBirthdate(e.target.value)
+            ,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 108
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            variant: "primary",
+            type: "submit",
+            onClick: handleSubmit,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                lineNumber: 111
+            },
+            __self: this
+        }, "Submit")))));
     }
 }
+UpdateProfile.propTypes = {
+    Username: _propTypesDefault.default.shape({
+        Username: _propTypesDefault.default.string.isRequired,
+        Password: _propTypesDefault.default.string.isRequired,
+        Email: _propTypesDefault.default.string.isRequired,
+        Birthdate: _propTypesDefault.default.string
+    })
+};
 
   helpers.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Button":"1ru0l","./profile-view.scss":"1TxVV","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-router-dom":"1PMSK"}],"1TxVV":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
 
 //# sourceMappingURL=index.06f5e6ae.js.map

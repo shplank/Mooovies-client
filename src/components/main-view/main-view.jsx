@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar';
+import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
 
 import logo from 'url:./MoooviesLogo.png';
@@ -19,37 +20,39 @@ import { FilmView } from '../film-view/film-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
-import { UpdateProfile } from '../profile-view/profile-view';
+import { UpdateProfile } from '../update-profile/update-profile';
 
 export class MainView extends React.Component {
   constructor() {
     super();
-    /// initial state set to null
+    /* initial state settings for MainView */
     this.state = {
       films: [],
       user: null
     };
   }
 
+/* This function triggers getFilms and getUsers when MainView is mounted */
+
   componentDidMount() {
-    let accessToken = localStorage.getItem('token');
+    const accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.setState({
         user: localStorage.getItem('user')
       });
       this.getFilms(accessToken);
-      this.getUsers(accessToken);
+    //  this.getUsers(accessToken);
     }
   }
 
-/* This loads all films from the API: */
+/* This function GETs all films from the films collection */
 
   getFilms(token) {
     axios.get('https://moooviesapi.herokuapp.com/films', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      // Assign the result to the state
+      /* Sets films state with array of films */
       this.setState({
         films: response.data
       });
@@ -59,13 +62,13 @@ export class MainView extends React.Component {
     });
   }
 
-  getUsers(token) {
+  /* getUsers(token) {
     axios.get('https://moooviesapi.herokuapp.com/users', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      // Assign the result to the state
-      this.setState({
+      /* Sets users state with array of users */
+  /*    this.setState({
         users: response.data
       });
     })
@@ -85,12 +88,14 @@ export class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getFilms(authData.token);
-    this.getUsers(authData.token);
   }
+
+/* This funtion clears user data from local storage */
 
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    /* Sets user to null */
     this.setState({
       user: null
     });
@@ -111,7 +116,7 @@ export class MainView extends React.Component {
 
         <Navbar className="navbar" bg="white" expand="md" fixed="top">
           <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href={`/`}>
               <img src={logo} alt="Mooovies logo" width="45" className="d-inline-block align-top" />
               {' '}
               Mooovies
@@ -126,12 +131,13 @@ export class MainView extends React.Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-      
+
           <Route exact path="/" render={() => {
             if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
-            if (films.length === 0) return <div className="main-view" />;
+                   
+            if (films.length === 0) return <Spinner animation="border" role="status" className="mt-5" />; 
             return films.map(m => (
               <Col sm={5} md={3} key={m._id} className="mt-4">
                 <FilmCard film={m} />
@@ -146,16 +152,15 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-          <Route path="/users/:Username" render={() => {
+          <Route exact path="/users/:Username" render={({ history }) => {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            if (user)
-            return <Col>
-              <ProfileView onLoggedIn={user => this.onLoggedIn(user)}
-                film={films} user={user}
-                onBackClick={() => history.goBack()} />
-            </Col>
+            if (films.length === 0) return <Spinner animation="border" role="status" className="mt-5" />;
+            return <Col md={8}>
+                <ProfileView user={user} films={films}
+                  onBackClick={() => history.goBack()} />
+              </Col>
           }} />
 
           <Route path="/users/update/:Username" render={() => {
@@ -189,7 +194,7 @@ export class MainView extends React.Component {
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
               <Row>
-                <GenreView film={films.find(m => m.Genre._id === match.params._id)} 
+                <GenreView genre={films.find(m => m.Genre._id === match.params._id)} 
                   onBackClick={() => history.goBack()} />
               </Row>
               <Row>

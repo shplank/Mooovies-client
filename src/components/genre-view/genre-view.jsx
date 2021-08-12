@@ -11,7 +11,8 @@ export class GenreView extends React.Component {
     super();
     /// initial state set to null
     this.state = {
-      films: [],
+      film: [],
+      genre: null
     };
   }
 
@@ -26,13 +27,14 @@ export class GenreView extends React.Component {
   }
 
   getGenres(token) {
-    axios.get('https://moooviesapi.herokuapp.com/Genre/:_id', {
+    const genre = this.props;
+    axios.get(`https://moooviesapi.herokuapp.com/Genre/${genre}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
       // Assign the result to the state
       this.setState({
-        films: response.data
+        film: response.data
       });
     })
     .catch(function (error) {
@@ -41,12 +43,12 @@ export class GenreView extends React.Component {
   }
 
   render() {
-    const { film, onBackClick } = this.props;
+    const { genre, onBackClick } = this.props;
 
     return (
       <Jumbotron className="genre-view pb-1 mb-1">
-        <h2 className="genre-name">{film.Genre.Name}</h2>
-        <p>{film.Genre.Description}</p>
+        <h2 className="genre-name">{genre.Genre.Name}</h2>
+        <p>{genre.Genre.Description}</p>
         <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
         <hr/>
         <h5>Films in this genre:</h5>

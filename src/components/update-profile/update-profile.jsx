@@ -13,40 +13,40 @@ export class UpdateProfile extends React.Component {
     constructor() {
       super();
       this.state = {
-        username: null,
-        password: null,
-        email: null,
-        birthday: null,
+        Username: null,
+        Password: null,
+        Email: null,
+        Birthdate: null
       }
     }
   
-    componentDidMount() {
-      let accessToken = localStorage.getItem('token');
-      if (accessToken !== null) {
-        this.getUser(accessToken);
-      }
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.getUser(accessToken);
     }
+  }
   
-    getUser(token) {
-      let username = localStorage.getItem('user');
-      axios.get(`https://moooviesapi.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}`}
-      })
-      .then((response) => {
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthdate: response.data.Birthdate,
-          Favorites: response.data.Favorites,
-        });
+  getUser(token) {
+    let Username = localStorage.getItem('user');
+    axios.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then((response) => {
+      this.setState({
+        Username: response.data.Username,
+        Password: response.data.Password,
+        Email: response.data.Email,
+        Birthdate: response.data.Birthdate,
       });
-    }
+    });
+  }
 
-  const handleUpdate = (e) => {
+  handleUpdate() {
+    this.setState
     e.preventDefault();
-    let username = localStorage.getItem('user');
-    axios.put(`https://moooviesapi.herokuapp.com/users/${username}`, {
+    let Username = localStorage.getItem('user');
+    axios.put(`https://moooviesapi.herokuapp.com/users/${Username}`, {
       Username: Username,
       Password: Password,
       Email: Email,
@@ -64,10 +64,26 @@ export class UpdateProfile extends React.Component {
   };
 
   handleDelete() {
+    const token = localStorage.getItem('token');
+    let Username = localStorage.getItem('user');
+    axios.delete(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    })
+    .then(() => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      alert('Your account has been deleted.');
+      window.open(`/`, '_self');
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}
 
-    }
+  render() {
+    const { Username } = this.props;
 
-  return (
+    return (
     <Row className="ProfileForm justify-content-md-center">
       <Col md="auto">
         <p className="mt-5">Your profile information:</p>
@@ -100,12 +116,13 @@ export class UpdateProfile extends React.Component {
     </Row>
   );
 }
+}
 
 UpdateProfile.propTypes = {
-  user: PropTypes.shape({
+  Username: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string.isRequired
+    Birthdate: PropTypes.string,
   }),
 };

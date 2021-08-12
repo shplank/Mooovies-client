@@ -8,6 +8,21 @@ import { Link } from "react-router-dom";
 import './film-view.scss';
 
 export class FilmView extends React.Component {
+
+  addFavorite() {
+    const token = localStorage.getItem('token');
+    const Username = localStorage.getItem('user');
+    axios.post(`https://moooviesapi.herokuapp.com/users/${Username}/movies/${this.props.film._id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        alert(`Added to Favorites`)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   render() {
     const { film, onBackClick } = this.props;
 
@@ -42,6 +57,9 @@ export class FilmView extends React.Component {
                 <Button variant="link">{film.Director.Name}</Button>
               </Link>
             </span>
+          </div>
+          <div>
+            <Button className="fav-button" value={film._id} onClick={(e) => this.addFavorite(e, film)}>Add to Favorites</Button>
           </div>
           <div>
             <Button className="mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
