@@ -1,38 +1,88 @@
 import React from 'react';
-import Media from 'react-bootstrap/Media'
-import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+import { Container, Row, Col, Card, Button, Media } from 'react-bootstrap';
 
 import './director-view.scss';
 
 export class DirectorView extends React.Component {
+  constructor() {
+    super();
+    /// initial state set to null
+    this.state = {
+      film: []
+    };
+  }
 
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getDirectors(accessToken);
+    }
+  }
+
+  getDirectors(token) {
+    axios.get(`https://moooviesapi.herokuapp.com/Director/${this.props.director.Director._id}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        film: response.data
+      });
+      console.log(this.state.film);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   render() {
-    const { film, onBackClick } = this.props;
+    const { director, onBackClick } = this.props;
+    const film = this.state.film;
 
     return (
-      <div>
+      <Container>
       <Media className="director-view mt-5">
-        <img className="director-pic" className="mr-3" src={film.Director.ImagePath} alt="director photo" width={220} />
+        <img className="director-pic" className="mr-3" src={director.Director.ImagePath} alt="director photo" width={220} />
         <Media.Body className="film-info pl-3 my-auto">
         <h5 className="film-title">
           <span className="label">Name: </span>
-          <span className="value">{film.Director.Name}</span>
+          <span className="value">{director.Director.Name}</span>
         </h5>
         <div className="director-birth">
           <span className="label">Born: </span>
-          <span className="value">{film.Director.Birth}</span>
+          <span className="value">{director.Director.Birth}</span>
         </div>
         <div className="director-bio">
           <span className="label">Bio: </span>
-          <span className="value">{film.Director.Bio}</span>
+          <span className="value">{director.Director.Bio}</span>
         </div>
-        
         <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
         </Media.Body>
       </Media>
       <hr/>
-      <h5>Films by this director:</h5>
-      </div>
+      <h5 className="mt-3">Films by this director:</h5>
+      <Row>
+        {film.map((film) => {
+          if (film.length === 0) return <p>None</p>;
+          return (
+            <Col md={4} key={film._id}>
+              <Card className="mt-3">
+                <Card.Img className="card-image" variant="top" src={film.ImagePath} />
+                <Card.Body>
+                  <Card.Title className="card-title">{film.Title}</Card.Title>
+                  <Card.Text>{film.ReleaseYear}</Card.Text>
+                  <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
+      </Row>
+      </Container>
     );
   }
 }

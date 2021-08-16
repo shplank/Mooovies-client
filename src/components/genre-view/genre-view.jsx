@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import Button from 'react-bootstrap/Button';
-import { Jumbotron } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Jumbotron } from 'react-bootstrap';
 
 import './genre-view.scss';
 
@@ -11,8 +10,7 @@ export class GenreView extends React.Component {
     super();
     /// initial state set to null
     this.state = {
-      film: [],
-      genre: null
+      film: []
     };
   }
 
@@ -27,8 +25,7 @@ export class GenreView extends React.Component {
   }
 
   getGenres(token) {
-    const genre = this.props;
-    axios.get(`https://moooviesapi.herokuapp.com/Genre/${genre}`, {
+    axios.get(`https://moooviesapi.herokuapp.com/Genre/${this.props.genre.Genre._id}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
@@ -36,6 +33,7 @@ export class GenreView extends React.Component {
       this.setState({
         film: response.data
       });
+      console.log(this.state.film);
     })
     .catch(function (error) {
       console.log(error);
@@ -44,8 +42,10 @@ export class GenreView extends React.Component {
 
   render() {
     const { genre, onBackClick } = this.props;
+    const film = this.state.film;
 
     return (
+      <Container>
       <Jumbotron className="genre-view pb-1 mb-1">
         <h2 className="genre-name">{genre.Genre.Name}</h2>
         <p>{genre.Genre.Description}</p>
@@ -53,6 +53,24 @@ export class GenreView extends React.Component {
         <hr/>
         <h5>Films in this genre:</h5>
       </Jumbotron>
+      <Row>
+        {film.map((film) => {
+          if (film.length === 0) return <p>None yet!</p>;
+          return (
+            <Col md={4} key={film._id}>
+              <Card className="mt-3">
+                <Card.Img className="card-image" variant="top" src={film.ImagePath} />
+                <Card.Body>
+                  <Card.Title className="card-title">{film.Title}</Card.Title>
+                  <Card.Text>{film.ReleaseYear}</Card.Text>
+                  <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
+      </Row>
+      </Container>
     );
   }
 }

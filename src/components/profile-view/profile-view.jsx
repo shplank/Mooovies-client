@@ -27,19 +27,19 @@ export class ProfileView extends React.Component {
   }
 
   getUser(token) {
-    const Username = localStorage.getItem('user');
+    let Username = localStorage.getItem('user');
     axios.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then((response) => {
-      console.log(response);
       this.setState({
         Username: response.data.Username,
         Password: response.data.Password,
         Email: response.data.Email,
         Birthdate: response.data.Birthdate,
-        Favorites: response.data.Favorites
+        Favorites: response.data.Favorites,
       });
+      console.log(this.state.Favorites);
     })
     .catch(function (error) {
       console.log(error);
@@ -47,22 +47,20 @@ export class ProfileView extends React.Component {
   }
 
   handleRemove(film) {
-    const accessToken = localStorage.getItem('token');
     const Username = localStorage.getItem('user');
-    axios.delete(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+    const token = localStorage.getItem('token');
+    axios.delete(`https://moooviesapi.herokuapp.com/favorites/${Username}/films/${film._id}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
-    .then((response) => {
-      console.log(response);
-      alert(film.Title + " removed from your favorites");
-      window.open('/users/${Username}', '_self');
+    .then(() => {
+        alert(film.Title + " removed from Favorites");
+        window.location.reload();
     })
   }
   
-
   render() {
-    const { films, onBackClick } = this.props;
-    const { Favorites } = this.state;
+    const { onBackClick } = this.props;
+    const Favorites = (this.state.Favorites);
 
     return (
     <Container>
@@ -70,7 +68,7 @@ export class ProfileView extends React.Component {
         <Col>
           <div className="user-name">
             <span className="label">Username: </span>
-            <span className="value">{`${this.props.user}`}</span>
+            <span className="value">{`${this.state.Username}`}</span>
           </div>
           <div className="user-email">
             <span className="label">Email: </span>
@@ -80,7 +78,7 @@ export class ProfileView extends React.Component {
             <span className="label">Birthdate: </span>
             <span className="value">{`${this.state.Birthdate}`}</span>
           </div>
-          <h4 className="mt-3">Your favorites:</h4>
+          <h4 className="mt-3">Your Favorites:</h4>
         </Col>
         <Col md="auto">
           <Button className="mt-2" href={`/users/update/${this.props.user}`}>Edit Profile</Button>
@@ -89,11 +87,8 @@ export class ProfileView extends React.Component {
         </Col>
       </Row>
       <Row>
-        {Favorites.length === 0 && (
-          <div className="text-center m-auto">None yet!</div>
-          )}
-        {films.map((film) => {
-        if (film._id === Favorites.find((m) => m._id === films._id)) {
+        {Favorites.map((film) => {
+          if (Favorites.length === 0) return <p>None yet!</p>;
           return (
             <Col md={4} key={film._id}>
                 <Card className="mt-3">
@@ -101,14 +96,12 @@ export class ProfileView extends React.Component {
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
                     <Card.Text>{film.ReleaseYear}</Card.Text>
-                      <Link to={`/films/${film.Title}`}>
-                        <Button variant="link">Open</Button>
-                      </Link>
+                    <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                    <Button variant="primary" type="submit" className="mt-2 ml-3" value={film._id} onClick={() => this.handleRemove(film)}>Remove</Button>
                   </Card.Body>
                 </Card>
               </Col>
             );
-          }
         })}
       </Row>
     </Container>

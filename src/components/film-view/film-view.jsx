@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Media from 'react-bootstrap/Media';
 import Button from 'react-bootstrap/Button';
@@ -12,11 +13,11 @@ export class FilmView extends React.Component {
   addFavorite() {
     const token = localStorage.getItem('token');
     const Username = localStorage.getItem('user');
-    axios.post(`https://moooviesapi.herokuapp.com/users/${Username}/movies/${this.props.film._id}`, {}, {
+    axios.post(`https://moooviesapi.herokuapp.com/favorites/${Username}/films/${this.props.film._id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(response => {
-        alert(`Added to Favorites`)
+    .then(() => {
+        alert((this.props.film.Title) + " added to Favorites");
       })
       .catch(function (error) {
         console.log(error);

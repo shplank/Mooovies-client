@@ -81,12 +81,12 @@ export class UpdateProfile extends React.Component {
 }
 
   render() {
-    const { Username } = this.props;
+    const { Username, Password, Email, Birthdate } = this.props;
 
     return (
     <Row className="ProfileForm justify-content-md-center">
       <Col md="auto">
-        <p className="mt-5">Your profile information:</p>
+        <p className="mt-5">Update your profile:</p>
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
@@ -108,9 +108,10 @@ export class UpdateProfile extends React.Component {
             <Form.Control type="date" placeholder="00-00-0000" value={Birthdate} onChange={e => setBirthdate(e.target.value)} />
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
-          </Button>
+            <Button variant="primary" type="submit" className="mt-2" onClick={() => this.handleUpdate()}>Submit Update</Button>
+          <br/>
+            <Button variant="primary" type="submit" className="mt-4" onClick={() => this.handleDelete()}>Delete Profile</Button>
+
         </Form>
       </Col>
     </Row>

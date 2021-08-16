@@ -2,12 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar';
-import Spinner from 'react-bootstrap/Spinner';
-import Container from 'react-bootstrap/Container';
+import { Row, Col, Nav, Navbar, Spinner, Container } from 'react-bootstrap';
 
 import logo from 'url:./MoooviesLogo.png';
 
@@ -197,9 +192,6 @@ export class MainView extends React.Component {
                 <GenreView genre={films.find(m => m.Genre._id === match.params._id)} 
                   onBackClick={() => history.goBack()} />
               </Row>
-              <Row>
-                <FilmCard film={films.find(m => m.Genre._id === match.params._id)} />
-              </Row>
             </Col>
           }} />
 
@@ -211,11 +203,8 @@ export class MainView extends React.Component {
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
               <Row>
-                <DirectorView film={films.find(m => m.Director._id === match.params._id)} 
+                <DirectorView director={films.find(m => m.Director._id === match.params._id)} 
                   onBackClick={() => history.goBack()} />
-              </Row>
-              <Row>
-                <FilmCard film={films.find(m => m.Director._id === match.params._id)} />
               </Row>
             </Col>
           }} />
