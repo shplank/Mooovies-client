@@ -9,12 +9,11 @@ import axios from 'axios';
 export class ProfileView extends React.Component {
   constructor() {
     super();
-
     this.state = {
-      Username: null,
-      Password: null,
-      Email: null,
-      Birthdate: null,
+      Username: '',
+      Password: '',
+      Email: '',
+      Birthdate: '',
       Favorites: []
     };
   }
@@ -27,7 +26,7 @@ export class ProfileView extends React.Component {
   }
 
   getUser(token) {
-    let Username = localStorage.getItem('user');
+    const Username = localStorage.getItem('user');
     axios.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
       headers: { Authorization: `Bearer ${token}`}
     })

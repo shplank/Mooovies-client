@@ -22256,7 +22256,7 @@ class MainView extends _reactDefault.default.Component {
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
                     to: "/"
                 }));
-                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)));
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)));
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
@@ -22285,7 +22285,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 150
+                lineNumber: 151
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22304,7 +22304,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 161
+                lineNumber: 162
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22326,7 +22326,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 173
+                lineNumber: 174
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22349,7 +22349,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 184
+                lineNumber: 185
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22372,7 +22372,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
-                lineNumber: 198
+                lineNumber: 199
             },
             __self: this
         }))));
@@ -39275,9 +39275,18 @@ function RegistrationView(props) {
     const [Password, setPassword] = _react.useState('');
     const [Email, setEmail] = _react.useState('');
     const [Birthdate, setBirthdate] = _react.useState('');
+    const [UsernameError, setUsernameError] = _react.useState({
+    });
+    const [PasswordError, setPasswordError] = _react.useState({
+    });
+    const [EmailError, setEmailError] = _react.useState({
+    });
+    const [BirthdateError, setBirthdateError] = _react.useState({
+    });
     const handleSubmit = (e)=>{
         e.preventDefault();
-        _axiosDefault.default.post('https://moooviesapi.herokuapp.com/register', {
+        let isValid = formValidation();
+        if (isValid) _axiosDefault.default.post('https://moooviesapi.herokuapp.com/register', {
             Username: Username,
             Password: Password,
             Email: Email,
@@ -39291,18 +39300,50 @@ function RegistrationView(props) {
             console.log('Error registering the user');
         });
     };
+    const formValidation = ()=>{
+        const UsernameError1 = {
+        };
+        const PasswordError1 = {
+        };
+        const EmailError1 = {
+        };
+        const BirthdateError1 = {
+        };
+        let isValid = true;
+        if (Username.trim().length < 5) {
+            UsernameError1.UsernameShort = "Username must be at least 5 characters";
+            isValid = false;
+        }
+        if (Password.trim().length < 5) {
+            PasswordError1.PasswordShort = "Password must be at least 5 characters";
+            isValid = false;
+        }
+        if (!(Email && Email.includes(".") && Email.includes("@"))) {
+            EmailError1.EmailNotValid = "That's not a valid email address";
+            isValid = false;
+        }
+        if (Birthdate === '') {
+            BirthdateError1.BirthdateEmpty = "Please enter your birthdate";
+            isValid = false;
+        }
+        setUsernameError(UsernameError1);
+        setPasswordError(PasswordError1);
+        setEmailError(EmailError1);
+        setBirthdateError(BirthdateError1);
+        return isValid;
+    };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
         className: "RegistrationForm justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 40
+            lineNumber: 77
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
         md: "auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 41
+            lineNumber: 78
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -39312,33 +39353,33 @@ function RegistrationView(props) {
         alt: "Mooovies logo",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 42
+            lineNumber: 79
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 43
+            lineNumber: 80
         },
         __self: this
     }, "Create an account:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 44
+            lineNumber: 81
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 45
+            lineNumber: 82
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 46
+            lineNumber: 83
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -39349,20 +39390,29 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 47
+            lineNumber: 84
         },
         __self: this
+    }), Object.keys(UsernameError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
+                lineNumber: 87
+            },
+            __self: this
+        }, UsernameError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 50
+            lineNumber: 94
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 51
+            lineNumber: 95
         },
         __self: this
     }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -39373,20 +39423,29 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 52
+            lineNumber: 96
         },
         __self: this
+    }), Object.keys(PasswordError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
+                lineNumber: 99
+            },
+            __self: this
+        }, PasswordError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formEmail",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 55
+            lineNumber: 106
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 56
+            lineNumber: 107
         },
         __self: this
     }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -39397,20 +39456,29 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 57
+            lineNumber: 108
         },
         __self: this
+    }), Object.keys(EmailError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
+                lineNumber: 111
+            },
+            __self: this
+        }, EmailError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
         controlId: "formBirthdate",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 60
+            lineNumber: 118
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 61
+            lineNumber: 119
         },
         __self: this
     }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
@@ -39421,21 +39489,30 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 62
+            lineNumber: 120
         },
         __self: this
+    }), Object.keys(BirthdateError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
+                lineNumber: 123
+            },
+            __self: this
+        }, BirthdateError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
         variant: "primary",
         type: "submit",
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 65
+            lineNumber: 130
         },
         __self: this
     }, "Submit")))));
 }
-_s(RegistrationView, "Khyw8EfMCqtTOVcx9Qc1PLHn868=");
+_s(RegistrationView, "HXkBgY2IqE8Vqd1hhA08pkwokKk=");
 _c = RegistrationView;
 RegistrationView.propTypes = {
     user: _propTypesDefault.default.shape({
@@ -40203,7 +40280,7 @@ class DirectorView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","./director-view.scss":"6Kfdq","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-bootstrap":"4n7hB","axios":"7rA65"}],"6Kfdq":[function() {},{}],"3Kj1B":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","react-bootstrap":"4n7hB","./director-view.scss":"6Kfdq","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"6Kfdq":[function() {},{}],"3Kj1B":[function(require,module,exports) {
 var helpers = require("../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40226,10 +40303,10 @@ class ProfileView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            Username: null,
-            Password: null,
-            Email: null,
-            Birthdate: null,
+            Username: '',
+            Password: '',
+            Email: '',
+            Birthdate: '',
             Favorites: []
         };
     }
@@ -40238,7 +40315,7 @@ class ProfileView extends _reactDefault.default.Component {
         if (accessToken !== null) this.getUser(accessToken);
     }
     getUser(token) {
-        let Username = localStorage.getItem('user');
+        const Username = localStorage.getItem('user');
         _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -40274,97 +40351,97 @@ class ProfileView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 66
+                lineNumber: 65
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "ProfileView justify-content-md-center mt-5",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 67
+                lineNumber: 66
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 68
+                lineNumber: 67
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "user-name",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 69
+                lineNumber: 68
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 70
+                lineNumber: 69
             },
             __self: this
         }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 71
+                lineNumber: 70
             },
             __self: this
         }, `${this.state.Username}`)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "user-email",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 73
+                lineNumber: 72
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 74
+                lineNumber: 73
             },
             __self: this
         }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 75
+                lineNumber: 74
             },
             __self: this
         }, `${this.state.Email}`)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "user-birthdate",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 77
+                lineNumber: 76
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 78
+                lineNumber: 77
             },
             __self: this
         }, "Birthdate: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 79
+                lineNumber: 78
             },
             __self: this
         }, `${this.state.Birthdate}`)), /*#__PURE__*/ _reactDefault.default.createElement("h4", {
             className: "mt-3",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 81
+                lineNumber: 80
             },
             __self: this
         }, "Your Favorites:")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
             md: "auto",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 83
+                lineNumber: 82
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -40372,13 +40449,13 @@ class ProfileView extends _reactDefault.default.Component {
             href: `/users/update/${this.props.user}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 84
+                lineNumber: 83
             },
             __self: this
         }, "Edit Profile"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 85
+                lineNumber: 84
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -40388,20 +40465,20 @@ class ProfileView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 86
+                lineNumber: 85
             },
             __self: this
         }, "Back"))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 89
+                lineNumber: 88
             },
             __self: this
         }, Favorites.map((film)=>{
             if (Favorites.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("p", {
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 91
+                    lineNumber: 90
                 },
                 __self: this
             }, "None yet!"));
@@ -40410,14 +40487,14 @@ class ProfileView extends _reactDefault.default.Component {
                 key: film._id,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 93
+                    lineNumber: 92
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
                 className: "mt-3",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 94
+                    lineNumber: 93
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
@@ -40426,26 +40503,26 @@ class ProfileView extends _reactDefault.default.Component {
                 src: film.ImagePath,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 95
+                    lineNumber: 94
                 },
                 __self: this
             }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 96
+                    lineNumber: 95
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
                 className: "card-title",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 97
+                    lineNumber: 96
                 },
                 __self: this
             }, film.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 98
+                    lineNumber: 97
                 },
                 __self: this
             }, film.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -40453,7 +40530,7 @@ class ProfileView extends _reactDefault.default.Component {
                 href: `/films/${film.Title}`,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 99
+                    lineNumber: 98
                 },
                 __self: this
             }, "Open"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -40465,7 +40542,7 @@ class ProfileView extends _reactDefault.default.Component {
                 ,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 100
+                    lineNumber: 99
                 },
                 __self: this
             }, "Remove")))));
@@ -40506,32 +40583,29 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
-var _col = require("react-bootstrap/Col");
-var _colDefault = parcelHelpers.interopDefault(_col);
-var _form = require("react-bootstrap/Form");
-var _formDefault = parcelHelpers.interopDefault(_form);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _reactBootstrap = require("react-bootstrap");
 var _updateProfileScss = require("./update-profile.scss");
 class UpdateProfile extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            Username: null,
-            Password: null,
-            Email: null,
-            Birthdate: null
+            Username: '',
+            Password: '',
+            Email: '',
+            Birthdate: '',
+            UsernameError: '',
+            PasswordError: '',
+            EmailError: '',
+            BirthdateError: ''
         };
     }
     componentDidMount() {
-        let accessToken = localStorage.getItem('token');
+        const accessToken = localStorage.getItem('token');
         if (accessToken !== null) this.getUser(accessToken);
     }
     getUser(token) {
-        let Username = localStorage.getItem('user');
-        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+        const user = localStorage.getItem('user');
+        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${user}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40542,168 +40616,243 @@ class UpdateProfile extends _reactDefault.default.Component {
                 Email: response.data.Email,
                 Birthdate: response.data.Birthdate
             });
+            console.log(response);
         });
     }
-    handleUpdate() {
-        this.setState;
-        e.preventDefault();
-        let Username = localStorage.getItem('user');
-        _axiosDefault.default.put(`https://moooviesapi.herokuapp.com/users/${Username}`, {
-            Username: Username,
-            Password: Password,
-            Email: Email,
-            Birthdate: Birthdate
+    handleUpdate(token) {
+        const user = localStorage.getItem('user');
+        let isValid = this.formValidation();
+        if (isValid) _axiosDefault.default.put(`https://moooviesapi.herokuapp.com/users/${user}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            Username: this.state.Username,
+            Password: this.state.Password,
+            Email: this.state.Email,
+            Birthdate: this.state.Birthdate
         }).then((response)=>{
             const data = response.data;
-            console.log(data);
-            window.open('/', '_self'); // so the page will open in the current tab
             alert("Update successful!");
+            console.log(data);
+        //  window.location.assign('https://moooviesapi.herokuapp.com/users/${this.state.Username}', '_self'); // so the page will open in the current tab
         }).catch((e)=>{
             console.log('Error updating the profile');
         });
     }
+    formValidation() {
+        const UsernameError = {
+        };
+        const PasswordError = {
+        };
+        const EmailError = {
+        };
+        const BirthdateError = {
+        };
+        let isValid = true;
+        if (this.state.Username.trim().length < 5) {
+            UsernameError.UsernameShort = "Username must be at least 5 characters";
+            isValid = false;
+        }
+        if (this.state.Password.trim().length < 5) {
+            PasswordError.PasswordShort = "Password must be at least 5 characters";
+            isValid = false;
+        }
+        if (!(this.state.Email && this.state.Email.includes(".") && this.state.Email.includes("@"))) {
+            EmailError.EmailNotValid = "That's not a valid email address";
+            isValid = false;
+        }
+        if (this.state.Birthdate === '') {
+            BirthdateError.BirthdateEmpty = "Please enter your birthdate";
+            isValid = false;
+        }
+        this.setState({
+            UsernameError: UsernameError,
+            PasswordError: PasswordError,
+            EmailError: EmailError,
+            BirthdateError: BirthdateError
+        });
+        return isValid;
+    }
     handleDelete() {
-        const token = localStorage.getItem('token');
-        let Username = localStorage.getItem('user');
-        _axiosDefault.default.delete(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+        const user = localStorage.getItem('user');
+        _axiosDefault.default.delete(`https://moooviesapi.herokuapp.com/users/${user}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then(()=>{
+            alert('Your profile has been deleted');
             localStorage.removeItem('user');
             localStorage.removeItem('token');
-            alert('Your account has been deleted.');
-            window.open(`/`, '_self');
-        }).catch((e)=>{
-            console.log(e);
+            window.location.replace('https://moooviesapi.herokuapp.com/register', '_self');
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    setItem(e) {
+        let { item , value  } = e.target;
+        this.setState({
+            [item]: value
         });
     }
     render() {
-        const { Username , Password , Email , Birthdate  } = this.props;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+        const { user  } = this.props;
+        const { UsernameError , PasswordError , EmailError , BirthdateError  } = this.state;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "ProfileForm justify-content-md-center",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 87
+                lineNumber: 129
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
             md: "auto",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 88
+                lineNumber: 130
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("p", {
             className: "mt-5",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 89
+                lineNumber: 131
             },
             __self: this
-        }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+        }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 90
+                lineNumber: 132
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
             controlId: "formUsername",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 91
+                lineNumber: 133
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 92
+                lineNumber: 134
             },
             __self: this
-        }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
             type: "text",
-            placeholder: "Username",
-            value: Username,
-            onChange: (e)=>setUsername(e.target.value)
+            placeholder: `${this.state.Username}`,
+            onChange: (e)=>this.setItem(e)
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 93
+                lineNumber: 135
             },
             __self: this
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        }), Object.keys(UsernameError).map((key)=>{
+            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                key: key,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                    lineNumber: 138
+                },
+                __self: this
+            }, UsernameError[key]));
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
             controlId: "formPassword",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 96
+                lineNumber: 145
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 97
+                lineNumber: 146
             },
             __self: this
-        }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
             type: "password",
-            placeholder: "Password",
-            value: Password,
-            onChange: (e)=>setPassword(e.target.value)
+            placeholder: "*****",
+            onChange: (e)=>this.setItem(e)
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 98
+                lineNumber: 147
             },
             __self: this
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        }), Object.keys(PasswordError).map((key)=>{
+            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                key: key,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                    lineNumber: 150
+                },
+                __self: this
+            }, PasswordError[key]));
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
             controlId: "formEmail",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 101
+                lineNumber: 157
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 102
+                lineNumber: 158
             },
             __self: this
-        }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
             type: "email",
-            placeholder: "Email",
-            value: Email,
-            onChange: (e)=>setEmail(e.target.value)
+            placeholder: `${this.state.Email}`,
+            onChange: (e)=>this.setItem(e)
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 103
+                lineNumber: 159
             },
             __self: this
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+        }), Object.keys(EmailError).map((key)=>{
+            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                key: key,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                    lineNumber: 162
+                },
+                __self: this
+            }, EmailError[key]));
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
             controlId: "formBirthdate",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 106
+                lineNumber: 169
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 107
+                lineNumber: 170
             },
             __self: this
-        }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+        }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
             type: "date",
-            placeholder: "00-00-0000",
-            value: Birthdate,
-            onChange: (e)=>setBirthdate(e.target.value)
+            placeholder: "",
+            onChange: (e)=>this.setItem(e)
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 108
+                lineNumber: 171
             },
             __self: this
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }), Object.keys(BirthdateError).map((key)=>{
+            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                key: key,
+                __source: {
+                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+                    lineNumber: 174
+                },
+                __self: this
+            }, BirthdateError[key]));
+        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             variant: "primary",
             type: "submit",
             className: "mt-2",
@@ -40711,16 +40860,16 @@ class UpdateProfile extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 111
+                lineNumber: 181
             },
             __self: this
         }, "Submit Update"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 112
+                lineNumber: 182
             },
             __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             variant: "primary",
             type: "submit",
             className: "mt-4",
@@ -40728,7 +40877,7 @@ class UpdateProfile extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 113
+                lineNumber: 183
             },
             __self: this
         }, "Delete Profile")))));
@@ -40748,6 +40897,6 @@ UpdateProfile.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-bootstrap":"4n7hB"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
 
 //# sourceMappingURL=index.06f5e6ae.js.map

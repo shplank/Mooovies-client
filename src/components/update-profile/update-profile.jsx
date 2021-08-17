@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import './update-profile.scss';
 
@@ -13,23 +10,27 @@ export class UpdateProfile extends React.Component {
     constructor() {
       super();
       this.state = {
-        Username: null,
-        Password: null,
-        Email: null,
-        Birthdate: null
+        Username: '',
+        Password: '',
+        Email: '',
+        Birthdate: '',
+        UsernameError: '',
+        PasswordError: '',
+        EmailError: '',
+        BirthdateError: ''
       }
     }
   
   componentDidMount() {
-    let accessToken = localStorage.getItem('token');
+    const accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
       this.getUser(accessToken);
     }
   }
   
   getUser(token) {
-    let Username = localStorage.getItem('user');
-    axios.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+    const user = localStorage.getItem('user');
+    axios.get(`https://moooviesapi.herokuapp.com/users/${user}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then((response) => {
@@ -39,49 +40,90 @@ export class UpdateProfile extends React.Component {
         Email: response.data.Email,
         Birthdate: response.data.Birthdate,
       });
+      console.log(response)
     });
   }
 
-  handleUpdate() {
-    this.setState
-    e.preventDefault();
-    let Username = localStorage.getItem('user');
-    axios.put(`https://moooviesapi.herokuapp.com/users/${Username}`, {
-      Username: Username,
-      Password: Password,
-      Email: Email,
-      Birthdate: Birthdate
+  handleUpdate(token) {
+    const user = localStorage.getItem('user');
+    let isValid = this.formValidation();
+    if (isValid) {
+    axios.put(`https://moooviesapi.herokuapp.com/users/${user}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      Username: this.state.Username,
+      Password: this.state.Password,
+      Email: this.state.Email,
+      Birthdate: this.state.Birthdate
     })
     .then(response => {
       const data = response.data;
-      console.log(data);
-      window.open('/', '_self'); // so the page will open in the current tab
       alert("Update successful!");
+      console.log(data);
+    //  window.location.assign('https://moooviesapi.herokuapp.com/users/${this.state.Username}', '_self'); // so the page will open in the current tab
     })
     .catch(e => {
       console.log('Error updating the profile')
     });
+  }}
+
+  formValidation() {
+    const UsernameError = {};
+    const PasswordError = {};
+    const EmailError = {};
+    const BirthdateError = {};
+    let isValid = true;
+
+    if (this.state.Username.trim().length < 5) {
+      UsernameError.UsernameShort = "Username must be at least 5 characters";
+      isValid = false;
+    }
+    if (this.state.Password.trim().length < 5) {
+      PasswordError.PasswordShort = "Password must be at least 5 characters";
+      isValid = false;
+    }
+    if (!(this.state.Email && this.state.Email.includes(".") && this.state.Email.includes("@"))) {
+      EmailError.EmailNotValid = "That's not a valid email address";
+      isValid = false;
+    }
+    if (this.state.Birthdate === '') {
+      BirthdateError.BirthdateEmpty = "Please enter your birthdate";
+      isValid = false;
+    }
+    this.setState({
+    UsernameError: UsernameError,
+    PasswordError: PasswordError,
+    EmailError: EmailError,
+    BirthdateError: BirthdateError
+    })
+    return isValid;
   };
 
   handleDelete() {
-    const token = localStorage.getItem('token');
-    let Username = localStorage.getItem('user');
-    axios.delete(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+    const user = localStorage.getItem('user');
+    axios.delete(`https://moooviesapi.herokuapp.com/users/${user}`, {
     headers: { Authorization: `Bearer ${token}` },
     })
     .then(() => {
+      alert('Your profile has been deleted');
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-      alert('Your account has been deleted.');
-      window.open(`/`, '_self');
+      window.location.replace('https://moooviesapi.herokuapp.com/register', '_self');
     })
-    .catch((e) => {
-      console.log(e);
+    .catch(function (error) {
+      console.log(error);
     });
-}
+  }
+
+  setItem(e) {
+    let { item, value } = e.target;
+    this.setState({
+      [item]: value
+    })
+  }
 
   render() {
-    const { Username, Password, Email, Birthdate } = this.props;
+    const { user } = this.props;
+    const { UsernameError, PasswordError, EmailError, BirthdateError } = this.state;
 
     return (
     <Row className="ProfileForm justify-content-md-center">
@@ -90,22 +132,50 @@ export class UpdateProfile extends React.Component {
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" placeholder="Username" value={Username} onChange={e => setUsername(e.target.value)} />
+            <Form.Control type="text" placeholder={`${this.state.Username}`} onChange={(e) => this.setItem(e)} />
+            {Object.keys(UsernameError).map((key) => {
+              return (
+              <div key={key}>
+                {UsernameError[key]}
+              </div>
+              );
+            })}
           </Form.Group>
 
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" value={Password} onChange={e => setPassword(e.target.value)} />
+            <Form.Control type="password" placeholder="*****" onChange={(e) => this.setItem(e)} />
+            {Object.keys(PasswordError).map((key) => {
+              return (
+              <div key={key}>
+                {PasswordError[key]}
+              </div>
+              );
+            })}
           </Form.Group>
 
           <Form.Group controlId="formEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Email" value={Email} onChange={e => setEmail(e.target.value)} />
+            <Form.Control type="email" placeholder={`${this.state.Email}`} onChange={(e) => this.setItem(e)} />
+            {Object.keys(EmailError).map((key) => {
+              return (
+              <div key={key}>
+                {EmailError[key]}
+              </div>
+              );
+            })}
           </Form.Group>
 
           <Form.Group controlId="formBirthdate">
             <Form.Label>Birthdate</Form.Label>
-            <Form.Control type="date" placeholder="00-00-0000" value={Birthdate} onChange={e => setBirthdate(e.target.value)} />
+            <Form.Control type="date" placeholder="" onChange={(e) => this.setItem(e)} />
+            {Object.keys(BirthdateError).map((key) => {
+              return (
+              <div key={key}>
+                {BirthdateError[key]}
+              </div>
+              );
+            })}
           </Form.Group>
 
             <Button variant="primary" type="submit" className="mt-2" onClick={() => this.handleUpdate()}>Submit Update</Button>
