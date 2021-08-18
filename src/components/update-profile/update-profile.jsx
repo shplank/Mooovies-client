@@ -44,22 +44,24 @@ export class UpdateProfile extends React.Component {
     });
   }
 
-  handleUpdate(token) {
+  handleUpdate() {
     const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     let isValid = this.formValidation();
     if (isValid) {
-    axios.put(`https://moooviesapi.herokuapp.com/users/update/${user}`, {
-      headers: { Authorization: `Bearer ${token}` },
+    axios.put(`https://moooviesapi.herokuapp.com/users/update/${user}`, 
+    {
       Username: this.state.Username,
       Password: this.state.Password,
       Email: this.state.Email,
       Birthdate: this.state.Birthdate
-    })
-    .then(response => {
+    }, { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((response) => {
       const data = response.data;
       alert("Update successful!");
       console.log(data);
-      window.location.assign(`/users/${user}`, '_self'); // so the page will open in the current tab
+    //  window.location.assign(`/users/${user}`, '_self'); // so the page will open in the current tab
     })
     .catch(e => {
       console.log('Error updating the profile')
@@ -98,15 +100,16 @@ export class UpdateProfile extends React.Component {
     return isValid;
   };
 
-  handleDelete() {
+  handleDelete(e) {
+    e.preventDefault();
     const user = localStorage.getItem('user');
-    axios.delete(`https://moooviesapi.herokuapp.com/users/${user}`, {
-    headers: { Authorization: `Bearer ${token}` },
-    })
+    const token = localStorage.getItem('token');
+    axios.delete(`https://moooviesapi.herokuapp.com/users/${user}`, 
+      { headers: { Authorization: `Bearer ${token}` } } )
     .then(() => {
-      alert('Your profile has been deleted');
       localStorage.removeItem('user');
       localStorage.removeItem('token');
+      alert('Your profile has been deleted');
       window.location.replace('/register', '_self');
     })
     .catch(function (error) {
@@ -132,7 +135,7 @@ export class UpdateProfile extends React.Component {
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" placeholder={`${this.state.Username}`} onChange={(e) => this.setItem(e)} />
+            <Form.Control type="text" placeholder={user} onChange={(e) => this.setItem(e)} />
             {Object.keys(UsernameError).map((key) => {
               return (
               <div key={key}>
@@ -180,7 +183,7 @@ export class UpdateProfile extends React.Component {
 
             <Button variant="primary" type="submit" className="mt-2" onClick={() => this.handleUpdate()}>Submit Update</Button>
           <br/>
-            <Button variant="primary" type="submit" className="mt-4" onClick={() => this.handleDelete()}>Delete Profile</Button>
+            <Button variant="primary" type="submit" className="mt-4" onClick={(e) => this.handleDelete(e)}>Delete Profile</Button>
 
         </Form>
       </Col>
