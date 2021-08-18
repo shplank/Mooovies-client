@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import logo from 'url:./welcome-logo.png';
 
@@ -130,6 +128,7 @@ export function RegistrationView(props) {
           <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
 
         </Form>
+        <p className="mt-3">If you already have an account, log in <Link to={`/`}>here</Link>.</p>
       </Col>
     </Row>
   );

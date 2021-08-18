@@ -40,7 +40,7 @@ export class UpdateProfile extends React.Component {
         Email: response.data.Email,
         Birthdate: response.data.Birthdate,
       });
-      console.log(response)
+      console.log(response.data)
     });
   }
 
@@ -48,7 +48,7 @@ export class UpdateProfile extends React.Component {
     const user = localStorage.getItem('user');
     let isValid = this.formValidation();
     if (isValid) {
-    axios.put(`https://moooviesapi.herokuapp.com/users/${user}`, {
+    axios.put(`https://moooviesapi.herokuapp.com/users/update/${user}`, {
       headers: { Authorization: `Bearer ${token}` },
       Username: this.state.Username,
       Password: this.state.Password,
@@ -59,7 +59,7 @@ export class UpdateProfile extends React.Component {
       const data = response.data;
       alert("Update successful!");
       console.log(data);
-    //  window.location.assign('https://moooviesapi.herokuapp.com/users/${this.state.Username}', '_self'); // so the page will open in the current tab
+      window.location.assign(`/users/${user}`, '_self'); // so the page will open in the current tab
     })
     .catch(e => {
       console.log('Error updating the profile')
@@ -107,7 +107,7 @@ export class UpdateProfile extends React.Component {
       alert('Your profile has been deleted');
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-      window.location.replace('https://moooviesapi.herokuapp.com/register', '_self');
+      window.location.replace('/register', '_self');
     })
     .catch(function (error) {
       console.log(error);
@@ -168,7 +168,7 @@ export class UpdateProfile extends React.Component {
 
           <Form.Group controlId="formBirthdate">
             <Form.Label>Birthdate</Form.Label>
-            <Form.Control type="date" placeholder="" onChange={(e) => this.setItem(e)} />
+            <Form.Control type="date" placeholder={`${this.state.Birthdate}`} onChange={(e) => this.setItem(e)} />
             {Object.keys(BirthdateError).map((key) => {
               return (
               <div key={key}>

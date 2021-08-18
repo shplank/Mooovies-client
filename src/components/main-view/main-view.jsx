@@ -36,7 +36,6 @@ export class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getFilms(accessToken);
-    //  this.getUsers(accessToken);
     }
   }
 
@@ -50,21 +49,6 @@ export class MainView extends React.Component {
       /* Sets films state with array of films */
       this.setState({
         films: response.data
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
-  /* getUsers(token) {
-    axios.get('https://moooviesapi.herokuapp.com/users', {
-      headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-      /* Sets users state with array of users */
-  /*    this.setState({
-        users: response.data
       });
     })
     .catch(function (error) {
@@ -131,7 +115,6 @@ export class MainView extends React.Component {
             if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
-                   
             if (films.length === 0) return <Spinner animation="border" role="status" className="mt-5" />; 
             return films.map(m => (
               <Col sm={5} md={3} key={m._id} className="mt-4">
@@ -152,7 +135,6 @@ export class MainView extends React.Component {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            if (films.length === 0) return <Spinner animation="border" role="status" className="mt-5" />;
             return <Col md={8}>
                 <ProfileView user={user} films={films}
                   onBackClick={() => history.goBack()} />
@@ -165,8 +147,7 @@ export class MainView extends React.Component {
             </Col>
             if (user)
             return <Col>
-              <UpdateProfile onLoggedIn={user => this.onLoggedIn(user)}
-                film={films} user={user}
+              <UpdateProfile user={user} film={films}
                 onBackClick={() => history.goBack()} />
             </Col>
           }} />
