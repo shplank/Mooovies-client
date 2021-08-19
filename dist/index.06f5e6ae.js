@@ -22276,7 +22276,6 @@ class MainView extends _reactDefault.default.Component {
                 })));
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateProfile, {
                     user: user,
-                    film: films,
                     onBackClick: ()=>history.goBack()
                 })));
             },
@@ -40571,97 +40570,77 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _updateProfileScss = require("./update-profile.scss");
-class UpdateProfile extends _reactDefault.default.Component {
-    constructor(){
-        super();
-        this.state = {
-            Username: '',
-            Password: '',
-            Email: '',
-            Birthdate: '',
-            UsernameError: '',
-            PasswordError: '',
-            EmailError: '',
-            BirthdateError: ''
-        };
-    }
-    componentDidMount() {
-        const accessToken = localStorage.getItem('token');
-        if (accessToken !== null) this.getUser(accessToken);
-    }
-    getUser(token) {
-        const user = localStorage.getItem('user');
-        _axiosDefault.default.get(`https://moooviesapi.herokuapp.com/users/${user}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            this.setState({
-                Username: response.data.Username,
-                Password: response.data.Password,
-                Email: response.data.Email,
-                Birthdate: response.data.Birthdate
-            });
-            console.log(response.data);
-        });
-    }
-    handleUpdate() {
+var _s = $RefreshSig$();
+function UpdateProfile(props) {
+    _s();
+    const [Username, setUsername] = _react.useState('');
+    const [Password, setPassword] = _react.useState('');
+    const [Email, setEmail] = _react.useState('');
+    const [Birthdate, setBirthdate] = _react.useState('');
+    const [UsernameError, setUsernameError] = _react.useState({
+    });
+    const [PasswordError, setPasswordError] = _react.useState({
+    });
+    const [EmailError, setEmailError] = _react.useState({
+    });
+    const [BirthdateError, setBirthdateError] = _react.useState({
+    });
+    const handleUpdate = (e)=>{
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        let isValid = this.formValidation();
+        e.preventDefault();
+        let isValid = formValidation();
         if (isValid) _axiosDefault.default.put(`https://moooviesapi.herokuapp.com/users/update/${user}`, {
-            Username: this.state.Username,
-            Password: this.state.Password,
-            Email: this.state.Email,
-            Birthdate: this.state.Birthdate
+            Username: Username,
+            Password: Password,
+            Email: Email,
+            Birthdate: Birthdate
         }, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
             const data = response.data;
-            alert("Update successful!");
             console.log(data);
-        //  window.location.assign(`/users/${user}`, '_self'); // so the page will open in the current tab
-        }).catch((e)=>{
-            console.log('Error updating the profile');
+            window.open('/', '_self'); // so the page will open in the current tab
+            alert('Update successful!');
+        }).catch((e1)=>{
+            console.log('Error updating your profile');
         });
-    }
-    formValidation() {
-        const UsernameError = {
+    };
+    const formValidation = ()=>{
+        const UsernameError1 = {
         };
-        const PasswordError = {
+        const PasswordError1 = {
         };
-        const EmailError = {
+        const EmailError1 = {
         };
-        const BirthdateError = {
+        const BirthdateError1 = {
         };
         let isValid = true;
-        if (this.state.Username.trim().length < 5) {
-            UsernameError.UsernameShort = "Username must be at least 5 characters";
+        if (Username.trim().length < 5) {
+            UsernameError1.UsernameShort = "Username must be at least 5 characters";
             isValid = false;
         }
-        if (this.state.Password.trim().length < 5) {
-            PasswordError.PasswordShort = "Password must be at least 5 characters";
+        if (Password.trim().length < 5) {
+            PasswordError1.PasswordShort = "Password must be at least 5 characters";
             isValid = false;
         }
-        if (!(this.state.Email && this.state.Email.includes(".") && this.state.Email.includes("@"))) {
-            EmailError.EmailNotValid = "That's not a valid email address";
+        if (!(Email && Email.includes(".") && Email.includes("@"))) {
+            EmailError1.EmailNotValid = "That's not a valid email address";
             isValid = false;
         }
-        if (this.state.Birthdate === '') {
-            BirthdateError.BirthdateEmpty = "Please enter your birthdate";
+        if (Birthdate === '') {
+            BirthdateError1.BirthdateEmpty = "Please enter your birthdate";
             isValid = false;
         }
-        this.setState({
-            UsernameError: UsernameError,
-            PasswordError: PasswordError,
-            EmailError: EmailError,
-            BirthdateError: BirthdateError
-        });
+        setUsernameError(UsernameError1);
+        setPasswordError(PasswordError1);
+        setEmailError(EmailError1);
+        setBirthdateError(BirthdateError1);
         return isValid;
-    }
-    handleDelete(e) {
+    };
+    const handleDelete = (e)=>{
         e.preventDefault();
         const user = localStorage.getItem('user');
         const token = localStorage.getItem('token');
@@ -40677,202 +40656,196 @@ class UpdateProfile extends _reactDefault.default.Component {
         }).catch(function(error) {
             console.log(error);
         });
-    }
-    setItem(e) {
-        let { item , value  } = e.target;
-        this.setState({
-            [item]: value
-        });
-    }
-    render() {
-        const { user  } = this.props;
-        const { UsernameError , PasswordError , EmailError , BirthdateError  } = this.state;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
-            className: "ProfileForm justify-content-md-center",
+    };
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        className: "UpdateForm justify-content-md-center",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 93
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+        md: "auto",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 94
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        className: "mt-5",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 95
+        },
+        __self: this
+    }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 96
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formUsername",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 97
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 98
+        },
+        __self: this
+    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "text",
+        placeholder: "Username",
+        value: Username,
+        onChange: (e)=>setUsername(e.target.value)
+        ,
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 99
+        },
+        __self: this
+    }), Object.keys(UsernameError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 132
+                lineNumber: 102
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-            md: "auto",
+        }, UsernameError[key]));
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formPassword",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 109
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 110
+        },
+        __self: this
+    }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "password",
+        placeholder: "Password",
+        value: Password,
+        onChange: (e)=>setPassword(e.target.value)
+        ,
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 111
+        },
+        __self: this
+    }), Object.keys(PasswordError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 133
+                lineNumber: 114
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("p", {
-            className: "mt-5",
+        }, PasswordError[key]));
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formEmail",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 121
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 122
+        },
+        __self: this
+    }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "email",
+        placeholder: "Email",
+        value: Email,
+        onChange: (e)=>setEmail(e.target.value)
+        ,
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 123
+        },
+        __self: this
+    }), Object.keys(EmailError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 134
+                lineNumber: 126
             },
             __self: this
-        }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 135
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
-            controlId: "formUsername",
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 136
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 137
-            },
-            __self: this
-        }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
-            type: "text",
-            placeholder: user,
-            onChange: (e)=>this.setItem(e)
-            ,
+        }, EmailError[key]));
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formBirthdate",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 133
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 134
+        },
+        __self: this
+    }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "date",
+        placeholder: "00-00-0000",
+        value: Birthdate,
+        onChange: (e)=>setBirthdate(e.target.value)
+        ,
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 135
+        },
+        __self: this
+    }), Object.keys(BirthdateError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
                 lineNumber: 138
             },
             __self: this
-        }), Object.keys(UsernameError).map((key)=>{
-            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: key,
-                __source: {
-                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                    lineNumber: 141
-                },
-                __self: this
-            }, UsernameError[key]));
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
-            controlId: "formPassword",
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 148
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 149
-            },
-            __self: this
-        }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
-            type: "password",
-            placeholder: "*****",
-            onChange: (e)=>this.setItem(e)
-            ,
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 150
-            },
-            __self: this
-        }), Object.keys(PasswordError).map((key)=>{
-            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: key,
-                __source: {
-                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                    lineNumber: 153
-                },
-                __self: this
-            }, PasswordError[key]));
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
-            controlId: "formEmail",
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 160
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 161
-            },
-            __self: this
-        }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
-            type: "email",
-            placeholder: `${this.state.Email}`,
-            onChange: (e)=>this.setItem(e)
-            ,
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 162
-            },
-            __self: this
-        }), Object.keys(EmailError).map((key)=>{
-            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: key,
-                __source: {
-                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                    lineNumber: 165
-                },
-                __self: this
-            }, EmailError[key]));
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
-            controlId: "formBirthdate",
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 172
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 173
-            },
-            __self: this
-        }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
-            type: "date",
-            placeholder: `${this.state.Birthdate}`,
-            onChange: (e)=>this.setItem(e)
-            ,
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 174
-            },
-            __self: this
-        }), Object.keys(BirthdateError).map((key)=>{
-            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: key,
-                __source: {
-                    fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                    lineNumber: 177
-                },
-                __self: this
-            }, BirthdateError[key]));
-        })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-            variant: "primary",
-            type: "submit",
-            className: "mt-2",
-            onClick: ()=>this.handleUpdate()
-            ,
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 184
-            },
-            __self: this
-        }, "Submit Update"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 185
-            },
-            __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-            variant: "primary",
-            type: "submit",
-            className: "mt-4",
-            onClick: (e)=>this.handleDelete(e)
-            ,
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 186
-            },
-            __self: this
-        }, "Delete Profile")))));
-    }
+        }, BirthdateError[key]));
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+        variant: "primary",
+        type: "submit",
+        className: "mt-2",
+        onClick: handleUpdate,
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 145
+        },
+        __self: this
+    }, "Submit Update"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 146
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+        variant: "primary",
+        type: "submit",
+        className: "mt-4",
+        onClick: handleDelete,
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 147
+        },
+        __self: this
+    }, "Delete Profile")))));
 }
+_s(UpdateProfile, "HXkBgY2IqE8Vqd1hhA08pkwokKk=");
+_c = UpdateProfile;
 UpdateProfile.propTypes = {
     Username: _propTypesDefault.default.shape({
         Username: _propTypesDefault.default.string.isRequired,
@@ -40881,6 +40854,8 @@ UpdateProfile.propTypes = {
         Birthdate: _propTypesDefault.default.string
     })
 };
+var _c;
+$RefreshReg$(_c, "UpdateProfile");
 
   helpers.postlude(module);
 } finally {

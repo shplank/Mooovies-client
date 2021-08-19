@@ -147,7 +147,7 @@ export class MainView extends React.Component {
             </Col>
             if (user)
             return <Col>
-              <UpdateProfile user={user} film={films}
+              <UpdateProfile user={user}
                 onBackClick={() => history.goBack()} />
             </Col>
           }} />
