@@ -75,7 +75,7 @@ export class ProfileView extends React.Component {
           </div>
           <div className="user-birthdate">
             <span className="label">Birthdate: </span>
-            <span className="value">{`${this.state.Birthdate}`}</span>
+            <span className="value" type="date" dateFormat="MM/dd/yyyy">{`${this.state.Birthdate}`}</span>
           </div>
           <h4 className="mt-3">Your Favorites:</h4>
         </Col>

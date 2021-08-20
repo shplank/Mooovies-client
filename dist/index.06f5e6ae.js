@@ -22157,7 +22157,7 @@ class MainView extends _reactDefault.default.Component {
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
             src: _moooviesLogoPngDefault.default,
             alt: "Mooovies logo",
-            width: "50",
+            width: "45",
             className: "d-inline-block align-top",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
@@ -39454,7 +39454,7 @@ function RegistrationView(props) {
         __self: this
     }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
         type: "date",
-        placeholder: "00-00-0000",
+        dateFormat: "MM/dd/yyyy",
         value: Birthdate,
         onChange: (e)=>setBirthdate(e.target.value)
         ,
@@ -40410,6 +40410,8 @@ class ProfileView extends _reactDefault.default.Component {
             __self: this
         }, "Birthdate: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
+            type: "date",
+            dateFormat: "MM/dd/yyyy",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 78
