@@ -7,15 +7,15 @@ import './film-card.scss';
 
 export class FilmCard extends React.Component {
   render() {
-    const { film, onFilmClick } = this.props;
+    const { film } = this.props;
 
     return (
-      <Card className="mt-5">
+      <Card className="mt-3">
         <Card.Img className="card-image" variant="top" src={film.ImagePath} />
         <Card.Body>
           <Card.Title className="card-title">{film.Title}</Card.Title>
           <Card.Text>{film.ReleaseYear}</Card.Text>
-          <Button className="open-button" onClick={() => onFilmClick(film)} variant="link">Open</Button>
+          <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
         </Card.Body>
       </Card>
     );
@@ -27,6 +27,5 @@ FilmCard.propTypes = {
     Title: PropTypes.string.isRequired,
     ReleaseYear: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired
-  }).isRequired,
-  onFilmClick: PropTypes.func.isRequired
+  }).isRequired
 };

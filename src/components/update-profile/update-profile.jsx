@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from "react-router-dom";
 
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
-import logo from 'url:./welcome-logo.png';
+import './update-profile.scss';
 
-import './registration-view.scss';
-
-export function RegistrationView(props) {
+export function UpdateProfile(props) {
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
   const [Email, setEmail] = useState('');
@@ -19,24 +16,28 @@ export function RegistrationView(props) {
   const [EmailError, setEmailError] = useState({});
   const [BirthdateError, setBirthdateError] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
     e.preventDefault();
     let isValid = formValidation();
     if (isValid) {
-    axios.post('https://moooviesapi.herokuapp.com/register', {
+    axios.put(`https://moooviesapi.herokuapp.com/users/update/${user}`, {
       Username: Username,
       Password: Password,
       Email: Email,
       Birthdate: Birthdate
-    })
+    },
+    { headers: { Authorization: `Bearer ${token}` } }
+    )
     .then(response => {
       const data = response.data;
       console.log(data);
       window.open('/', '_self'); // so the page will open in the current tab
-      alert("Registration successful!");
+      alert('Update successful!');
     })
     .catch(e => {
-      console.log('Error registering the user')
+      console.log('Error updating your profile')
     });
   }
   };
@@ -71,13 +72,29 @@ export function RegistrationView(props) {
     return isValid;
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const user = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    axios.delete(`https://moooviesapi.herokuapp.com/users/${user}`, 
+      { headers: { Authorization: `Bearer ${token}` } } )
+    .then(() => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      alert('Your profile has been deleted');
+      window.location.replace('/register', '_self');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return (
-    <Row className="RegistrationForm justify-content-md-center">
+    <Row className="UpdateForm justify-content-md-center">
       <Col md="auto">
-        <img width={300} src={logo} className="mt-3" alt="Mooovies logo" />
-        <p className="mt-3">Create an account:</p>
+        <p className="mt-5">Update your profile:</p>
         <Form>
-          <Form.Group controlId="formUsername">
+        <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" placeholder="Username" value={Username} onChange={e => setUsername(e.target.value)} />
             {Object.keys(UsernameError).map((key) => {
@@ -125,20 +142,22 @@ export function RegistrationView(props) {
             })}
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+            <Button variant="primary" type="submit" className="mt-2" onClick={handleUpdate}>Submit Update</Button>
+          <br/>
+            <Button variant="primary" type="submit" className="mt-4" onClick={handleDelete}>Delete Profile</Button>
 
         </Form>
-        <p className="mt-3">If you already have an account, log in <Link to={`/`}>here</Link>.</p>
       </Col>
     </Row>
   );
 }
 
-RegistrationView.propTypes = {
-  user: PropTypes.shape({
+
+UpdateProfile.propTypes = {
+  Username: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string.isRequired
+    Birthdate: PropTypes.string,
   }),
 };
