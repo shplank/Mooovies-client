@@ -22157,7 +22157,7 @@ class MainView extends _reactDefault.default.Component {
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
             src: _moooviesLogoPngDefault.default,
             alt: "Mooovies logo",
-            width: "45",
+            width: "50",
             className: "d-inline-block align-top",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
@@ -38967,7 +38967,7 @@ function LoginView(props) {
             lineNumber: 40
         },
         __self: this
-    }, "Please log into your account:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+    }, "Please log into your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 41
@@ -39037,7 +39037,7 @@ function LoginView(props) {
             lineNumber: 55
         },
         __self: this
-    }, "Or create an account ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+    }, "Or create a profile ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
         to: `/register`,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
@@ -39334,7 +39334,7 @@ function RegistrationView(props) {
             lineNumber: 78
         },
         __self: this
-    }, "Create an account:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+    }, "Create a profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 79
@@ -39488,7 +39488,7 @@ function RegistrationView(props) {
             lineNumber: 131
         },
         __self: this
-    }, "If you already have an account, log in ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+    }, "If you already have a profile, log in ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
         to: `/`,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
@@ -40671,30 +40671,37 @@ function UpdateProfile(props) {
             lineNumber: 94
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("p", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
         className: "mt-5",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
             lineNumber: 95
         },
         __self: this
-    }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+    }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        classname: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
             lineNumber: 96
+        },
+        __self: this
+    }, "(Please fill in all fields)"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
+            lineNumber: 97
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 97
+            lineNumber: 98
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 98
+            lineNumber: 99
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -40705,7 +40712,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 99
+            lineNumber: 100
         },
         __self: this
     }), Object.keys(UsernameError).map((key)=>{
@@ -40713,7 +40720,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 102
+                lineNumber: 103
             },
             __self: this
         }, UsernameError[key]));
@@ -40721,13 +40728,13 @@ function UpdateProfile(props) {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 109
+            lineNumber: 110
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 110
+            lineNumber: 111
         },
         __self: this
     }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -40738,7 +40745,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 111
+            lineNumber: 112
         },
         __self: this
     }), Object.keys(PasswordError).map((key)=>{
@@ -40746,7 +40753,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 114
+                lineNumber: 115
             },
             __self: this
         }, PasswordError[key]));
@@ -40754,13 +40761,13 @@ function UpdateProfile(props) {
         controlId: "formEmail",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 121
+            lineNumber: 122
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 122
+            lineNumber: 123
         },
         __self: this
     }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -40771,7 +40778,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 123
+            lineNumber: 124
         },
         __self: this
     }), Object.keys(EmailError).map((key)=>{
@@ -40779,7 +40786,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 126
+                lineNumber: 127
             },
             __self: this
         }, EmailError[key]));
@@ -40787,13 +40794,13 @@ function UpdateProfile(props) {
         controlId: "formBirthdate",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 133
+            lineNumber: 134
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 134
+            lineNumber: 135
         },
         __self: this
     }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -40804,7 +40811,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 135
+            lineNumber: 136
         },
         __self: this
     }), Object.keys(BirthdateError).map((key)=>{
@@ -40812,7 +40819,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 138
+                lineNumber: 139
             },
             __self: this
         }, BirthdateError[key]));
@@ -40823,13 +40830,13 @@ function UpdateProfile(props) {
         onClick: handleUpdate,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 145
+            lineNumber: 146
         },
         __self: this
     }, "Submit Update"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 146
+            lineNumber: 147
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -40839,7 +40846,7 @@ function UpdateProfile(props) {
         onClick: handleDelete,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 147
+            lineNumber: 148
         },
         __self: this
     }, "Delete Profile")))));

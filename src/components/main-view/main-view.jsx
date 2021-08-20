@@ -96,7 +96,7 @@ export class MainView extends React.Component {
         <Navbar className="navbar" bg="white" expand="md" fixed="top">
           <Container>
             <Navbar.Brand href={`/`}>
-              <img src={logo} alt="Mooovies logo" width="45" className="d-inline-block align-top" />
+              <img src={logo} alt="Mooovies logo" width="50" className="d-inline-block align-top" />
               {' '}
               Mooovies
             </Navbar.Brand>

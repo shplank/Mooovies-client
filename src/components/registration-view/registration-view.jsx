@@ -75,7 +75,7 @@ export function RegistrationView(props) {
     <Row className="RegistrationForm justify-content-md-center">
       <Col md="auto">
         <img width={300} src={logo} className="mt-3" alt="Mooovies logo" />
-        <p className="mt-3">Create an account:</p>
+        <p className="mt-3">Create a profile:</p>
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
@@ -128,7 +128,7 @@ export function RegistrationView(props) {
           <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
 
         </Form>
-        <p className="mt-3">If you already have an account, log in <Link to={`/`}>here</Link>.</p>
+        <p className="mt-3">If you already have a profile, log in <Link to={`/`}>here</Link>.</p>
       </Col>
     </Row>
   );

@@ -92,7 +92,8 @@ export function UpdateProfile(props) {
   return (
     <Row className="UpdateForm justify-content-md-center">
       <Col md="auto">
-        <p className="mt-5">Update your profile:</p>
+        <h5 className="mt-5">Update your profile:</h5>
+        <p classname="mt-3">(Please fill in all fields)</p>
         <Form>
         <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>

@@ -37,7 +37,7 @@ export function LoginView(props) {
     <Row className="LoginForm justify-content-md-center">
       <Col md="auto">
         <img width={300} src={logo} className="mt-3" alt="Mooovies logo" />
-        <p className="mt-3">Please log into your account:</p>
+        <p className="mt-3">Please log into your profile:</p>
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
@@ -52,7 +52,7 @@ export function LoginView(props) {
             Submit
           </Button>
       </Form>
-        <p className="mt-3">Or create an account <Link to={`/register`}>here</Link>.</p>
+        <p className="mt-3">Or create a profile <Link to={`/register`}>here</Link>.</p>
       </Col>
     </Row>
   );
