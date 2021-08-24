@@ -29,25 +29,25 @@ export class FilmView extends React.Component {
 
     return (
       <Media className="mt-5">
-        <img className="film-view" className="mr-3" src={film.ImagePath} alt="film poster" width={220} />
+        <img className="film-view" className="mr-3" src={film.ImagePath} alt="film poster" width={300} />
         <Media.Body className="film-info pl-3 my-auto">
           <h5 className="film-title">
             <span className="label">Title: </span>
             <span className="value">{film.Title}</span>
           </h5>
-          <div className="film-year">
+          <div className="film-year mt-3">
             <span className="label">Release Year: </span>
             <span className="value">{film.ReleaseYear}</span>
           </div>
-          <div className="film-blurb">
+          <div className="film-blurb mt-3">
             <span className="label">Description: </span>
             <span className="value">{film.Description}</span>
           </div>
           <div>
             <span className="value">
-            <span className="label">Genre:</span>
+              <span className="label">Genre:</span>
               <Link to={`/Genre/${film.Genre._id}`}>
-                <Button variant="link">{film.Genre.Name}</Button>
+                <Button className="mt-1 mb-2" variant="link">{film.Genre.Name}</Button>
               </Link>
             </span>
           </div>
@@ -55,15 +55,15 @@ export class FilmView extends React.Component {
             <span className="value">
               <span className="label">Director:</span>
               <Link to={`/Director/${film.Director._id}`}>
-                <Button variant="link">{film.Director.Name}</Button>
+                <Button className="mt-1 mb-2" variant="link">{film.Director.Name}</Button>
               </Link>
             </span>
           </div>
           <div>
-            <Button className="fav-button" value={film._id} onClick={(e) => this.addFavorite(e, film)}>Add to Favorites</Button>
+            <Button className="mt-2" value={film._id} onClick={(e) => this.addFavorite(e, film)}>Add to Favorites</Button>
           </div>
           <div>
-            <Button className="mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
+            <Button className="mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
           </div>
         </Media.Body>
       </Media>

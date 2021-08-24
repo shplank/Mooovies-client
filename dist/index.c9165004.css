@@ -21,6 +21,27 @@ Button:active {
   color: #222;
   border-color: #000;
 }
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap");
+.card-image {
+  max-height: 375px;
+}
+.card-title {
+  font-family: "Commissioner", sans-serif;
+  font-weight: 700;
+}
+Button {
+  background-color: #ffbebe;
+  color: #000;
+  border-color: #000;
+}
+Button:hover,
+Button:focus,
+Button:active,
+Button:after {
+  background-color: #ffcece;
+  color: #222;
+  border-color: #000;
+}
 .LoginForm {
   margin: auto;
   min-width: 300px;
@@ -59,27 +80,6 @@ Button {
 Button:hover,
 Button:focus,
 Button:active {
-  background-color: #ffcece;
-  color: #222;
-  border-color: #000;
-}
-@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;700&display=swap");
-.card-image {
-  max-height: 375px;
-}
-.card-title {
-  font-family: "Commissioner", sans-serif;
-  font-weight: 700;
-}
-Button {
-  background-color: #ffbebe;
-  color: #000;
-  border-color: #000;
-}
-Button:hover,
-Button:focus,
-Button:active,
-Button:after {
   background-color: #ffcece;
   color: #222;
   border-color: #000;

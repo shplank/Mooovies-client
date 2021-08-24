@@ -15,17 +15,17 @@ function FilmsList(props) {
     let filteredFilms = films;
 
     if (visibilityFilter !== '') {
-        filteredFilms = films.filter(m => m.visibilityFilter.toLowerCase().includes(visibilityFilter.toLowerCase()));
+        filteredFilms = films.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
     }
 
     if (!films) return <div className="main-view" />;
     
     return <>
-    <Col md={12} style={{ margin: '1em' }}>
+    <Col md={12} className="mt-5" style={{ margin: '1em' }}>
       <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     </Col>
     {filteredFilms.map(m => (
-        <Col sm={5} md={3} key={m._id} className="mt-4">
+        <Col sm={5} md={3} key={m._id} >
             <FilmCard film={m} />
         </Col>
     ))}

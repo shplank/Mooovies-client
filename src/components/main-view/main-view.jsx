@@ -11,11 +11,10 @@ import logo from 'url:./MoooviesLogo.png';
 
 import './main-view.scss';
 
-import { setFilms } from '../../actions/actions';
-import { FilmsList } from '../films-list/films-list';
+import FilmsList from '../films-list/films-list';
+import { setFilms, setUser } from '../../actions/actions';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import { FilmCard } from '../film-card/film-card';
 import { FilmView } from '../film-view/film-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
@@ -27,7 +26,7 @@ class MainView extends React.Component {
     super();
     /* initial state settings for MainView */
     this.state = {
-      user: null
+      user: ''
     };
   }
 
@@ -89,8 +88,8 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { films } = this.props;
-    const { user } = this.state;
+    let { films } = this.props;
+    let { user } = this.state;
 
     return (
       <Router>
@@ -114,6 +113,8 @@ class MainView extends React.Component {
           </Container>
         </Navbar>
 
+          {/* Main View */}
+
           <Route exact path="/" render={() => {
             if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -122,6 +123,8 @@ class MainView extends React.Component {
             return <FilmsList films={films}/>;
           }} />
 
+          {/* Registration View */}
+
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />;
             if (!user)
@@ -129,6 +132,8 @@ class MainView extends React.Component {
               <RegistrationView />
             </Col>
           }} />
+
+          {/* Profile View */}
 
           <Route exact path="/users/:Username" render={({ history }) => {
             if (!user) return <Col>
@@ -139,6 +144,8 @@ class MainView extends React.Component {
                   onBackClick={() => history.goBack()} />
               </Col>
           }} />
+
+          {/* Update View */}
 
           <Route path="/users/update/:Username" render={() => {
             if (!user) return <Col>
@@ -151,6 +158,8 @@ class MainView extends React.Component {
             </Col>
           }} />
 
+          {/* Film View */}
+
           <Route path="/films/:Title" render={({ match, history }) => {
             if (!user) return <Col>
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -161,6 +170,8 @@ class MainView extends React.Component {
                   onBackClick={() => history.goBack()} />
               </Col>
           }} />
+
+          {/* Genre View */}
 
           <Route path="/Genre/:_id" render={({ match, history }) => {
             if (!user) return
@@ -175,6 +186,8 @@ class MainView extends React.Component {
               </Row>
             </Col>
           }} />
+
+          {/* Director View */}
 
           <Route path="/Director/:_id" render={({ match, history }) => {
             if (!user) return
@@ -197,7 +210,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return { films: state.films }
+  return { films: state.films, user: state.user }
 }
 
-export default connect(mapStateToProps, { setFilms } ) (MainView);
+export default connect(mapStateToProps, { setFilms, setUser } ) (MainView);
