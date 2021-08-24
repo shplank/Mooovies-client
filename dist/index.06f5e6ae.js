@@ -24965,7 +24965,11 @@ class MainView extends _reactDefault.default.Component {
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
                     to: "/"
                 }));
-                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)));
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    xs: 12,
+                    sm: 10,
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)));
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\main-view\\main-view.jsx",
@@ -24980,6 +24984,8 @@ class MainView extends _reactDefault.default.Component {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    xs: 12,
+                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
                     user: user,
@@ -24998,7 +25004,11 @@ class MainView extends _reactDefault.default.Component {
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
-                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateProfile, {
+                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    xs: 12,
+                    sm: 10,
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateProfile, {
                     user: user,
                     onBackClick: ()=>history.goBack()
                 })));
@@ -25018,6 +25028,8 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    xs: 12,
+                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_filmView.FilmView, {
                     film: films.find((m)=>m.Title === match.params.Title
@@ -25041,6 +25053,8 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    xs: 12,
+                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
                     genre: films.find((m)=>m.Genre._id === match.params._id
@@ -25064,6 +25078,8 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    xs: 12,
+                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
                     director: films.find((m)=>m.Director._id === match.params._id
@@ -41076,7 +41092,7 @@ class FilmCard extends _reactDefault.default.Component {
     render() {
         const { film  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
-            className: "mt-3",
+            className: "mt-3 mb-3",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-card\\film-card.jsx",
                 lineNumber: 13
@@ -42138,7 +42154,7 @@ class DirectorView extends _reactDefault.default.Component {
             },
             __self: this
         }, director.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "director-birth",
+            className: "director-birth mt-3",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                 lineNumber: 55
@@ -42159,7 +42175,7 @@ class DirectorView extends _reactDefault.default.Component {
             },
             __self: this
         }, director.Director.Birth)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
-            className: "director-bio",
+            className: "director-bio mt-3",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                 lineNumber: 59
@@ -42180,7 +42196,7 @@ class DirectorView extends _reactDefault.default.Component {
             },
             __self: this
         }, director.Director.Bio)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-            className: "back-button mt-2",
+            className: "back-button mt-4",
             onClick: ()=>{
                 onBackClick(null);
             },

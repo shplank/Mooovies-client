@@ -46,30 +46,30 @@ export class GenreView extends React.Component {
 
     return (
       <Container>
-      <Jumbotron className="genre-view pb-1 mb-1">
-        <h2 className="genre-name">{genre.Genre.Name}</h2>
-        <p>{genre.Genre.Description}</p>
-        <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
-        <hr/>
-        <h5>Films in this genre:</h5>
-      </Jumbotron>
-      <Row>
-        {film.map((film) => {
-          if (film.length === 0) return <p>None yet!</p>;
-          return (
-            <Col md={4} key={film._id}>
-              <Card className="mt-3">
-                <Card.Img className="card-image" variant="top" src={film.ImagePath} />
-                <Card.Body>
-                  <Card.Title className="card-title">{film.Title}</Card.Title>
-                  <Card.Text>{film.ReleaseYear}</Card.Text>
-                  <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
+        <Jumbotron className="genre-view pb-1 mb-1">
+          <h2 className="genre-name">{genre.Genre.Name}</h2>
+          <p>{genre.Genre.Description}</p>
+          <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
+          <hr/>
+          <h5>Films in this genre:</h5>
+        </Jumbotron>
+        <Row>
+          {film.map((film) => {
+            if (film.length === 0) return <p>None yet!</p>;
+            return (
+              <Col md={4} key={film._id}>
+                <Card className="mt-3">
+                  <Card.Img className="card-image" variant="top" src={film.ImagePath} />
+                  <Card.Body>
+                    <Card.Title className="card-title">{film.Title}</Card.Title>
+                    <Card.Text>{film.ReleaseYear}</Card.Text>
+                    <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
       </Container>
     );
   }

@@ -45,43 +45,43 @@ export class DirectorView extends React.Component {
 
     return (
       <Container>
-      <Media className="director-view mt-5">
-        <img className="director-pic" className="mr-3" src={director.Director.ImagePath} alt="director photo" width={220} />
-        <Media.Body className="film-info pl-3 my-auto">
-        <h5 className="film-title">
-          <span className="label">Name: </span>
-          <span className="value">{director.Director.Name}</span>
-        </h5>
-        <div className="director-birth">
-          <span className="label">Born: </span>
-          <span className="value">{director.Director.Birth}</span>
-        </div>
-        <div className="director-bio">
-          <span className="label">Bio: </span>
-          <span className="value">{director.Director.Bio}</span>
-        </div>
-        <Button className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
-        </Media.Body>
-      </Media>
-      <hr/>
-      <h5 className="mt-3">Films by this director:</h5>
-      <Row>
-        {film.map((film) => {
-          if (film.length === 0) return <p>None</p>;
-          return (
-            <Col md={4} key={film._id}>
-              <Card className="mt-3">
-                <Card.Img className="card-image" variant="top" src={film.ImagePath} />
-                <Card.Body>
-                  <Card.Title className="card-title">{film.Title}</Card.Title>
-                  <Card.Text>{film.ReleaseYear}</Card.Text>
-                  <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
+        <Media className="director-view mt-5">
+          <img className="director-pic" className="mr-3" src={director.Director.ImagePath} alt="director photo" width={220} />
+          <Media.Body className="film-info pl-3 my-auto">
+            <h5 className="film-title">
+              <span className="label">Name: </span>
+              <span className="value">{director.Director.Name}</span>
+            </h5>
+            <div className="director-birth mt-3">
+              <span className="label">Born: </span>
+              <span className="value">{director.Director.Birth}</span>
+            </div>
+            <div className="director-bio mt-3">
+              <span className="label">Bio: </span>
+              <span className="value">{director.Director.Bio}</span>
+            </div>
+            <Button className="back-button mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
+          </Media.Body>
+        </Media>
+        <hr/>
+        <h5 className="mt-3">Films by this director:</h5>
+        <Row>
+          {film.map((film) => {
+            if (film.length === 0) return <p>None</p>;
+            return (
+              <Col md={4} key={film._id}>
+                <Card className="mt-3">
+                  <Card.Img className="card-image" variant="top" src={film.ImagePath} />
+                  <Card.Body>
+                    <Card.Title className="card-title">{film.Title}</Card.Title>
+                    <Card.Text>{film.ReleaseYear}</Card.Text>
+                    <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </Row>
       </Container>
     );
   }

@@ -10,7 +10,7 @@ export class FilmCard extends React.Component {
     const { film } = this.props;
 
     return (
-      <Card className="mt-3">
+      <Card className="mt-3 mb-3">
         <Card.Img className="card-image" variant="top" src={film.ImagePath} />
         <Card.Body>
           <Card.Title className="card-title">{film.Title}</Card.Title>

@@ -128,7 +128,7 @@ class MainView extends React.Component {
           <Route path="/register" render={() => {
             if (user) return <Redirect to="/" />;
             if (!user)
-            return <Col>
+            return <Col xs={12} sm={10} md={8}>
               <RegistrationView />
             </Col>
           }} />
@@ -139,7 +139,7 @@ class MainView extends React.Component {
             if (!user) return <Col>
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            return <Col md={8}>
+            return <Col xs={12} sm={10} md={8}>
                 <ProfileView user={user} films={films}
                   onBackClick={() => history.goBack()} />
               </Col>
@@ -152,7 +152,7 @@ class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (user)
-            return <Col>
+            return <Col xs={12} sm={10} md={8}>
               <UpdateProfile user={user}
                 onBackClick={() => history.goBack()} />
             </Col>
@@ -165,7 +165,7 @@ class MainView extends React.Component {
                 <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
             if (films.length === 0) return <div className="main-view" />;
-            return <Col md={8}>
+            return <Col xs={12} sm={10} md={8}>
                 <FilmView film={films.find(m => m.Title === match.params.Title)} 
                   onBackClick={() => history.goBack()} />
               </Col>
@@ -179,7 +179,7 @@ class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (films.length === 0) return <div className="main-view" />;
-            return <Col md={8}>
+            return <Col xs={12} sm={10} md={8}>
               <Row>
                 <GenreView genre={films.find(m => m.Genre._id === match.params._id)} 
                   onBackClick={() => history.goBack()} />
@@ -195,7 +195,7 @@ class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (films.length === 0) return <div className="main-view" />;
-            return <Col md={8}>
+            return <Col xs={12} sm={10} md={8}>
               <Row>
                 <DirectorView director={films.find(m => m.Director._id === match.params._id)} 
                   onBackClick={() => history.goBack()} />
