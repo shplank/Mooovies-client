@@ -13,16 +13,31 @@
   font-weight: 400;
 }
 
-Button {
+#button {
   background-color: #ffbebe;
   color: #000;
   border-color: #000;
 }
 
-Button:hover,
-Button:focus,
-Button:active {
+#button:hover,
+#button:focus,
+#button:active {
   background-color: #ffcece;
   color: #222;
   border-color: #000;
+  box-shadow: #ffcece;
+}
+
+#link-button {
+  background-color: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+#link-button:hover,
+#link-button:focus,
+#link-button:active {
+  background-color: #fff;
+  color: #222;
+  border-color: #fff;
 }

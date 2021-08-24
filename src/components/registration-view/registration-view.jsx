@@ -125,10 +125,10 @@ export function RegistrationView(props) {
             })}
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+          <Button id="button" type="submit" onClick={handleSubmit}>Submit</Button>
 
         </Form>
-        <p className="mt-3">If you already have a profile, log in <Link to={`/`}>here</Link>.</p>
+        <p className="mt-3">If you already have a profile, log in <Link id="link" to={`/`}>here</Link>.</p>
       </Col>
     </Row>
   );

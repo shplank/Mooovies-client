@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import { Row, Col, Form, Button } from 'react-bootstrap';
+
+import { setUser } from '../../actions/actions';
 
 import './update-profile.scss';
 
@@ -93,7 +96,7 @@ export function UpdateProfile(props) {
     <Row className="UpdateForm justify-content-md-center">
       <Col md="auto">
         <h5 className="mt-5">Update your profile:</h5>
-        <p classname="mt-3">(Please fill in all fields)</p>
+        <p className="mt-3">(Please fill in all fields)</p>
         <Form>
         <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
@@ -143,16 +146,15 @@ export function UpdateProfile(props) {
             })}
           </Form.Group>
 
-            <Button variant="primary" type="submit" className="mt-2" onClick={handleUpdate}>Submit Update</Button>
+            <Button id="button" type="submit" className="mt-2" onClick={handleUpdate}>Submit Update</Button>
           <br/>
-            <Button variant="primary" type="submit" className="mt-4" onClick={handleDelete}>Delete Profile</Button>
+            <Button id="button" type="submit" className="mt-4" onClick={handleDelete}>Delete Profile</Button>
 
         </Form>
       </Col>
     </Row>
   );
 }
-
 
 UpdateProfile.propTypes = {
   Username: PropTypes.shape({
@@ -162,3 +164,9 @@ UpdateProfile.propTypes = {
     Birthdate: PropTypes.string,
   }),
 };
+
+let mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
+export default connect(mapStateToProps, { setUser } ) (UpdateProfile);

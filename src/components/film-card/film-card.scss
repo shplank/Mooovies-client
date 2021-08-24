@@ -9,16 +9,16 @@
   font-weight: 700;
 }
 
-Button {
+#button {
   background-color: #ffbebe;
   color: #000;
   border-color: #000;
 }
 
-Button:hover,
-Button:focus,
-Button:active,
-Button:after {
+#button:hover,
+#button:focus,
+#button:active,
+#button:after {
   background-color: #ffcece;
   color: #222;
   border-color: #000;

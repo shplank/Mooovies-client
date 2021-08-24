@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
 import { Link } from "react-router-dom";
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import logo from 'url:./welcome-logo.png';
+
+import { setUser } from '../../actions/actions';
 
 import './login-view.scss';
 
@@ -48,11 +47,11 @@ export function LoginView(props) {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" value={Password} onChange={e => setPassword(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
+          <Button id="button" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
       </Form>
-        <p className="mt-3">Or create a profile <Link to={`/register`}>here</Link>.</p>
+        <p className="mt-3">Or create a profile <Link id="link" to={`/register`}>here</Link>.</p>
       </Col>
     </Row>
   );
@@ -64,3 +63,9 @@ LoginView.propTypes = {
     Password: PropTypes.string.isRequired
   }),
 };
+
+let mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
+export default connect(mapStateToProps, { setUser } ) (LoginView);

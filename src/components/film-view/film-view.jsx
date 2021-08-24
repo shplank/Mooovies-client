@@ -47,7 +47,7 @@ export class FilmView extends React.Component {
             <span className="value">
               <span className="label">Genre:</span>
               <Link to={`/Genre/${film.Genre._id}`}>
-                <Button className="mt-1 mb-2" variant="link">{film.Genre.Name}</Button>
+                <Button id="link-button" className="mt-1 mb-2" variant="link">{film.Genre.Name}</Button>
               </Link>
             </span>
           </div>
@@ -55,15 +55,15 @@ export class FilmView extends React.Component {
             <span className="value">
               <span className="label">Director:</span>
               <Link to={`/Director/${film.Director._id}`}>
-                <Button className="mt-1 mb-2" variant="link">{film.Director.Name}</Button>
+                <Button id="link-button" className="mt-1 mb-2" variant="link">{film.Director.Name}</Button>
               </Link>
             </span>
           </div>
           <div>
-            <Button className="mt-2" value={film._id} onClick={(e) => this.addFavorite(e, film)}>Add to Favorites</Button>
+            <Button id="button" className="mt-2" value={film._id} onClick={(e) => this.addFavorite(e, film)}>Add to Favorites</Button>
           </div>
           <div>
-            <Button className="mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
+            <Button id="button" className="mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
           </div>
         </Media.Body>
       </Media>

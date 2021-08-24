@@ -75,14 +75,14 @@ export class ProfileView extends React.Component {
           </div>
           <div className="user-birthdate">
             <span className="label">Birthdate: </span>
-            <span className="value" type="date" dateFormat="MM/dd/yyyy">{`${this.state.Birthdate}`}</span>
+            <span className="value" type="date">{`${this.state.Birthdate}`}</span>
           </div>
           <h4 className="mt-3">Your Favorites:</h4>
         </Col>
         <Col md="auto">
-          <Button className="mt-2" href={`/users/update/${this.props.user}`}>Edit Profile</Button>
+          <Button className="mt-2" id="button" href={`/users/update/${this.props.user}`}>Edit Profile</Button>
             <br/>
-          <Button className="mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
+          <Button className="mt-3" id="button" onClick={() => { onBackClick(null); }}>Back</Button>
         </Col>
       </Row>
       <Row>
@@ -95,8 +95,8 @@ export class ProfileView extends React.Component {
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
                     <Card.Text>{film.ReleaseYear}</Card.Text>
-                    <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
-                    <Button variant="primary" type="submit" className="mt-2 ml-3" value={film._id} onClick={() => this.handleRemove(film)}>Remove</Button>
+                    <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                    <Button id="button" type="submit" className="mt-2 ml-3" value={film._id} onClick={() => this.handleRemove(film)}>Remove</Button>
                   </Card.Body>
                 </Card>
               </Col>

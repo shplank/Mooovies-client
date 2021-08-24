@@ -15,7 +15,7 @@ export class FilmCard extends React.Component {
         <Card.Body>
           <Card.Title className="card-title">{film.Title}</Card.Title>
           <Card.Text>{film.ReleaseYear}</Card.Text>
-          <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+          <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
         </Card.Body>
       </Card>
     );

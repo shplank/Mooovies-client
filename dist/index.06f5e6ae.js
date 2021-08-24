@@ -41127,6 +41127,7 @@ class FilmCard extends _reactDefault.default.Component {
             },
             __self: this
         }, film.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "button",
             className: "mt-2",
             href: `/films/${film.Title}`,
             __source: {
@@ -41163,21 +41164,16 @@ parcelHelpers.export(exports, "LoginView", ()=>LoginView
 );
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRedux = require("react-redux");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
-var _row = require("react-bootstrap/Row");
-var _rowDefault = parcelHelpers.interopDefault(_row);
-var _col = require("react-bootstrap/Col");
-var _colDefault = parcelHelpers.interopDefault(_col);
-var _form = require("react-bootstrap/Form");
-var _formDefault = parcelHelpers.interopDefault(_form);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _reactBootstrap = require("react-bootstrap");
 var _welcomeLogoPng = require("url:./welcome-logo.png");
 var _welcomeLogoPngDefault = parcelHelpers.interopDefault(_welcomeLogoPng);
+var _actions = require("../../actions/actions");
 var _loginViewScss = require("./login-view.scss");
 var _s = $RefreshSig$();
 function LoginView(props) {
@@ -41196,18 +41192,18 @@ function LoginView(props) {
             console.log('No such user');
         });
     };
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_rowDefault.default, {
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
         className: "LoginForm justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 37
+            lineNumber: 36
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
         md: "auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 38
+            lineNumber: 37
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -41217,36 +41213,36 @@ function LoginView(props) {
         alt: "Mooovies logo",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 39
+            lineNumber: 38
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 39
+        },
+        __self: this
+    }, "Please log into your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 40
         },
         __self: this
-    }, "Please log into your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default, {
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 41
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
-        controlId: "formUsername",
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 42
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 43
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+    }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
         type: "text",
         placeholder: "Username",
         value: Username,
@@ -41254,23 +41250,23 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 44
+            lineNumber: 43
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Group, {
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formPassword",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
+            lineNumber: 46
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 47
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Label, {
-        __source: {
-            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 48
-        },
-        __self: this
-    }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_formDefault.default.Control, {
+    }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
         type: "password",
         placeholder: "Password",
         value: Password,
@@ -41278,30 +41274,31 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 49
+            lineNumber: 48
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
-        variant: "primary",
+    })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+        id: "button",
         type: "submit",
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 51
+            lineNumber: 50
         },
         __self: this
     }, "Submit")), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 55
+            lineNumber: 54
         },
         __self: this
     }, "Or create a profile ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+        id: "link",
         to: `/register`,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 55
+            lineNumber: 54
         },
         __self: this
     }, "here"), "."))));
@@ -41314,6 +41311,14 @@ LoginView.propTypes = {
         Password: _propTypesDefault.default.string.isRequired
     })
 };
+let mapStateToProps = (state)=>{
+    return {
+        user: state.user
+    };
+};
+exports.default = _reactRedux.connect(mapStateToProps, {
+    setUser: _actions.setUser
+})(LoginView);
 var _c;
 $RefreshReg$(_c, "LoginView");
 
@@ -41322,7 +41327,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","react-bootstrap/Row":"3fzwD","react-bootstrap/Col":"2D0r8","react-bootstrap/Form":"6A5ko","react-bootstrap/Button":"1ru0l","url:./welcome-logo.png":"4UXbI","./login-view.scss":"2Jwjo","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"4UXbI":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","url:./welcome-logo.png":"4UXbI","./login-view.scss":"2Jwjo","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-redux":"7GDa4","react-bootstrap":"4n7hB","../../actions/actions":"5S6cN"}],"4UXbI":[function(require,module,exports) {
 module.exports = require('./bundle-url').getBundleURL() + "welcome-logo.fee0da3a.png";
 
 },{"./bundle-url":"1AFol"}],"2Jwjo":[function() {},{}],"lPHpt":[function(require,module,exports) {
@@ -41581,7 +41586,7 @@ function RegistrationView(props) {
             __self: this
         }, BirthdateError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-        variant: "primary",
+        id: "button",
         type: "submit",
         onClick: handleSubmit,
         __source: {
@@ -41597,6 +41602,7 @@ function RegistrationView(props) {
         },
         __self: this
     }, "If you already have a profile, log in ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+        id: "link",
         to: `/`,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
@@ -41782,6 +41788,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "link-button",
             className: "mt-1 mb-2",
             variant: "link",
             __source: {
@@ -41817,6 +41824,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "link-button",
             className: "mt-1 mb-2",
             variant: "link",
             __source: {
@@ -41831,6 +41839,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "button",
             className: "mt-2",
             value: film._id,
             onClick: (e)=>this.addFavorite(e, film)
@@ -41847,6 +41856,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+            id: "button",
             className: "mt-4",
             onClick: ()=>{
                 onBackClick(null);
@@ -41953,6 +41963,7 @@ class GenreView extends _reactDefault.default.Component {
             },
             __self: this
         }, genre.Genre.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            id: "button",
             className: "back-button mt-2",
             onClick: ()=>{
                 onBackClick(null);
@@ -42032,6 +42043,7 @@ class GenreView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, film1.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                id: "button",
                 className: "mt-2",
                 href: `/films/${film1.Title}`,
                 __source: {
@@ -42196,6 +42208,7 @@ class DirectorView extends _reactDefault.default.Component {
             },
             __self: this
         }, director.Director.Bio)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            id: "button",
             className: "back-button mt-4",
             onClick: ()=>{
                 onBackClick(null);
@@ -42276,6 +42289,7 @@ class DirectorView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, film1.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                id: "button",
                 className: "mt-2",
                 href: `/films/${film1.Title}`,
                 __source: {
@@ -42439,7 +42453,6 @@ class ProfileView extends _reactDefault.default.Component {
         }, "Birthdate: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             type: "date",
-            dateFormat: "MM/dd/yyyy",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 78
@@ -42461,6 +42474,7 @@ class ProfileView extends _reactDefault.default.Component {
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             className: "mt-2",
+            id: "button",
             href: `/users/update/${this.props.user}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
@@ -42474,7 +42488,8 @@ class ProfileView extends _reactDefault.default.Component {
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-            className: "mt-2",
+            className: "mt-3",
+            id: "button",
             onClick: ()=>{
                 onBackClick(null);
             },
@@ -42541,6 +42556,7 @@ class ProfileView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, film.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                id: "button",
                 className: "mt-2",
                 href: `/films/${film.Title}`,
                 __source: {
@@ -42549,7 +42565,7 @@ class ProfileView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, "Open"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-                variant: "primary",
+                id: "button",
                 type: "submit",
                 className: "mt-2 ml-3",
                 value: film._id,
@@ -42594,11 +42610,13 @@ parcelHelpers.export(exports, "UpdateProfile", ()=>UpdateProfile
 );
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRedux = require("react-redux");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
+var _actions = require("../../actions/actions");
 var _updateProfileScss = require("./update-profile.scss");
 var _s = $RefreshSig$();
 function UpdateProfile(props) {
@@ -42691,47 +42709,47 @@ function UpdateProfile(props) {
         className: "UpdateForm justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 93
+            lineNumber: 96
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
         md: "auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 94
+            lineNumber: 97
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
         className: "mt-5",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 95
+            lineNumber: 98
         },
         __self: this
     }, "Update your profile:"), /*#__PURE__*/ _reactDefault.default.createElement("p", {
-        classname: "mt-3",
+        className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 96
+            lineNumber: 99
         },
         __self: this
     }, "(Please fill in all fields)"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 97
+            lineNumber: 100
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 98
+            lineNumber: 101
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 99
+            lineNumber: 102
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -42742,7 +42760,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 100
+            lineNumber: 103
         },
         __self: this
     }), Object.keys(UsernameError).map((key)=>{
@@ -42750,7 +42768,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 103
+                lineNumber: 106
             },
             __self: this
         }, UsernameError[key]));
@@ -42758,13 +42776,13 @@ function UpdateProfile(props) {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 110
+            lineNumber: 113
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 111
+            lineNumber: 114
         },
         __self: this
     }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -42775,7 +42793,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 112
+            lineNumber: 115
         },
         __self: this
     }), Object.keys(PasswordError).map((key)=>{
@@ -42783,7 +42801,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 115
+                lineNumber: 118
             },
             __self: this
         }, PasswordError[key]));
@@ -42791,13 +42809,13 @@ function UpdateProfile(props) {
         controlId: "formEmail",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 122
+            lineNumber: 125
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 123
+            lineNumber: 126
         },
         __self: this
     }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -42808,7 +42826,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 124
+            lineNumber: 127
         },
         __self: this
     }), Object.keys(EmailError).map((key)=>{
@@ -42816,7 +42834,7 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 127
+                lineNumber: 130
             },
             __self: this
         }, EmailError[key]));
@@ -42824,13 +42842,13 @@ function UpdateProfile(props) {
         controlId: "formBirthdate",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 134
+            lineNumber: 137
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 135
+            lineNumber: 138
         },
         __self: this
     }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -42841,7 +42859,7 @@ function UpdateProfile(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 136
+            lineNumber: 139
         },
         __self: this
     }), Object.keys(BirthdateError).map((key)=>{
@@ -42849,34 +42867,34 @@ function UpdateProfile(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-                lineNumber: 139
+                lineNumber: 142
             },
             __self: this
         }, BirthdateError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-        variant: "primary",
+        id: "button",
         type: "submit",
         className: "mt-2",
         onClick: handleUpdate,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 146
+            lineNumber: 149
         },
         __self: this
     }, "Submit Update"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 147
+            lineNumber: 150
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
-        variant: "primary",
+        id: "button",
         type: "submit",
         className: "mt-4",
         onClick: handleDelete,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
-            lineNumber: 148
+            lineNumber: 151
         },
         __self: this
     }, "Delete Profile")))));
@@ -42891,6 +42909,14 @@ UpdateProfile.propTypes = {
         Birthdate: _propTypesDefault.default.string
     })
 };
+let mapStateToProps = (state)=>{
+    return {
+        user: state.user
+    };
+};
+exports.default = _reactRedux.connect(mapStateToProps, {
+    setUser: _actions.setUser
+})(UpdateProfile);
 var _c;
 $RefreshReg$(_c, "UpdateProfile");
 
@@ -42899,6 +42925,6 @@ $RefreshReg$(_c, "UpdateProfile");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap":"4n7hB","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap":"4n7hB","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-redux":"7GDa4","../../actions/actions":"5S6cN"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
 
 //# sourceMappingURL=index.06f5e6ae.js.map

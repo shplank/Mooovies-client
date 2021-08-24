@@ -60,7 +60,7 @@ export class DirectorView extends React.Component {
               <span className="label">Bio: </span>
               <span className="value">{director.Director.Bio}</span>
             </div>
-            <Button className="back-button mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
+            <Button id="button" className="back-button mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
           </Media.Body>
         </Media>
         <hr/>
@@ -75,7 +75,7 @@ export class DirectorView extends React.Component {
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
                     <Card.Text>{film.ReleaseYear}</Card.Text>
-                    <Button className="mt-2" href={`/films/${film.Title}`}>Open</Button>
+                    <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
                   </Card.Body>
                 </Card>
               </Col>
