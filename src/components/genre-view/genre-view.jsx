@@ -48,7 +48,7 @@ export class GenreView extends React.Component {
       <Container>
         <Jumbotron className="genre-view pb-1 mb-1">
           <h2 className="genre-name">{genre.Genre.Name}</h2>
-          <p>{genre.Genre.Description}</p>
+          <p className="genre-description">{genre.Genre.Description}</p>
           <Button id="button" className="back-button mt-2" onClick={() => { onBackClick(null); }}>Back</Button>
           <hr/>
           <h5>Films in this genre:</h5>
@@ -62,7 +62,7 @@ export class GenreView extends React.Component {
                   <Card.Img className="card-image" variant="top" src={film.ImagePath} />
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
-                    <Card.Text>{film.ReleaseYear}</Card.Text>
+                    <Card.Text className="card-text">{film.ReleaseYear}</Card.Text>
                     <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
                   </Card.Body>
                 </Card>

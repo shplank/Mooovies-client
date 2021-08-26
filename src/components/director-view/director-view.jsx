@@ -74,7 +74,7 @@ export class DirectorView extends React.Component {
                   <Card.Img className="card-image" variant="top" src={film.ImagePath} />
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
-                    <Card.Text>{film.ReleaseYear}</Card.Text>
+                    <Card.Text className="card-text">{film.ReleaseYear}</Card.Text>
                     <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
                   </Card.Body>
                 </Card>

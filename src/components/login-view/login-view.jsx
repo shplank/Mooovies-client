@@ -15,9 +15,13 @@ import './login-view.scss';
 export function LoginView(props) {
   const [Username, setUsername] = useState('');
   const [Password, setPassword] = useState('');
+  const [UsernameError, setUsernameError] = useState({});
+  const [PasswordError, setPasswordError] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let isValid = formValidation();
+    if (isValid) {
     /* Send a request to the server for authentication */
     axios.post('https://moooviesapi.herokuapp.com/login', {
       Username: Username,
@@ -30,6 +34,25 @@ export function LoginView(props) {
     .catch(e => {
       console.log('No such user')
     });
+  }
+  };
+
+  const formValidation = () => {
+    const UsernameError = {};
+    const PasswordError = {};
+    let isValid = true;
+
+    if (Username.trim().length < 5) {
+      UsernameError.UsernameOff = "That username isn't right";
+      isValid = false;
+    }
+    if (Password.trim().length < 5) {
+      PasswordError.PasswordOff = "That password isn't right";
+      isValid = false;
+    }
+    setUsernameError(UsernameError);
+    setPasswordError(PasswordError);
+    return isValid;
   };
 
   return (
@@ -41,11 +64,25 @@ export function LoginView(props) {
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" placeholder="Username" value={Username} onChange={e => setUsername(e.target.value)} />
+            {Object.keys(UsernameError).map((key) => {
+              return (
+              <div key={key}>
+                {UsernameError[key]}
+              </div>
+              );
+            })}
           </Form.Group>
 
           <Form.Group controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" value={Password} onChange={e => setPassword(e.target.value)} />
+            {Object.keys(PasswordError).map((key) => {
+              return (
+              <div key={key}>
+                {PasswordError[key]}
+              </div>
+              );
+            })}
           </Form.Group>
           <Button id="button" type="submit" onClick={handleSubmit}>
             Submit

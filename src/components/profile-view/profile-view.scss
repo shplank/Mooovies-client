@@ -13,10 +13,30 @@
   font-weight: 400;
 }
 
+.card {
+  max-width: 220px;
+}
+
+.card-image {
+  max-height: 375px;
+  max-width: 220px;
+}
+
+.card-title {
+  font-family: "Commissioner", sans-serif;
+  font-weight: 700;
+}
+
+.card-text {
+  font-family: "Commissioner", sans-serif;
+  font-weight: 400;
+}
+
 #button {
   background-color: #ffbebe;
   color: #000;
-  border-color: #000;
+  border: none;
+  border-radius: 12px;
 }
 
 #button:hover,
@@ -24,5 +44,4 @@
 #button:active {
   background-color: #ffcece;
   color: #222;
-  border-color: #000;
 }

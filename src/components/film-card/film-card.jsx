@@ -10,11 +10,11 @@ export class FilmCard extends React.Component {
     const { film } = this.props;
 
     return (
-      <Card className="mt-3 mb-3">
-        <Card.Img className="card-image" variant="top" src={film.ImagePath} />
-        <Card.Body>
+      <Card className="mt-3 mb-3 ml-auto mr-auto card justify-content-center">
+        <Card.Img className="card-image justify-content-center" variant="top" src={film.ImagePath} />
+        <Card.Body className="justify-content-center">
           <Card.Title className="card-title">{film.Title}</Card.Title>
-          <Card.Text>{film.ReleaseYear}</Card.Text>
+          <Card.Text className="card-text">{film.ReleaseYear}</Card.Text>
           <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
         </Card.Body>
       </Card>

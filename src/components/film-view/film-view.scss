@@ -3,6 +3,9 @@
 .film-view {
   font-family: "Commissioner", sans-serif;
   margin-top: 18px;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
 }
 
 .label {
@@ -16,7 +19,8 @@
 #button {
   background-color: #ffbebe;
   color: #000;
-  border-color: #000;
+  border: none;
+  border-radius: 12px;
 }
 
 #button:hover,
@@ -24,8 +28,6 @@
 #button:active {
   background-color: #ffcece;
   color: #222;
-  border-color: #000;
-  box-shadow: #ffcece;
 }
 
 #link-button {

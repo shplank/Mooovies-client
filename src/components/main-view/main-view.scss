@@ -12,16 +12,16 @@
   font-weight: 700;
 }
 
-Button {
+#button {
   background-color: #ffbebe;
   color: #000;
-  border-color: #000;
+  border: none;
+  border-radius: 12px;
 }
 
-Button:hover,
-Button:focus,
-Button:active {
+#button:hover,
+#button:focus,
+#button:active {
   background-color: #ffcece;
   color: #222;
-  border-color: #000;
 }

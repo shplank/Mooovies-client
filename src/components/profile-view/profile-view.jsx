@@ -63,8 +63,8 @@ export class ProfileView extends React.Component {
 
     return (
     <Container>
-      <Row className="ProfileView justify-content-md-center mt-5">
-        <Col>
+      <Row className="ProfileView mt-5">
+        <Col xs={9} className="justify-content-start">
           <div className="user-name">
             <span className="label">Username: </span>
             <span className="value">{`${this.state.Username}`}</span>
@@ -79,22 +79,25 @@ export class ProfileView extends React.Component {
           </div>
           <h4 className="mt-3">Your Favorites:</h4>
         </Col>
-        <Col md="auto">
-          <Button className="mt-2" id="button" href={`/users/update/${this.props.user}`}>Edit Profile</Button>
-            <br/>
-          <Button className="mt-3" id="button" onClick={() => { onBackClick(null); }}>Back</Button>
+        <Col xs={3}>
+          <Row className="justify-content-end">
+            <Button className="mt-2" id="button" href={`/users/update/${this.props.user}`}>Edit Profile</Button>
+          </Row>
+          <Row className="justify-content-end">
+            <Button className="mt-3" id="button" onClick={() => { onBackClick(null); }}>Back</Button>
+          </Row>
         </Col>
       </Row>
       <Row>
         {Favorites.map((film) => {
           if (Favorites.length === 0) return <p>None yet!</p>;
           return (
-            <Col md={4} key={film._id}>
-                <Card className="mt-3">
+            <Col xs={12} sm={6} lg={4} key={film._id}>
+                <Card className="mt-3 mb-3 ml-auto mr-auto card justify-content-center">
                   <Card.Img className="card-image" variant="top" src={film.ImagePath} />
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
-                    <Card.Text>{film.ReleaseYear}</Card.Text>
+                    <Card.Text className="card-text">{film.ReleaseYear}</Card.Text>
                     <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
                     <Button id="button" type="submit" className="mt-2 ml-3" value={film._id} onClick={() => this.handleRemove(film)}>Remove</Button>
                   </Card.Body>

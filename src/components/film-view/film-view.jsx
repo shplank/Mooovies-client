@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import Media from 'react-bootstrap/Media';
-import Button from 'react-bootstrap/Button';
+import { Media, Row, Col, Button } from 'react-bootstrap';
 
 import { Link } from "react-router-dom";
 
@@ -28,9 +27,13 @@ export class FilmView extends React.Component {
     const { film, onBackClick } = this.props;
 
     return (
-      <Media className="mt-5">
-        <img className="film-view" className="mr-3" src={film.ImagePath} alt="film poster" width={300} />
-        <Media.Body className="film-info pl-3 my-auto">
+      <Row className="mt-5">
+        <Col xs={4} sm={6}>
+          <Row className="justify-content-center mx-auto">
+            <img className="film-view mx-auto" src={film.ImagePath} alt="film poster"/>
+          </Row>
+        </Col>
+        <Col xs={8} sm={6} className="film-info my-auto">
           <h5 className="film-title">
             <span className="label">Title: </span>
             <span className="value">{film.Title}</span>
@@ -65,8 +68,8 @@ export class FilmView extends React.Component {
           <div>
             <Button id="button" className="mt-4" onClick={() => { onBackClick(null); }}>Back</Button>
           </div>
-        </Media.Body>
-      </Media>
+        </Col>
+      </Row>
     );
   }
 }

@@ -93,7 +93,7 @@ export function UpdateProfile(props) {
   }
 
   return (
-    <Row className="UpdateForm justify-content-md-center">
+    <Row className="UpdateForm justify-content-center">
       <Col md="auto">
         <h5 className="mt-5">Update your profile:</h5>
         <p className="mt-3">(Please fill in all fields)</p>

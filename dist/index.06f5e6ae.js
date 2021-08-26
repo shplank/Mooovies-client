@@ -24966,8 +24966,6 @@ class MainView extends _reactDefault.default.Component {
                     to: "/"
                 }));
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                    xs: 12,
-                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)));
             },
@@ -24984,8 +24982,6 @@ class MainView extends _reactDefault.default.Component {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                    xs: 12,
-                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
                     user: user,
@@ -25006,7 +25002,6 @@ class MainView extends _reactDefault.default.Component {
                 })));
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
                     xs: 12,
-                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateProfile, {
                     user: user,
@@ -25028,8 +25023,6 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                    xs: 12,
-                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_filmView.FilmView, {
                     film: films.find((m)=>m.Title === match.params.Title
@@ -25053,8 +25046,6 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                    xs: 12,
-                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
                     genre: films.find((m)=>m.Genre._id === match.params._id
@@ -25078,8 +25069,6 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 }));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                    xs: 12,
-                    sm: 10,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, null, /*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
                     director: films.find((m)=>m.Director._id === match.params._id
@@ -25111,7 +25100,7 @@ exports.default = _reactRedux.connect(mapStateToProps, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","react-redux":"7GDa4","react-router-dom":"1PMSK","react-bootstrap":"4n7hB","url:./MoooviesLogo.png":"5xgWQ","./main-view.scss":"44wWT","../../actions/actions":"5S6cN","../films-list/films-list":"VddDO","../login-view/login-view":"1abGd","../registration-view/registration-view":"lPHpt","../film-view/film-view":"1lsJK","../genre-view/genre-view":"6gZcP","../director-view/director-view":"5NJCT","../profile-view/profile-view":"3Kj1B","../update-profile/update-profile":"ULZkK","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"7rA65":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","react-redux":"7GDa4","react-router-dom":"1PMSK","react-bootstrap":"4n7hB","url:./MoooviesLogo.png":"5xgWQ","./main-view.scss":"44wWT","../films-list/films-list":"VddDO","../../actions/actions":"5S6cN","../login-view/login-view":"1abGd","../registration-view/registration-view":"lPHpt","../film-view/film-view":"1lsJK","../genre-view/genre-view":"6gZcP","../director-view/director-view":"5NJCT","../profile-view/profile-view":"3Kj1B","../update-profile/update-profile":"ULZkK","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"7rA65":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"4qfhW"}],"4qfhW":[function(require,module,exports) {
@@ -40880,8 +40869,10 @@ function FilmsList(props) {
         },
         __self: this
     })), filteredFilms.map((m)=>/*#__PURE__*/ _reactDefault.default.createElement(_colDefault.default, {
-            sm: 5,
-            md: 3,
+            xs: 12,
+            sm: 6,
+            md: 4,
+            lg: 3,
             key: m._id,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\films-list\\films-list.jsx",
@@ -41092,14 +41083,14 @@ class FilmCard extends _reactDefault.default.Component {
     render() {
         const { film  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default, {
-            className: "mt-3 mb-3",
+            className: "mt-3 mb-3 ml-auto mr-auto card justify-content-center",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-card\\film-card.jsx",
                 lineNumber: 13
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Img, {
-            className: "card-image",
+            className: "card-image justify-content-center",
             variant: "top",
             src: film.ImagePath,
             __source: {
@@ -41108,6 +41099,7 @@ class FilmCard extends _reactDefault.default.Component {
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Body, {
+            className: "justify-content-center",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-card\\film-card.jsx",
                 lineNumber: 15
@@ -41121,6 +41113,7 @@ class FilmCard extends _reactDefault.default.Component {
             },
             __self: this
         }, film.Title), /*#__PURE__*/ _reactDefault.default.createElement(_cardDefault.default.Text, {
+            className: "card-text",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-card\\film-card.jsx",
                 lineNumber: 17
@@ -41180,9 +41173,14 @@ function LoginView(props) {
     _s();
     const [Username, setUsername] = _react.useState('');
     const [Password, setPassword] = _react.useState('');
+    const [UsernameError, setUsernameError] = _react.useState({
+    });
+    const [PasswordError, setPasswordError] = _react.useState({
+    });
     const handleSubmit = (e)=>{
         e.preventDefault();
-        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://moooviesapi.herokuapp.com/login', {
+        let isValid = formValidation();
+        if (isValid) /* Send a request to the server for authentication */ _axiosDefault.default.post('https://moooviesapi.herokuapp.com/login', {
             Username: Username,
             Password: Password
         }).then((response)=>{
@@ -41192,18 +41190,36 @@ function LoginView(props) {
             console.log('No such user');
         });
     };
+    const formValidation = ()=>{
+        const UsernameError1 = {
+        };
+        const PasswordError1 = {
+        };
+        let isValid = true;
+        if (Username.trim().length < 5) {
+            UsernameError1.UsernameOff = "That username isn't right";
+            isValid = false;
+        }
+        if (Password.trim().length < 5) {
+            PasswordError1.PasswordOff = "That password isn't right";
+            isValid = false;
+        }
+        setUsernameError(UsernameError1);
+        setPasswordError(PasswordError1);
+        return isValid;
+    };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
         className: "LoginForm justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 36
+            lineNumber: 59
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
         md: "auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 37
+            lineNumber: 60
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
@@ -41213,33 +41229,33 @@ function LoginView(props) {
         alt: "Mooovies logo",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 38
+            lineNumber: 61
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 39
+            lineNumber: 62
         },
         __self: this
     }, "Please log into your profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 40
+            lineNumber: 63
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 41
+            lineNumber: 64
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 42
+            lineNumber: 65
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -41250,20 +41266,29 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 43
+            lineNumber: 66
         },
         __self: this
+    }), Object.keys(UsernameError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
+                lineNumber: 69
+            },
+            __self: this
+        }, UsernameError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 46
+            lineNumber: 76
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 47
+            lineNumber: 77
         },
         __self: this
     }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -41274,23 +41299,32 @@ function LoginView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 48
+            lineNumber: 78
         },
         __self: this
+    }), Object.keys(PasswordError).map((key)=>{
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            key: key,
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
+                lineNumber: 81
+            },
+            __self: this
+        }, PasswordError[key]));
     })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
         id: "button",
         type: "submit",
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 50
+            lineNumber: 87
         },
         __self: this
     }, "Submit")), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 54
+            lineNumber: 91
         },
         __self: this
     }, "Or create a profile ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
@@ -41298,12 +41332,12 @@ function LoginView(props) {
         to: `/register`,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
-            lineNumber: 54
+            lineNumber: 91
         },
         __self: this
     }, "here"), "."))));
 }
-_s(LoginView, "QXyMHHVFQFTzqWVk6/PVAJyjUCk=");
+_s(LoginView, "CGPBQYHwbBaSdHgstqHxbrOKK4Y=");
 _c = LoginView;
 LoginView.propTypes = {
     user: _propTypesDefault.default.shape({
@@ -41327,7 +41361,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","url:./welcome-logo.png":"4UXbI","./login-view.scss":"2Jwjo","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-redux":"7GDa4","react-bootstrap":"4n7hB","../../actions/actions":"5S6cN"}],"4UXbI":[function(require,module,exports) {
+},{"react":"3b2NM","react-redux":"7GDa4","prop-types":"4dfy5","axios":"7rA65","react-router-dom":"1PMSK","react-bootstrap":"4n7hB","url:./welcome-logo.png":"4UXbI","../../actions/actions":"5S6cN","./login-view.scss":"2Jwjo","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"4UXbI":[function(require,module,exports) {
 module.exports = require('./bundle-url').getBundleURL() + "welcome-logo.fee0da3a.png";
 
 },{"./bundle-url":"1AFol"}],"2Jwjo":[function() {},{}],"lPHpt":[function(require,module,exports) {
@@ -41649,10 +41683,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _media = require("react-bootstrap/Media");
-var _mediaDefault = parcelHelpers.interopDefault(_media);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _filmViewScss = require("./film-view.scss");
 class FilmView extends _reactDefault.default.Component {
@@ -41672,173 +41703,188 @@ class FilmView extends _reactDefault.default.Component {
     }
     render() {
         const { film , onBackClick  } = this.props;
-        return(/*#__PURE__*/ _reactDefault.default.createElement(_mediaDefault.default, {
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "mt-5",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
+                lineNumber: 30
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+            xs: 4,
+            sm: 6,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
                 lineNumber: 31
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-            className: "film-view",
-            className: "mr-3",
-            src: film.ImagePath,
-            alt: "film poster",
-            width: 300,
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+            className: "justify-content-center mx-auto",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
                 lineNumber: 32
             },
             __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_mediaDefault.default.Body, {
-            className: "film-info pl-3 my-auto",
+        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+            className: "film-view mx-auto",
+            src: film.ImagePath,
+            alt: "film poster",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
                 lineNumber: 33
+            },
+            __self: this
+        }))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+            xs: 8,
+            sm: 6,
+            className: "film-info my-auto",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
+                lineNumber: 36
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
             className: "film-title",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 34
+                lineNumber: 37
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 35
+                lineNumber: 38
             },
             __self: this
         }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 36
+                lineNumber: 39
             },
             __self: this
         }, film.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "film-year mt-3",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 38
+                lineNumber: 41
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 39
+                lineNumber: 42
             },
             __self: this
         }, "Release Year: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 40
+                lineNumber: 43
             },
             __self: this
         }, film.ReleaseYear)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "film-blurb mt-3",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 42
+                lineNumber: 45
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 43
+                lineNumber: 46
             },
             __self: this
         }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 44
+                lineNumber: 47
             },
             __self: this
         }, film.Description)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 46
+                lineNumber: 49
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 47
+                lineNumber: 50
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 48
+                lineNumber: 51
             },
             __self: this
         }, "Genre:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/Genre/${film.Genre._id}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 49
+                lineNumber: 52
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             id: "link-button",
             className: "mt-1 mb-2",
             variant: "link",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 50
+                lineNumber: 53
             },
             __self: this
         }, film.Genre.Name)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 54
+                lineNumber: 57
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "value",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 55
+                lineNumber: 58
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
             className: "label",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 56
+                lineNumber: 59
             },
             __self: this
         }, "Director:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/Director/${film.Director._id}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 57
+                lineNumber: 60
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             id: "link-button",
             className: "mt-1 mb-2",
             variant: "link",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 58
+                lineNumber: 61
             },
             __self: this
         }, film.Director.Name)))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 62
+                lineNumber: 65
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             id: "button",
             className: "mt-2",
             value: film._id,
@@ -41846,16 +41892,16 @@ class FilmView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 63
+                lineNumber: 66
             },
             __self: this
         }, "Add to Favorites")), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 65
+                lineNumber: 68
             },
             __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_buttonDefault.default, {
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             id: "button",
             className: "mt-4",
             onClick: ()=>{
@@ -41863,7 +41909,7 @@ class FilmView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\film-view\\film-view.jsx",
-                lineNumber: 66
+                lineNumber: 69
             },
             __self: this
         }, "Back")))));
@@ -41884,7 +41930,7 @@ FilmView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","prop-types":"4dfy5","react-bootstrap/Media":"120yO","react-bootstrap/Button":"1ru0l","react-router-dom":"1PMSK","./film-view.scss":"2HxPs","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"2HxPs":[function() {},{}],"6gZcP":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","prop-types":"4dfy5","react-router-dom":"1PMSK","./film-view.scss":"2HxPs","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-bootstrap":"4n7hB"}],"2HxPs":[function() {},{}],"6gZcP":[function(require,module,exports) {
 var helpers = require("../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41957,6 +42003,7 @@ class GenreView extends _reactDefault.default.Component {
             },
             __self: this
         }, genre.Genre.Name), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+            className: "genre-description",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
                 lineNumber: 51
@@ -42037,6 +42084,7 @@ class GenreView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, film1.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+                className: "card-text",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
                     lineNumber: 65
@@ -42283,6 +42331,7 @@ class DirectorView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, film1.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+                className: "card-text",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                     lineNumber: 77
@@ -42382,13 +42431,15 @@ class ProfileView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
-            className: "ProfileView justify-content-md-center mt-5",
+            className: "ProfileView mt-5",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 66
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+            xs: 9,
+            className: "justify-content-start",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 67
@@ -42466,10 +42517,17 @@ class ProfileView extends _reactDefault.default.Component {
             },
             __self: this
         }, "Your Favorites:")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-            md: "auto",
+            xs: 3,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 82
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+            className: "justify-content-end",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 83
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -42478,16 +42536,17 @@ class ProfileView extends _reactDefault.default.Component {
             href: `/users/update/${this.props.user}`,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 83
-            },
-            __self: this
-        }, "Edit Profile"), /*#__PURE__*/ _reactDefault.default.createElement("br", {
-            __source: {
-                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
                 lineNumber: 84
             },
             __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+        }, "Edit Profile")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+            className: "justify-content-end",
+            __source: {
+                fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
+                lineNumber: 86
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             className: "mt-3",
             id: "button",
             onClick: ()=>{
@@ -42495,36 +42554,38 @@ class ProfileView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 85
+                lineNumber: 87
             },
             __self: this
-        }, "Back"))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        }, "Back")))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                lineNumber: 88
+                lineNumber: 91
             },
             __self: this
         }, Favorites.map((film)=>{
             if (Favorites.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("p", {
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 90
+                    lineNumber: 93
                 },
                 __self: this
             }, "None yet!"));
             return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                md: 4,
+                xs: 12,
+                sm: 6,
+                lg: 4,
                 key: film._id,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 92
+                    lineNumber: 95
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
-                className: "mt-3",
+                className: "mt-3 mb-3 ml-auto mr-auto card justify-content-center",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 93
+                    lineNumber: 96
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
@@ -42533,26 +42594,27 @@ class ProfileView extends _reactDefault.default.Component {
                 src: film.ImagePath,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 94
+                    lineNumber: 97
                 },
                 __self: this
             }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 95
+                    lineNumber: 98
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
                 className: "card-title",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 96
+                    lineNumber: 99
                 },
                 __self: this
             }, film.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+                className: "card-text",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 97
+                    lineNumber: 100
                 },
                 __self: this
             }, film.ReleaseYear), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -42561,7 +42623,7 @@ class ProfileView extends _reactDefault.default.Component {
                 href: `/films/${film.Title}`,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 98
+                    lineNumber: 101
                 },
                 __self: this
             }, "Open"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -42573,7 +42635,7 @@ class ProfileView extends _reactDefault.default.Component {
                 ,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\profile-view\\profile-view.jsx",
-                    lineNumber: 99
+                    lineNumber: 102
                 },
                 __self: this
             }, "Remove")))));
@@ -42706,7 +42768,7 @@ function UpdateProfile(props) {
         });
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
-        className: "UpdateForm justify-content-md-center",
+        className: "UpdateForm justify-content-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
             lineNumber: 96
@@ -42925,6 +42987,6 @@ $RefreshReg$(_c, "UpdateProfile");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap":"4n7hB","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-redux":"7GDa4","../../actions/actions":"5S6cN"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
+},{"react":"3b2NM","react-redux":"7GDa4","prop-types":"4dfy5","axios":"7rA65","react-bootstrap":"4n7hB","../../actions/actions":"5S6cN","./update-profile.scss":"iDvY3","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"iDvY3":[function() {},{}],"2bJg0":[function() {},{}]},["1j6wU","g6A9V","7yYVs"], "7yYVs", "parcelRequired3dc")
 
 //# sourceMappingURL=index.06f5e6ae.js.map
