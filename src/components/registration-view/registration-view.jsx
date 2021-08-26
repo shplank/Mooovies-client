@@ -72,9 +72,11 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Row className="RegistrationForm justify-content-md-center">
-      <Col md="auto">
-        <img width={300} src={logo} className="mt-3" alt="Mooovies logo" />
+    <Row className="RegistrationForm">
+      <Col xs="auto">
+        <Row className="justify-content-center">
+        <img width={300} className="justify-content-center" src={logo} className="mt-3" alt="Mooovies logo" />
+        </Row>
         <p className="mt-3">Create a profile:</p>
         <Form>
           <Form.Group controlId="formUsername">

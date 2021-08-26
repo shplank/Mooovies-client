@@ -152,7 +152,7 @@ class MainView extends React.Component {
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (user)
-            return <Col xs={12} md={8}>
+            return <Col md={8}>
               <UpdateProfile user={user}
                 onBackClick={() => history.goBack()} />
             </Col>

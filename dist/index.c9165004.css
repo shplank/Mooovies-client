@@ -185,6 +185,14 @@
   font-family: "Commissioner", sans-serif;
   margin-top: 18px;
 }
+.dir-photo {
+  max-width: 230px;
+}
+#director-pic {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+}
 .label {
   font-weight: 700;
 }

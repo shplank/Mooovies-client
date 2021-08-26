@@ -46,9 +46,9 @@ export class DirectorView extends React.Component {
     return (
       <Container>
         <Media className="director-view mt-5">
-          <img className="director-pic" className="mr-3" src={director.Director.ImagePath} alt="director photo" width={220} />
-          <Media.Body className="film-info pl-3 my-auto">
-            <h5 className="film-title">
+          <img xs={3} sm={4} md={5} id="director-pic" src={director.Director.ImagePath} alt="director photo" />
+          <Media.Body xs={9} sm={8} md={7} className="director-info pl-4 my-auto">
+            <h5 className="director-name">
               <span className="label">Name: </span>
               <span className="value">{director.Director.Name}</span>
             </h5>
@@ -69,8 +69,8 @@ export class DirectorView extends React.Component {
           {film.map((film) => {
             if (film.length === 0) return <p>None</p>;
             return (
-              <Col md={4} key={film._id}>
-                <Card className="mt-3">
+              <Col xs={12} sm={6} lg={4} key={film._id}>
+                <Card className="mt-3 mb-3 ml-auto mr-auto card justify-content-center">
                   <Card.Img className="card-image" variant="top" src={film.ImagePath} />
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>

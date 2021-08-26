@@ -57,8 +57,8 @@ export class GenreView extends React.Component {
           {film.map((film) => {
             if (film.length === 0) return <p>None yet!</p>;
             return (
-              <Col md={4} key={film._id}>
-                <Card className="mt-3">
+              <Col xs={12} sm={6} lg={4} key={film._id}>
+                <Card className="mt-3 mb-3 ml-auto mr-auto card justify-content-center">
                   <Card.Img className="card-image" variant="top" src={film.ImagePath} />
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>

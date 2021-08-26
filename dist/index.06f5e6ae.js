@@ -25001,7 +25001,6 @@ class MainView extends _reactDefault.default.Component {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
                 if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                    xs: 12,
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateProfile, {
                     user: user,
@@ -41216,7 +41215,8 @@ function LoginView(props) {
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-        md: "auto",
+        xs: "auto",
+        className: "mx-auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\login-view\\login-view.jsx",
             lineNumber: 60
@@ -41451,53 +41451,61 @@ function RegistrationView(props) {
         return isValid;
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
-        className: "RegistrationForm justify-content-md-center",
+        className: "RegistrationForm",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 75
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-        md: "auto",
+        xs: "auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 76
         },
         __self: this
-    }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-        width: 300,
-        src: _welcomeLogoPngDefault.default,
-        className: "mt-3",
-        alt: "Mooovies logo",
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        className: "justify-content-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 77
         },
         __self: this
-    }), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+    }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+        width: 300,
+        className: "justify-content-center",
+        src: _welcomeLogoPngDefault.default,
         className: "mt-3",
+        alt: "Mooovies logo",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
             lineNumber: 78
         },
         __self: this
+    })), /*#__PURE__*/ _reactDefault.default.createElement("p", {
+        className: "mt-3",
+        __source: {
+            fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
+            lineNumber: 80
+        },
+        __self: this
     }, "Create a profile:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 79
+            lineNumber: 81
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 80
+            lineNumber: 82
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 81
+            lineNumber: 83
         },
         __self: this
     }, "Username:"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -41508,7 +41516,7 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 82
+            lineNumber: 84
         },
         __self: this
     }), Object.keys(UsernameError).map((key)=>{
@@ -41516,7 +41524,7 @@ function RegistrationView(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-                lineNumber: 85
+                lineNumber: 87
             },
             __self: this
         }, UsernameError[key]));
@@ -41524,13 +41532,13 @@ function RegistrationView(props) {
         controlId: "formPassword",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 92
+            lineNumber: 94
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 93
+            lineNumber: 95
         },
         __self: this
     }, "Password"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -41541,7 +41549,7 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 94
+            lineNumber: 96
         },
         __self: this
     }), Object.keys(PasswordError).map((key)=>{
@@ -41549,7 +41557,7 @@ function RegistrationView(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-                lineNumber: 97
+                lineNumber: 99
             },
             __self: this
         }, PasswordError[key]));
@@ -41557,13 +41565,13 @@ function RegistrationView(props) {
         controlId: "formEmail",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 104
+            lineNumber: 106
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 105
+            lineNumber: 107
         },
         __self: this
     }, "Email"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -41574,7 +41582,7 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 106
+            lineNumber: 108
         },
         __self: this
     }), Object.keys(EmailError).map((key)=>{
@@ -41582,7 +41590,7 @@ function RegistrationView(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-                lineNumber: 109
+                lineNumber: 111
             },
             __self: this
         }, EmailError[key]));
@@ -41590,13 +41598,13 @@ function RegistrationView(props) {
         controlId: "formBirthdate",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 116
+            lineNumber: 118
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 117
+            lineNumber: 119
         },
         __self: this
     }, "Birthdate"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -41607,7 +41615,7 @@ function RegistrationView(props) {
         ,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 118
+            lineNumber: 120
         },
         __self: this
     }), Object.keys(BirthdateError).map((key)=>{
@@ -41615,7 +41623,7 @@ function RegistrationView(props) {
             key: key,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-                lineNumber: 121
+                lineNumber: 123
             },
             __self: this
         }, BirthdateError[key]));
@@ -41625,14 +41633,14 @@ function RegistrationView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 128
+            lineNumber: 130
         },
         __self: this
     }, "Submit")), /*#__PURE__*/ _reactDefault.default.createElement("p", {
         className: "mt-3",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 131
+            lineNumber: 133
         },
         __self: this
     }, "If you already have a profile, log in ", /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
@@ -41640,7 +41648,7 @@ function RegistrationView(props) {
         to: `/`,
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\registration-view\\registration-view.jsx",
-            lineNumber: 131
+            lineNumber: 133
         },
         __self: this
     }, "here"), "."))));
@@ -41930,7 +41938,7 @@ FilmView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","prop-types":"4dfy5","react-router-dom":"1PMSK","./film-view.scss":"2HxPs","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF","react-bootstrap":"4n7hB"}],"2HxPs":[function() {},{}],"6gZcP":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","prop-types":"4dfy5","react-bootstrap":"4n7hB","react-router-dom":"1PMSK","./film-view.scss":"2HxPs","@parcel/transformer-js/src/esmodule-helpers.js":"6BsJi","../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"7belF"}],"2HxPs":[function() {},{}],"6gZcP":[function(require,module,exports) {
 var helpers = require("../../../../../../AppData/Roaming/npm/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42047,7 +42055,9 @@ class GenreView extends _reactDefault.default.Component {
                 __self: this
             }, "None yet!"));
             return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                md: 4,
+                xs: 12,
+                sm: 6,
+                lg: 4,
                 key: film1._id,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
@@ -42055,7 +42065,7 @@ class GenreView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
-                className: "mt-3",
+                className: "mt-3 mb-3 ml-auto mr-auto card justify-content-center",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\genre-view\\genre-view.jsx",
                     lineNumber: 61
@@ -42175,25 +42185,29 @@ class DirectorView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-            className: "director-pic",
-            className: "mr-3",
+            xs: 3,
+            sm: 4,
+            md: 5,
+            id: "director-pic",
             src: director.Director.ImagePath,
             alt: "director photo",
-            width: 220,
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                 lineNumber: 49
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Media.Body, {
-            className: "film-info pl-3 my-auto",
+            xs: 9,
+            sm: 8,
+            md: 7,
+            className: "director-info pl-4 my-auto",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                 lineNumber: 50
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("h5", {
-            className: "film-title",
+            className: "director-name",
             __source: {
                 fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                 lineNumber: 51
@@ -42294,7 +42308,9 @@ class DirectorView extends _reactDefault.default.Component {
                 __self: this
             }, "None"));
             return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-                md: 4,
+                xs: 12,
+                sm: 6,
+                lg: 4,
                 key: film1._id,
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
@@ -42302,7 +42318,7 @@ class DirectorView extends _reactDefault.default.Component {
                 },
                 __self: this
             }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
-                className: "mt-3",
+                className: "mt-3 mb-3 ml-auto mr-auto card justify-content-center",
                 __source: {
                     fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\director-view\\director-view.jsx",
                     lineNumber: 73
@@ -42768,14 +42784,15 @@ function UpdateProfile(props) {
         });
     };
     return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
-        className: "UpdateForm justify-content-center",
+        className: "UpdateForm justify-content-md-center",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
             lineNumber: 96
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-        md: "auto",
+        xs: "auto",
+        className: "mx-auto",
         __source: {
             fileName: "C:\\Users\\lankyjoe\\Documents\\GitHub\\Mooovies-client\\src\\components\\update-profile\\update-profile.jsx",
             lineNumber: 97
