@@ -123,7 +123,7 @@ class MainView extends React.Component {
           </Container>
         </Navbar>
 
-          {/* Main View */}
+          {/* Main/Login View */}
 
           <Route exact path="/" render={() => {
             if (!user) return <Col>
