@@ -146,9 +146,9 @@ export function UpdateProfile(props) {
             })}
           </Form.Group>
 
-            <Button id="button" type="submit" className="mt-2" onClick={handleUpdate}>Submit Update</Button>
+            <Button id="update-button" type="submit" className="mt-2" onClick={handleUpdate}>Submit Update</Button>
           <br/>
-            <Button id="button" type="submit" className="mt-4" onClick={handleDelete}>Delete Profile</Button>
+            <Button id="delete-button" type="submit" className="mt-4" onClick={handleDelete}>Delete Profile</Button>
 
         </Form>
       </Col>

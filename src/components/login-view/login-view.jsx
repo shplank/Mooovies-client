@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -7,8 +6,6 @@ import { Link } from "react-router-dom";
 import { Row, Col, Form, Button } from 'react-bootstrap';
 
 import logo from 'url:./welcome-logo.png';
-
-import { setUser } from '../../actions/actions';
 
 import './login-view.scss';
 
@@ -100,9 +97,3 @@ LoginView.propTypes = {
     Password: PropTypes.string.isRequired
   }),
 };
-
-let mapStateToProps = (state) => {
-  return { user: state.user }
-}
-
-export default connect(mapStateToProps, { setUser } ) (LoginView);

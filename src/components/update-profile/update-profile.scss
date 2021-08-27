@@ -13,16 +13,30 @@
   font-weight: 400;
 }
 
-#button {
+#update-button {
   background-color: #ffbebe;
   color: #000;
   border: none;
   border-radius: 12px;
 }
 
-#button:hover,
-#button:focus,
-#button:active {
+#update-button:hover,
+#update-button:focus,
+#update-button:active {
+  background-color: #ffcece;
+  color: #222;
+}
+
+#delete-button {
+  background-color: #ffbebe;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+}
+
+#delete-button:hover,
+#delete-button:focus,
+#delete-button:active {
   background-color: #ffcece;
   color: #222;
 }

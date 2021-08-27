@@ -117,7 +117,7 @@ export function RegistrationView(props) {
 
           <Form.Group controlId="formBirthdate">
             <Form.Label>Birthdate</Form.Label>
-            <Form.Control type="date" dateFormat="MM/dd/yyyy" value={Birthdate} onChange={e => setBirthdate(e.target.value)} />
+            <Form.Control type="date" value={Birthdate} onChange={e => setBirthdate(e.target.value)} />
             {Object.keys(BirthdateError).map((key) => {
               return (
               <div key={key}>

@@ -14,7 +14,7 @@ export class ProfileView extends React.Component {
       Password: '',
       Email: '',
       Birthdate: '',
-      Favorites: []
+      Favorites: [] 
     };
   }
 
@@ -31,7 +31,7 @@ export class ProfileView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then((response) => {
-      this.setState({
+      this.setState(response.data);({
         Username: response.data.Username,
         Password: response.data.Password,
         Email: response.data.Email,
@@ -43,7 +43,7 @@ export class ProfileView extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
-  }
+  } 
 
   handleRemove(film) {
     const Username = localStorage.getItem('user');
@@ -58,7 +58,7 @@ export class ProfileView extends React.Component {
   }
   
   render() {
-    const { onBackClick } = this.props;
+    const { user, onBackClick } = this.props;
     const Favorites = (this.state.Favorites);
 
     return (
@@ -81,10 +81,10 @@ export class ProfileView extends React.Component {
         </Col>
         <Col xs={3}>
           <Row className="justify-content-end">
-            <Button className="mt-2" id="button" href={`/users/update/${this.props.user}`}>Edit Profile</Button>
+            <Button className="mt-2 mr-3" id="button" href={`/users/update/${this.state.Username}`}>Edit Profile</Button>
           </Row>
           <Row className="justify-content-end">
-            <Button className="mt-3" id="button" onClick={() => { onBackClick(null); }}>Back</Button>
+            <Button className="mt-3 mr-3" id="button" onClick={() => { onBackClick(null); }}>Back</Button>
           </Row>
         </Col>
       </Row>
@@ -98,8 +98,8 @@ export class ProfileView extends React.Component {
                   <Card.Body>
                     <Card.Title className="card-title">{film.Title}</Card.Title>
                     <Card.Text className="card-text">{film.ReleaseYear}</Card.Text>
-                    <Button id="button" className="mt-2" href={`/films/${film.Title}`}>Open</Button>
-                    <Button id="button" type="submit" className="mt-2 ml-3" value={film._id} onClick={() => this.handleRemove(film)}>Remove</Button>
+                    <Button id="button" className="mt-2 mr-3" href={`/films/${film.Title}`}>Open</Button>
+                    <Button id="button" type="submit" className="mt-2" value={film._id} onClick={() => this.handleRemove(film)}>Remove</Button>
                   </Card.Body>
                 </Card>
               </Col>

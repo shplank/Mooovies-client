@@ -24,11 +24,7 @@ import { UpdateProfile } from '../update-profile/update-profile';
 class MainView extends React.Component {
   constructor() {
     super();
-    /* initial state settings for MainView */
-    this.state = {
-      user: ''
-    };
-  }
+  } 
 
 /* This function triggers getFilms and getUsers when MainView is mounted */
 
@@ -39,6 +35,7 @@ class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getFilms(accessToken);
+      this.getUser(accessToken);
     }
   }
 
@@ -57,14 +54,29 @@ class MainView extends React.Component {
     });
   }
 
+  getUser(token) {
+    const Username = localStorage.getItem('user');
+    axios.get(`https://moooviesapi.herokuapp.com/users/${Username}`, {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then((response) => {
+      this.props.setUser(response.data);({
+        Username: response.data.Username,
+        Password: response.data.Password,
+        Email: response.data.Email,
+        Birthdate: response.data.Birthdate,
+        Favorites: response.data.Favorites,
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  } 
+
 /* On successful login, this updates the 'user' property in state */
 
   onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-  
+    this.props.setUser(authData.user);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getFilms(authData.token);
@@ -76,9 +88,8 @@ class MainView extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     /* Sets user to null */
-    this.setState({
-      user: null
-    });
+    this.props.setUser(null);
+    window.open('/','_self');
   }
 
   onRegister(register) {
@@ -88,8 +99,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    let { films } = this.props;
-    let { user } = this.state;
+    let { films, user } = this.props;
 
     return (
       <Router>
@@ -105,7 +115,7 @@ class MainView extends React.Component {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <Nav.Link href={`/`}>Films</Nav.Link>
+              <Nav.Link href={`/films`}>Films</Nav.Link>
               <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
               <Nav.Link href="#logout" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
             </Nav>
@@ -117,8 +127,16 @@ class MainView extends React.Component {
 
           <Route exact path="/" render={() => {
             if (!user) return <Col>
-                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              </Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+          </Col>
+            if (films.length === 0) return <Spinner animation="border" role="status" className="mt-5" />; 
+            return <FilmsList films={films}/>;
+          }} />
+
+          {/* Films View */}
+
+          <Route exact path="/films" render={() => {
+            if (!user) return <Spinner animation="border" role="status" className="mt-5" />;
             if (films.length === 0) return <Spinner animation="border" role="status" className="mt-5" />; 
             return <FilmsList films={films}/>;
           }} />
@@ -136,9 +154,7 @@ class MainView extends React.Component {
           {/* Profile View */}
 
           <Route exact path="/users/:Username" render={({ history }) => {
-            if (!user) return <Col>
-              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-            </Col>
+            if (!user) return <Spinner animation="border" role="status" className="mt-5" />;
             return <Col md={8}>
                 <ProfileView user={user} films={films}
                   onBackClick={() => history.goBack()} />
@@ -148,9 +164,7 @@ class MainView extends React.Component {
           {/* Update View */}
 
           <Route path="/users/update/:Username" render={() => {
-            if (!user) return <Col>
-              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-            </Col>
+            if (!user) return <Spinner animation="border" role="status" className="mt-5" />;
             if (user)
             return <Col md={8}>
               <UpdateProfile user={user}
@@ -161,9 +175,7 @@ class MainView extends React.Component {
           {/* Film View */}
 
           <Route path="/films/:Title" render={({ match, history }) => {
-            if (!user) return <Col>
-                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-              </Col>
+            if (!user) return <Spinner animation="border" role="status" className="mt-5" />;
             if (films.length === 0) return <div className="main-view" />;
             return <Col md={8}>
                 <FilmView film={films.find(m => m.Title === match.params.Title)} 
