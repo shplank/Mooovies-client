@@ -13,7 +13,7 @@ import FilmsList from '../films-list/films-list';
 import { setFilms, setUser } from '../../actions/actions';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import { NavbarView } from '../navbar-view/navbar-view';
+import NavbarView from '../navbar-view/navbar-view';
 import { FilmView } from '../film-view/film-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
