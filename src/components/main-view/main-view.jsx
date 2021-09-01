@@ -7,8 +7,6 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { Row, Col, Spinner, Container } from 'react-bootstrap';
 
-import logo from 'url:./MoooviesLogo.png';
-
 import './main-view.scss';
 
 import FilmsList from '../films-list/films-list';
