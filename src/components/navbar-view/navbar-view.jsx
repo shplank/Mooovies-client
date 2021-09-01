@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Nav, Navbar, Container } from 'react-bootstrap';
 
-import logo from 'url:../../images/MoooviesLogo.png';
+import logo from 'url:./MoooviesLogo.png';
 
 import './navbar-view.scss';
 
