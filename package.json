@@ -3,20 +3,22 @@
   "version": "1.0.0",
   "description": "Client for movie app",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shplank/Mooovies-client.git"
+    "url": "https://github.com/shplank/Mooovies-client.git"
   },
   "author": "Joe Jordan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/shplank/Mooovies-client/issues"
   },
-  "homepage": "https://github.com/shplank/Mooovies-client#readme",
+  "homepage": "https://github.com/shplank/Mooovies-client",
   "dependencies": {
     "axios": "^0.21.1",
     "mongoose": "^5.13.2",
@@ -32,6 +34,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-image": "^2.0.0-rc.0",
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "gh-pages": "^3.2.3"
   }
 }
