@@ -1,1 +1,6 @@
 /* /index.html 200
+/films /index.html 200
+/films/* /films/index.html 200
+/users/* /users/index.html 200
+/genres/* /genres/index.html 200
+/directors/* /directors/index.html 200
